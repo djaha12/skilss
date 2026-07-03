@@ -1,6 +1,12 @@
 # Skills
 
-Отобранные агентские скиллы для Claude Code из коллекции [mattpocock/skills](https://github.com/mattpocock/skills) (MIT License) — только те, что закрывают две главные проблемы работы с агентами: рассинхронизацию ожиданий и перегрузку контекста.
+Отобранные агентские скиллы для Claude Code из трёх источников:
+
+- [mattpocock/skills](https://github.com/mattpocock/skills) (MIT) — рабочий процесс: согласование требований → разбивка на задачи → реализация
+- [anthropics/skills](https://github.com/anthropics/skills) — официальные скиллы Anthropic (документы, фронтенд, тестирование и др.)
+- [vercel-labs/skills](https://github.com/vercel-labs/skills) — `find-skills`, мета-скилл для поиска новых скиллов
+
+Плюс `CLAUDE.md` в корне — поведенческие правила по мотивам наблюдений Андрея Карпатого ([forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)): думай прежде чем кодить, простота прежде всего, хирургические правки, движение к цели. Действуют постоянно во всех сессиях в этом репозитории.
 
 Скиллы лежат в `.claude/skills/` — Claude Code автоматически подхватывает их в любой сессии внутри этого репозитория и делает доступными как слэш-команды. Работают с любой моделью: Opus, Sonnet, Fable.
 
@@ -23,6 +29,8 @@
 
 ## Скиллы
 
+### Рабочий процесс (Matt Pocock)
+
 | Скилл | Что делает |
 |---|---|
 | `/grill-me` | Согласование требований вопросами (не только для кода) |
@@ -36,6 +44,29 @@
 | `/prototype` | Быстрый одноразовый прототип для проверки идеи |
 | `/domain-modeling` | Доменная модель, CONTEXT.md, ADR (нужен для grill-with-docs) |
 | `/setup-matt-pocock-skills` | Одноразовая настройка репозитория под остальные скиллы |
+
+### Официальные скиллы Anthropic
+
+Автовызываемые — Claude применяет их сам, когда задача подходит:
+
+| Скилл | Что делает |
+|---|---|
+| `frontend-design` | Отличительный, нешаблонный дизайн интерфейсов |
+| `webapp-testing` | Тестирование локальных веб-приложений через Playwright |
+| `docx` / `pdf` / `pptx` / `xlsx` | Создание и правка Word, PDF, PowerPoint, Excel |
+| `doc-coauthoring` | Совместное написание доков, спек, proposals |
+| `mcp-builder` | Создание MCP-серверов (Python/TypeScript) |
+| `skill-creator` | Создание и оптимизация собственных скиллов |
+| `claude-api` | Справочник по Claude API при разработке LLM-приложений |
+| `canvas-design` / `algorithmic-art` / `theme-factory` / `slack-gif-creator` | Визуальный дизайн, генеративное искусство, темы, GIF |
+| `web-artifacts-builder` | Сложные HTML-артефакты (React, Tailwind, shadcn/ui) |
+| `brand-guidelines` / `internal-comms` | Фирменный стиль Anthropic, внутренние коммуникации |
+
+### Мета
+
+| Скилл | Что делает |
+|---|---|
+| `find-skills` | Ищет и устанавливает скиллы из открытой экосистемы по запросу («есть ли скилл для X?») |
 
 ## Что не вошло и почему
 
