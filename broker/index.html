@@ -1,0 +1,921 @@
+<title>Брокер — аналитика и стратегия платформы недвижимости</title>
+<meta name="description" content="Полная аналитика и стратегия «Брокер» — платформы недвижимости для Кыргызстана и Центральной Азии: конкуренты, ИИ-обзоры участков, профессиональные брокеры, монетизация и маркетинг.">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#F1F3EF; --surface:#FBFCFA; --surface-2:#E7E9E3; --raise:#FFFFFF;
+  --ink:#141F1A; --ink-soft:#4C574F; --ink-faint:#7A857C;
+  --brand:#1C6E4F; --brand-ink:#0E4A32; --brand-2:#2C9A72; --brand-wash:rgba(28,110,79,.08);
+  --gold:#9F6F27; --gold-2:#B98A3E;
+  --line:rgba(20,31,26,.13); --line-soft:rgba(20,31,26,.07); --line-strong:rgba(20,31,26,.26);
+  --good:#2C7F52; --warn:#9C6A12; --bad:#B0402B;
+  --good-w:rgba(44,127,82,.12); --warn-w:rgba(156,106,18,.13); --bad-w:rgba(176,64,43,.12);
+  --shadow:0 1px 2px rgba(20,31,26,.05), 0 10px 34px -12px rgba(20,31,26,.18);
+  --shadow-sm:0 1px 2px rgba(20,31,26,.06);
+  --radius:14px; --radius-sm:9px;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#0C120E; --surface:#121A14; --surface-2:#18211A; --raise:#16201A;
+    --ink:#E9EEE8; --ink-soft:#A6B1A8; --ink-faint:#6C776E;
+    --brand:#40BC87; --brand-ink:#8CDDBB; --brand-2:#2C9A72; --brand-wash:rgba(64,188,135,.10);
+    --gold:#CB9E58; --gold-2:#D9B473;
+    --line:rgba(233,238,232,.13); --line-soft:rgba(233,238,232,.06); --line-strong:rgba(233,238,232,.28);
+    --good:#46B679; --warn:#D3A24C; --bad:#E2745C;
+    --good-w:rgba(70,182,121,.14); --warn-w:rgba(211,162,76,.14); --bad-w:rgba(226,116,92,.14);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -14px rgba(0,0,0,.6);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="light"]{
+  --paper:#F1F3EF; --surface:#FBFCFA; --surface-2:#E7E9E3; --raise:#FFFFFF;
+  --ink:#141F1A; --ink-soft:#4C574F; --ink-faint:#7A857C;
+  --brand:#1C6E4F; --brand-ink:#0E4A32; --brand-2:#2C9A72; --brand-wash:rgba(28,110,79,.08);
+  --gold:#9F6F27; --gold-2:#B98A3E;
+  --line:rgba(20,31,26,.13); --line-soft:rgba(20,31,26,.07); --line-strong:rgba(20,31,26,.26);
+  --good:#2C7F52; --warn:#9C6A12; --bad:#B0402B;
+  --good-w:rgba(44,127,82,.12); --warn-w:rgba(156,106,18,.13); --bad-w:rgba(176,64,43,.12);
+  --shadow:0 1px 2px rgba(20,31,26,.05), 0 10px 34px -12px rgba(20,31,26,.18);
+  --shadow-sm:0 1px 2px rgba(20,31,26,.06);
+}
+:root[data-theme="dark"]{
+  --paper:#0C120E; --surface:#121A14; --surface-2:#18211A; --raise:#16201A;
+  --ink:#E9EEE8; --ink-soft:#A6B1A8; --ink-faint:#6C776E;
+  --brand:#40BC87; --brand-ink:#8CDDBB; --brand-2:#2C9A72; --brand-wash:rgba(64,188,135,.10);
+  --gold:#CB9E58; --gold-2:#D9B473;
+  --line:rgba(233,238,232,.13); --line-soft:rgba(233,238,232,.06); --line-strong:rgba(233,238,232,.28);
+  --good:#46B679; --warn:#D3A24C; --bad:#E2745C;
+  --good-w:rgba(70,182,121,.14); --warn-w:rgba(211,162,76,.14); --bad-w:rgba(226,116,92,.14);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -14px rgba(0,0,0,.6);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+::selection{background:var(--brand);color:#fff}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;text-wrap:balance;line-height:1.12;margin:0}
+p{margin:0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2.5px solid var(--brand);outline-offset:3px;border-radius:3px}
+.wrap{width:min(1120px,92vw);margin-inline:auto}
+.narrow{width:min(760px,92vw);margin-inline:auto}
+
+/* ============ SCROLL PROGRESS ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--brand),var(--gold-2));z-index:60;transition:width .1s linear}
+
+/* ============ HEADER ============ */
+.site{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.4) blur(10px);
+  background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line-soft)}
+.site .bar{display:flex;align-items:center;gap:18px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.15rem;letter-spacing:.01em}
+.brand .mark{width:26px;height:26px;flex:0 0 auto}
+.brand small{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:400}
+.site nav{margin-left:auto;display:flex;gap:4px;align-items:center}
+.site nav a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink-soft);padding:7px 10px;border-radius:7px;text-transform:uppercase}
+.site nav a:hover{background:var(--brand-wash);color:var(--brand);text-decoration:none}
+.ttoggle{border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);width:34px;height:34px;border-radius:8px;cursor:pointer;display:grid;place-items:center;flex:0 0 auto}
+.ttoggle:hover{color:var(--brand);border-color:var(--brand)}
+@media(max-width:820px){.site nav a:not(.cta){display:none}}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:clamp(56px,10vw,120px) 0 clamp(40px,6vw,72px);overflow:hidden;border-bottom:1px solid var(--line-soft)}
+#topo{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.55;pointer-events:none}
+@media (prefers-color-scheme:dark){#topo{opacity:.42}}
+:root[data-theme="dark"] #topo{opacity:.42}
+:root[data-theme="light"] #topo{opacity:.55}
+.hero .wrap{position:relative;z-index:1}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-wash);border:1px solid color-mix(in srgb,var(--brand) 28%,transparent);padding:6px 13px;border-radius:100px;margin-bottom:26px}
+.kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px var(--brand-wash)}
+h1.title{font-size:clamp(2.6rem,7vw,5rem);letter-spacing:-.02em;margin-bottom:.35em}
+h1.title .accent{font-style:italic;color:var(--brand)}
+.lede{font-size:clamp(1.1rem,2.2vw,1.42rem);color:var(--ink-soft);max-width:40ch;line-height:1.42}
+.lede b{color:var(--ink);font-weight:600}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);margin-top:clamp(38px,6vw,60px);overflow:hidden}
+.hero-stats .s{background:var(--surface);padding:22px 20px}
+.hero-stats .n{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.3rem);color:var(--brand);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.hero-stats .l{font-size:.82rem;color:var(--ink-soft);margin-top:6px;line-height:1.3}
+@media(max-width:720px){.hero-stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ============ SECTION ============ */
+section.blk{padding:clamp(52px,8vw,96px) 0;scroll-margin-top:70px;position:relative}
+section.blk+section.blk{border-top:1px solid var(--line-soft)}
+.sec-head{display:flex;gap:20px;align-items:baseline;margin-bottom:34px}
+.sec-num{font-family:var(--mono);font-size:.82rem;color:var(--gold);letter-spacing:.1em;font-weight:500;padding-top:6px;flex:0 0 auto}
+.sec-titlewrap{max-width:44ch}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;display:block}
+h2.sec{font-size:clamp(1.7rem,4vw,2.55rem);letter-spacing:-.015em}
+h2.sec .u{color:var(--brand)}
+.sec-sub{color:var(--ink-soft);font-size:1.05rem;margin-top:14px;max-width:60ch}
+.prose p{margin-top:1em;color:var(--ink-soft)}
+.prose p:first-child{margin-top:0}
+.prose strong{color:var(--ink);font-weight:600}
+
+/* ============ PRIMITIVES ============ */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-sm)}
+.card h3{font-size:1.16rem;margin-bottom:8px;letter-spacing:-.01em}
+.card h4{font-family:var(--sans);font-weight:650;font-size:.96rem;margin-bottom:6px}
+.card p{color:var(--ink-soft);font-size:.94rem}
+.card .ic{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;background:var(--brand-wash);color:var(--brand);margin-bottom:14px;font-size:1.15rem}
+.tag{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line);border-radius:5px;padding:3px 7px;margin:2px 2px 0 0}
+.tier{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:5px;font-weight:600}
+.tier.t1{background:var(--brand-wash);color:var(--brand)}
+.tier.t2{background:var(--gold-w,rgba(159,111,39,.12));color:var(--gold)}
+.tier.t3{background:var(--surface-2);color:var(--ink-soft)}
+
+.stat-tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:18px}
+.stat-tile .n{font-family:var(--serif);font-size:1.72rem;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.stat-tile .n.up{color:var(--good)} .stat-tile .n.dn{color:var(--bad)}
+.stat-tile .l{font-size:.82rem;color:var(--ink-soft);margin-top:5px;line-height:1.35}
+.stat-tile .src{font-family:var(--mono);font-size:.6rem;color:var(--ink-faint);margin-top:8px;letter-spacing:.03em}
+
+/* table */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.9rem;background:var(--surface)}
+th,td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+thead th{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);background:var(--surface-2);position:sticky;top:0}
+tbody tr:last-child td{border-bottom:none}
+td strong{color:var(--ink)}
+tbody tr:hover{background:var(--brand-wash)}
+.num{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:.86rem}
+
+/* pills */
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:100px;font-weight:600;white-space:nowrap}
+.pill.good{background:var(--good-w);color:var(--good)}
+.pill.warn{background:var(--warn-w);color:var(--warn)}
+.pill.bad{background:var(--bad-w);color:var(--bad)}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* callout */
+.callout{background:linear-gradient(180deg,var(--brand-wash),transparent);border:1px solid color-mix(in srgb,var(--brand) 24%,transparent);border-left:4px solid var(--brand);border-radius:var(--radius);padding:22px 24px;margin-top:22px}
+.callout.gold{background:linear-gradient(180deg,rgba(159,111,39,.09),transparent);border-color:color-mix(in srgb,var(--gold) 34%,transparent);border-left-color:var(--gold)}
+.callout .lab{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:8px;font-weight:600}
+.callout.gold .lab{color:var(--gold)}
+.callout p{color:var(--ink-soft)} .callout strong{color:var(--ink)}
+
+/* quadrant / swot */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.quad{grid-template-columns:1fr}}
+.quad .q{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:var(--surface)}
+.quad .q h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.quad .q.s h4{color:var(--good)} .quad .q.w h4{color:var(--bad)}
+.quad .q.o h4{color:var(--brand)} .quad .q.t h4{color:var(--warn)}
+.quad ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:.9rem}
+.quad li{margin:6px 0}
+
+/* pipeline */
+.pipe{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;counter-reset:step}
+.pipe .step{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px 16px 16px 16px}
+.pipe .step::before{counter-increment:step;content:counter(step);position:absolute;top:-11px;left:14px;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font-family:var(--mono);font-size:.75rem;display:grid;place-items:center;font-weight:600}
+.pipe .step h4{font-family:var(--sans);font-size:.92rem;font-weight:650;margin:8px 0 5px}
+.pipe .step p{font-size:.82rem;color:var(--ink-soft)}
+
+/* layers list (land review data sources) */
+.layers{display:grid;gap:10px}
+.layer{display:grid;grid-template-columns:180px 1fr auto;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 16px}
+.layer .nm{font-weight:650;font-size:.92rem}
+.layer .ds{font-size:.85rem;color:var(--ink-soft)}
+.layer .src{font-family:var(--mono);font-size:.68rem;color:var(--ink-faint)}
+@media(max-width:680px){.layer{grid-template-columns:1fr;gap:5px}.layer .src{margin-top:2px}}
+
+/* timeline */
+.timeline{position:relative;margin-top:10px;padding-left:0}
+.phase{position:relative;padding:0 0 6px 34px;border-left:2px solid var(--line);margin-left:9px}
+.phase:last-child{border-left-color:transparent}
+.phase::before{content:"";position:absolute;left:-9px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--brand)}
+.phase .ph-t{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.phase h3{font-size:1.2rem;margin:4px 0 6px}
+.phase p{color:var(--ink-soft);font-size:.94rem;margin-bottom:14px}
+.phase .chips{margin-bottom:20px}
+
+/* streams */
+.streams{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.stream{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;position:relative;overflow:hidden}
+.stream::after{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:var(--brand);opacity:.5}
+.stream.core::after{background:var(--brand);opacity:1}
+.stream.eco::after{background:var(--gold)}
+.stream h4{font-family:var(--sans);font-weight:650;font-size:1rem;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.stream .m{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.stream p{font-size:.88rem;color:var(--ink-soft)}
+
+/* footnote / method */
+.method{background:var(--surface-2);border-radius:var(--radius);padding:26px;font-size:.9rem;color:var(--ink-soft)}
+.method h3{font-size:1.05rem;color:var(--ink);margin-bottom:12px}
+.method ul{margin:8px 0 0;padding-left:20px}
+.method li{margin:6px 0}
+.src-list{columns:2;column-gap:26px;font-family:var(--mono);font-size:.72rem;line-height:1.7}
+.src-list a{color:var(--ink-soft)}
+@media(max-width:640px){.src-list{columns:1}}
+
+/* footer */
+footer.end{padding:56px 0 70px;border-top:1px solid var(--line);text-align:center}
+footer.end .big{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.2rem);letter-spacing:-.01em;max-width:22ch;margin:0 auto 10px}
+footer.end p{color:var(--ink-soft);max-width:52ch;margin:0 auto}
+footer.end .meta{font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);letter-spacing:.06em;margin-top:26px;text-transform:uppercase}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+.mt6{margin-top:6px}.mt14{margin-top:14px}.mt22{margin-top:22px}.mt34{margin-top:34px}
+.lead-em{color:var(--brand);font-weight:600}
+hr.soft{border:none;border-top:1px solid var(--line-soft);margin:28px 0}
+</style>
+
+<div class="progress" id="prog"></div>
+
+<header class="site">
+  <div class="wrap bar">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="7" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+        <path d="M7 21 L16 8 L25 21" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11 21 L16 14 L21 21" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+      </svg>
+      Брокер <small>strategy&nbsp;dossier</small>
+    </div>
+    <nav>
+      <a href="#market">Рынок</a>
+      <a href="#compete">Конкуренты</a>
+      <a href="#product">Продукт</a>
+      <a href="#land">ИИ-участок</a>
+      <a href="#brokers">Брокеры</a>
+      <a href="#money">Деньги</a>
+      <a href="#pr">Маркетинг</a>
+      <button class="ttoggle" id="tt" aria-label="Сменить тему" title="Сменить тему">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <canvas id="topo" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="kicker rv"><span class="dot"></span>Аналитика · стратегия · продукт · 2026</span>
+    <h1 class="title rv">Брокер — не доска объявлений,<br>а <span class="accent">инфраструктура сделки</span> с недвижимостью.</h1>
+    <p class="lede rv">Аналог house.kg, построенный на трёх вещах, которых на рынке ещё нет: <b>доверие и верификация</b>, <b>команда профессиональных брокеров</b> и <b>ИИ-слой</b> — от оценки квартиры до кинематографичного обзора участка. Плюс два крыла роста: <b>элитная</b> и <b>зарубежная</b> недвижимость.</p>
+    <div class="hero-stats rv">
+      <div class="s"><div class="n">~$1&nbsp;470</div><div class="l">за м² в Бишкеке (дек. 2025) — рынок обогнал инфляцию</div></div>
+      <div class="s"><div class="n">24&nbsp;127</div><div class="l">сделок за Q3 2025 в КР на ~104,7 млрд сом</div></div>
+      <div class="s"><div class="n">2&nbsp;408</div><div class="l">объектов куплено иностранцами за 2025–Q1 2026</div></div>
+      <div class="s"><div class="n">≈ 0</div><div class="l">«умных» слоёв поверх листинга у конкурентов в ЦА</div></div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+<!-- 01 РЕЗЮМЕ -->
+<section class="blk" id="idea">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">01</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Executive summary</span>
+        <h2 class="sec">Идея в одном экране: <span class="u">три кита и два крыла</span></h2>
+        <p class="sec-sub">house.kg и krisha.kz победили как <b>классифайды</b> — доски объявлений с приложением. Но во всём мире порталы давно конкурируют не списком объявлений, а <b>слоями поверх него</b>: оценка, данные, воронка сделки, доверие. В Центральной Азии эти слои почти пусты — это и есть окно для «Брокера».</p>
+      </div>
+    </div>
+
+    <div class="grid g3 rv">
+      <div class="card">
+        <div class="ic">①</div>
+        <h3>Доверие</h3>
+        <p>Верификация объекта и собственника, антифрод и дедупликация ленты (детект дублей по фото). Главная незакрытая боль всех классифайдов СНГ — фейки, приманки, задаток-скам. Кто закроет доверие — заберёт рынок.</p>
+      </div>
+      <div class="card">
+        <div class="ic">②</div>
+        <h3>Профессиональные брокеры</h3>
+        <p>Не «студии» и перекупы, а верифицированная команда с обучением, стандартами, CRM и рейтингом по закрытым сделкам. Ответственность юрлица и гарантия юридической чистоты — прямой контраргумент рынку маклеров.</p>
+      </div>
+      <div class="card">
+        <div class="ic">③</div>
+        <h3>ИИ-слой</h3>
+        <p>Мгновенная оценка недвижимости, ИИ-описания и виртуальный стейджинг, ассистент-подбор и флагман — <b>красивый ИИ-обзор участка</b> (рельеф, солнце, риски, «что можно построить»). Дифференциатор, который сложно скопировать.</p>
+      </div>
+    </div>
+
+    <div class="grid g2 mt14 rv">
+      <div class="card" style="border-color:color-mix(in srgb,var(--gold) 34%,transparent)">
+        <span class="tag" style="color:var(--gold);border-color:var(--gold)">Крыло A</span>
+        <h3 class="mt6">Элитная недвижимость</h3>
+        <p>Отдельная логика: не объём, а кураторство, приватность и сторителлинг. Статусы объекта «Приватный / Скоро / В продаже» (механика Compass: +2,9% к цене, −20% к сроку), кинематографичные дрон-туры, консьерж. Трофейные объекты Бишкека, Иссык-Куля, Астаны, Алматы, Ташкента, Дубая.</p>
+      </div>
+      <div class="card" style="border-color:color-mix(in srgb,var(--brand) 34%,transparent)">
+        <span class="tag" style="color:var(--brand);border-color:var(--brand)">Крыло B</span>
+        <h3 class="mt6">Зарубежная недвижимость</h3>
+        <p>Мультивалюта, мультиязык и юридический гид «покупка иностранцем». Европейские «золотые визы» закрываются (Португалия 2023, Испания 2025) — а FDI в ЦА растёт и землю иностранцам часто нельзя, но жильё можно. Позиционирование «ворота в недвижимость ЦА для иностранца».</p>
+      </div>
+    </div>
+
+    <div class="callout rv">
+      <div class="lab">Стратегический принцип №1</div>
+      <p><strong>Не выкупаем недвижимость на свой баланс.</strong> Zillow закрыл iBuying-программу Offers в 2021 с убытком порядка $880 млн; Opendoor убыточен до сих пор. Модель «Брокера» — капитал-лайт: лиды, премиум-размещение, ипотека, брокерская комиссия, экосистема услуг и данные. «Быструю продажу за кэш» можно добавить позже — партнёрской, не на свой баланс.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 РЫНОК -->
+<section class="blk" id="market">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">02</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Рынок · Кыргызстан и Центральная Азия</span>
+        <h2 class="sec">Быстрый рост, затем <span class="u">охлаждение 2026</span> — и открытое технологическое окно</h2>
+        <p class="sec-sub">2024–2025 — бурный рост (жильё +36% при инфляции 9,2%). 2026 — стабилизация и коррекция: квартиры уже −7,7% год-к-году в феврале, переизбыток новостроек, подорожавшая ипотека. Рынок взрослеет — и требует инструментов, которых на нём нет.</p>
+      </div>
+    </div>
+
+    <div class="grid g4 rv">
+      <div class="stat-tile"><div class="n">111,5&nbsp;тыс.<span style="font-size:.55em"> сом/м²</span></div><div class="l">квартиры в Бишкеке, март 2026</div><div class="src">ГАЗРКГК / b-expert</div></div>
+      <div class="stat-tile"><div class="n up">+36%</div><div class="l">рост цен на жильё за 2025 при инфляции 9,2%</div><div class="src">economist.kg</div></div>
+      <div class="stat-tile"><div class="n dn">−7,7%</div><div class="l">квартиры г/г, февраль 2026 — начало коррекции</div><div class="src">ГАЗРКГК</div></div>
+      <div class="stat-tile"><div class="n up">+57%</div><div class="l">земля на востоке города за период ($200→$280/м²)</div><div class="src">tazabek</div></div>
+    </div>
+
+    <div class="grid g2 mt22">
+      <div class="prose rv">
+        <p><strong>Объём и деньги.</strong> В 2024 в Бишкеке — 12 186 сделок с квартирами и 3 483 с домами. За Q3 2025 по всей стране — 24 127 сделок на ~104,7 млрд сом. ВВП Кыргызстана вырос примерно с $7,2 млрд (2020) до ~$18 млрд (2024) — это и подпитывает спрос на недвижимость.</p>
+        <p><strong>Ипотека — государственная (ГИК).</strong> Ставки 4–8% годовых, срок до 25 лет: социальная 4% (многодетные, бюджетники), доступная 8%, отдельная программа для трудовых мигрантов (8%, взнос 50%, 15 лет). План 2025 — 4 500 квартир. Это готовый партнёрский канал для встроенной ипотечной воронки.</p>
+        <p><strong>Иностранцы.</strong> За 2025 – Q1 2026 нерезиденты купили 2 408 объектов; исторические лидеры владения — Россия, Казахстан, Китай (активны также Турция, Афганистан). Покупка разрешена при наличии ПМЖ или инвест-визы. Это фундамент для «крыла B».</p>
+      </div>
+      <div class="rv">
+        <div class="card" style="height:100%">
+          <span class="eyebrow">Бенчмарк — как это работает у соседей</span>
+          <h3 class="mt6">Казахстан: krisha.kz</h3>
+          <p class="mt6">Доминирующий портал (~3 млн пользователей, 500&nbsp;000+ объявлений). Принадлежит Kolesa Group, контроль — у финтех-гиганта <b>Kaspi.kz</b>. Выручка группы классифайдов ~$134 млн за 2024. Но это по-прежнему «доска»: сильного AVM, глубокой аналитики и ипотечной воронки Zillow-уровня нет. <b>Тот же зазор, что и в КР.</b></p>
+          <hr class="soft">
+          <h3>Узбекистан: Uybor / OLX</h3>
+          <p class="mt6">Быстрорастущий рынок, упрощён вход иностранцам (жильё — можно, землю — нет; пороги от $70–150 тыс.). FDI $7,2 млрд в 2023.</p>
+          <hr class="soft">
+          <h3>Региональный игрок: Этажи</h3>
+          <p class="mt6">Франшиза-агентство в 10 странах (Бишкек, Ташкент, Дубай…). Прямой ориентир для «команды профи-брокеров»: 2000+ часов обучения, 100+ бизнес-процессов, единый CRM.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout gold rv">
+      <div class="lab">Тайминг</div>
+      <p><strong>Охлаждение рынка — это возможность, а не угроза.</strong> На растущем рынке продаётся «само»; на остывающем побеждает тот, у кого лучше инструменты оценки, шире воронка и выше доверие. Именно в цикле переоценки собственнику нужен честный AVM «сколько стоит моя квартира сейчас», а покупателю — чистая лента без приманок. «Брокер» заходит ровно в этот момент.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 КОНКУРЕНТЫ -->
+<section class="blk" id="compete">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">03</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Конкурентный анализ</span>
+        <h2 class="sec">house.kg силён как <span class="u">доска</span> — и уязвим как <span class="u">сервис</span></h2>
+        <p class="sec-sub">Разберём лидера предметно, потом всё поле. Важная поправка к частому заблуждению — о принадлежности house.kg.</p>
+      </div>
+    </div>
+
+    <div class="grid g2 rv">
+      <div class="card">
+        <span class="eyebrow">Профиль лидера</span>
+        <h3 class="mt6">house.kg = ОсОО «ESPIRU»</h3>
+        <p class="mt6">Владелец — <b>ESPIRU</b> (Бишкек), основатель и гендиректор <b>Тилек Эшеналиев</b>. Той же компании принадлежит авто-портал <b>mashina.kg</b>. Суммарно по сервисам ESPIRU: 2 млн+ установок приложений, месячная аудитория приближается к 1 млн уникальных.</p>
+        <div class="callout" style="margin-top:14px">
+          <div class="lab">Поправка</div>
+          <p><strong>house.kg НЕ принадлежит Lalafo и НЕ связан с Impress Media</strong> — это распространённое заблуждение. Lalafo — отдельная компания (выросла из stena.kg), горизонтальный классифайд «всё подряд».</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Монетизация house.kg</span>
+        <h3 class="mt6">Freemium + продвижение</h3>
+        <p class="mt6">Подача бесплатна до лимита; сверх — объявление ждёт оплаты. Платно: <b>PREMIUM / VIP / VIP+ / TOP</b>, автоподнятие, «Срочно», промо в Instagram портала. Бизнес-аккаунт для агентств/застройщиков — от <b>990 сом/мес</b>. Плюс баннеры и отдельная услуга кадастровой/юридической проверки.</p>
+        <p class="mt14"><span class="pill warn">нюанс</span> Точные посомовые тарифы за VIP/TOP публично не раскрыты (настраиваются в личном кабинете) — сайт закрыт от автоматического анализа Cloudflare-защитой.</p>
+      </div>
+    </div>
+
+    <div class="grid g2 mt22 rv">
+      <div class="card">
+        <h4 style="color:var(--good)">✓ Что у house.kg сделано хорошо</h4>
+        <ul style="color:var(--ink-soft);font-size:.92rem;padding-left:18px;margin:8px 0 0">
+          <li>Аналитика и статистика цен по районам Бишкека — редкость для рынка</li>
+          <li>Каталог ЖК и застройщиков для первички</li>
+          <li>Богатые фильтры (серия дома, рассрочка/обмен)</li>
+          <li>Бизнес-аккаунты, верификация компаний, приложения iOS/Android</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="color:var(--bad)">✕ Где уязвим</h4>
+        <ul style="color:var(--ink-soft);font-size:.92rem;padding-left:18px;margin:8px 0 0">
+          <li>Неточная геометка объектов на карте, вылеты приложения (отзывы в сторах)</li>
+          <li>Pay-to-surface: без VIP/TOP объявление быстро тонет</li>
+          <li>Системной верификации и дедупликации ленты нет — дубли, приманки, устаревшие фото</li>
+          <li>Ноль ИИ-слоя: нет AVM-оценки, обзоров участков, стейджинга, ассистента</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="mt34 rv" style="font-family:var(--serif);font-size:1.3rem;margin-bottom:14px">Всё поле — карта конкурентов КР</h3>
+    <div class="table-scroll rv">
+      <table>
+        <thead><tr><th>Площадка</th><th>Тип</th><th>Сильные стороны</th><th>Слабые стороны</th></tr></thead>
+        <tbody>
+          <tr><td><strong>house.kg</strong></td><td>Профильный портал</td><td>Аналитика цен, каталог ЖК, приложения, доминирование в нише</td><td>Нет верификации/дедупа и ИИ; pay-to-surface</td></tr>
+          <tr><td><strong>lalafo.kg</strong></td><td>Горизонтальный классифайд</td><td>Крупнейшая база (~77 тыс. по КР), охват, трафик</td><td>Много мошенников (в отзывах до 80% при аренде); НБКР предупреждает о схемах; нет отзывов</td></tr>
+          <tr><td><strong>stroka.kg</strong></td><td>Профильный портал</td><td><b>Модерация, фильтр фейков/дублей, каталог проверенных агентств</b> — ближе всех к «доверию»</td><td>Малый охват и трафик</td></tr>
+          <tr><td><strong>korter.kg / elitka.kg</strong></td><td>Новостройки</td><td>3D-карта ЖК, ~460 комплексов, поиск по цене за м²</td><td>Только первичка</td></tr>
+          <tr><td><strong>bishkek.etagi.com</strong></td><td>Агентство-франшиза (РФ)</td><td>Технологии и процессы федеральной сети</td><td>Агентская модель, не народная доска</td></tr>
+          <tr><td>agency.kg, an.kg, ned.kg, «Авангард», m2.kg</td><td>Агентства + мини-порталы</td><td>Юрсопровождение, фикс-комиссия в договоре</td><td>Малый охват, агентский контент</td></tr>
+          <tr><td>bazar.kg, birge.kg</td><td>Классифайды</td><td>Бесплатные доски, аудитория (в т.ч. мигранты)</td><td>Не профильные, слабая модерация</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt14 rv" style="font-size:.84rem;color:var(--ink-faint)">Поправки к брифу: «agent.kg» как крупный портал не подтверждается (вероятно, имелась в виду <b>agency.kg</b>); «ololo» в Бишкеке — лайфстайл/коворкинг-бренд, а не портал недвижимости.</p>
+  </div>
+</section>
+
+<!-- 04 БОЛИ -->
+<section class="blk" id="pain">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">04</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Боли рынка = точка входа</span>
+        <h2 class="sec">Доверие — это <span class="u">незанятая ниша</span>, а не фича</h2>
+        <p class="sec-sub">Классифайды СНГ структурно «грязные». Это раздражает и покупателей (теряют время на несуществующие объекты), и собственников (их объявления копируют и перебивают). Тот, кто это решит, получает не преимущество, а новую категорию.</p>
+      </div>
+    </div>
+    <div class="grid g3 rv">
+      <div class="card"><div class="ic" style="background:var(--bad-w);color:var(--bad)">⚠</div><h4>Мошенничество с задатком</h4><p>Фейк дешёвой квартиры → WhatsApp → «я в отъезде» → просят задаток от 2 000 сом → исчезают. Схема «много ключей»: один объект «сдают» нескольким. НБКР официально предупреждает о схемах на Lalafo и в Instagram.</p></div>
+      <div class="card"><div class="ic" style="background:var(--bad-w);color:var(--bad)">⧉</div><h4>Дубли и приманки</h4><p>Одна квартира «продаётся» 5–6 раз — риелторы перехватывают объявления собственников. Цены-приманки: 2–3 завышенных дубля, чтобы реальная казалась выгодной.</p></div>
+      <div class="card"><div class="ic" style="background:var(--bad-w);color:var(--bad)">◷</div><h4>Устаревшие данные</h4><p>Старые фото и цены держат, чтобы давить на продавцов неликвида. Покупатель не может отличить актуальное от «мёртвого».</p></div>
+      <div class="card"><div class="ic" style="background:var(--bad-w);color:var(--bad)">⌀</div><h4>Ноль верификации</h4><p>На большинстве площадок нет проверки объекта и личности. Частичное исключение — stroka.kg, но охват мал. Значок «проверено» + чистая лента = мгновенный дифференциатор.</p></div>
+      <div class="card"><div class="ic" style="background:var(--bad-w);color:var(--bad)">▤</div><h4>Поддельные документы</h4><p>Право-устанавливающие документы подделывают для аренды и продажи. Системная кадастровая сверка закрывает риск, которого боятся все.</p></div>
+      <div class="card"><div class="ic" style="background:var(--bad-w);color:var(--bad)">✦</div><h4>Спам студий/перекупов</h4><p>Собственнику трудно выделиться без платного продвижения. Профессиональный брокер + чистая лента возвращают собственнику контроль.</p></div>
+    </div>
+    <div class="callout rv">
+      <div class="lab">Вывод</div>
+      <p><strong>Доверие — это ров (moat), который house.kg не может быстро выкопать</strong>, не сломав собственную pay-to-surface экономику и не наняв модерацию/брокеров. Мы строим продукт вокруг доверия с первого дня: верифицированная лента, антифрод по фото, проверка собственника через кадастр, брокер-гарант сделки.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ПОЗИЦИОНИРОВАНИЕ -->
+<section class="blk" id="position">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">05</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Позиционирование</span>
+        <h2 class="sec">Мы конкурируем не листингом, а <span class="u">слоями поверх него</span></h2>
+        <p class="sec-sub">Объявление — это commodity. Ценность — в том, что вокруг: оценка, контекст района, воронка ипотеки, дашборд собственника, доверие. У Zillow, Rightmove, Idealista это и есть продукт. В ЦА эти слои пусты.</p>
+      </div>
+    </div>
+    <div class="table-scroll rv">
+      <table>
+        <thead><tr><th>Слой ценности</th><th>Эталон в мире</th><th>Есть в ЦА?</th><th>Наш ход</th></tr></thead>
+        <tbody>
+          <tr><td><strong>AVM — мгновенная оценка</strong></td><td>Zestimate, Zoopla Estimate, Redfin (500 параметров)</td><td><span class="pill bad">нет</span></td><td>«Оценка вашей недвижимости» — крючок №1 вовлечения</td></tr>
+          <tr><td>История и индекс цен</td><td>ImmoScout Preisatlas, idealista Price Index</td><td><span class="pill warn">частично</span></td><td>Индекс по ЖК/району/серии, динамика за годы</td></tr>
+          <tr><td>Дашборд собственника</td><td>Zoopla My Home + Buyer Demand</td><td><span class="pill bad">нет</span></td><td>«Следи за стоимостью + в скольких поисках ты показываешься»</td></tr>
+          <tr><td><strong>Доверие / верификация</strong></td><td>Verified listings, детект дублей по фото</td><td><span class="pill bad">нет</span></td><td>Чистая лента как категория (см. раздел 04)</td></tr>
+          <tr><td>Воронка ипотеки</td><td>Zillow BuyAbility, idealista/hipotecas</td><td><span class="pill bad">нет</span></td><td>Предквалификация + маркетплейс банков (ГИК)</td></tr>
+          <tr><td>Поиск от образа жизни</td><td>Rightmove «Where can I live», AI-поиск</td><td><span class="pill bad">нет</span></td><td>ИИ-поиск на естественном языке, «время в пути»</td></tr>
+          <tr><td><strong>ИИ-обзор участка</strong></td><td>LandLogic, Acres, ArchiWise (только США)</td><td><span class="pill bad">нет</span></td><td>Флагман на глобальных гео-данных (раздел 07)</td></tr>
+          <tr><td>Иммерсивные медиа</td><td>3D-туры, интерактивные планы, стейджинг</td><td><span class="pill warn">слабо</span></td><td>Стандарт качества + ИИ-визуал</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="mt34 rv" style="font-family:var(--serif);font-size:1.3rem;margin-bottom:14px">SWOT выхода «Брокера»</h3>
+    <div class="quad rv">
+      <div class="q s"><h4>◆ Сильные стороны</h4><ul><li>Свежий стек без легаси pay-to-surface</li><li>ИИ-слой как встроенное преимущество</li><li>Модель «доверие + профи-брокеры»</li><li>Два крыла роста (элитка, зарубеж)</li></ul></div>
+      <div class="q w"><h4>◆ Слабые стороны</h4><ul><li>Стартовая база и трафик — с нуля</li><li>Модерация и брокеры — операционно дорого</li><li>Часть гео-данных вне США надо собирать</li><li>Нужен капитал на команду и ИИ-стек</li></ul></div>
+      <div class="q o"><h4>◆ Возможности</h4><ul><li>Пустые «слои поверх листинга» в ЦА</li><li>Цикл переоценки повышает спрос на оценку</li><li>Рост иностранного спроса, закрытие виз в ЕС</li><li>Партнёрства: банки (ГИК), застройщики, нотариусы</li></ul></div>
+      <div class="q t"><h4>◆ Угрозы</h4><ul><li>house.kg/krisha с ресурсами могут копировать</li><li>Коррекция рынка 2026 давит на объёмы</li><li>Юр-требования к рекламе (маркировка/ОРД)</li><li>«Вирус ≠ лиды» в маркетинге</li></ul></div>
+    </div>
+    <div class="callout gold rv">
+      <div class="lab">Защита от копирования</div>
+      <p>Фичу скопировать можно, экосистему — трудно. Ров «Брокера» — это <strong>связка, которую нельзя быстро повторить</strong>: верифицированная сеть брокеров + собственные данные оценки + бренд доверия + ИИ-пайплайн обзоров. house.kg придётся сломать свою монетизацию и построить агентство, чтобы догнать.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ПРОДУКТ -->
+<section class="blk" id="product">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">06</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Продукт · карта фич</span>
+        <h2 class="sec">Что именно строим — <span class="u">по приоритетам</span></h2>
+        <p class="sec-sub">Не всё сразу. Сначала — доверие и крючок вовлечения (AVM), потом ИИ-слой и воронка сделки, затем медиа и премиум. Ниже — фичи с указанием очереди.</p>
+      </div>
+    </div>
+
+    <div class="grid g2 rv">
+      <div class="card">
+        <span class="tier t1">Приоритет 1 · доверие</span>
+        <h3 class="mt6">Верифицированная лента</h3>
+        <p>Значок «Проверено»: сверка собственника через кадастр, детект дублей по фото (reverse image), пометка подозрительных цен, свежесть объявления. Чистая лента — наша категория.</p>
+      </div>
+      <div class="card">
+        <span class="tier t1">Приоритет 1 · крючок</span>
+        <h3 class="mt6">AVM «Оценка вашей недвижимости»</h3>
+        <p>Мгновенная оценка квартиры/дома — даже не выставленных на продажу (аналог Zestimate). Старт с простой модели «цена/м² по дому и району × площадь + поправки», далее ML. Это причина №1 заходить на сайт и оставлять контакт.</p>
+      </div>
+      <div class="card">
+        <span class="tier t1">Приоритет 1 · удержание</span>
+        <h3 class="mt6">Дашборд собственника (My Home)</h3>
+        <p>«Следи за стоимостью квартиры, накопленным капиталом, что продаётся рядом и в скольких поисках ты бы показывался при цене X» (механика Zoopla Buyer Demand). Превращает разового продавца в постоянного пользователя.</p>
+      </div>
+      <div class="card">
+        <span class="tier t1">Приоритет 1 · данные</span>
+        <h3 class="mt6">Индекс и история цен</h3>
+        <p>Динамика цены за м² по ЖК, серии дома, району и городу. У house.kg аналитика есть, но мы делаем её глубже и увязываем с AVM и дашбордом.</p>
+      </div>
+      <div class="card">
+        <span class="tier t2">Приоритет 2 · ИИ</span>
+        <h3 class="mt6">ИИ-обзор участка ⭐</h3>
+        <p>Флагман. Красивый автоматический разбор земельного участка: рельеф, солнце, риски, инфраструктура, «что можно построить». Подробно — в разделе 07.</p>
+      </div>
+      <div class="card">
+        <span class="tier t2">Приоритет 2 · ИИ</span>
+        <h3 class="mt6">ИИ-визуал объекта</h3>
+        <p>Виртуальный стейджинг (расстановка мебели), редизайн «до/после», ретушь фото, авто-видео из фото, ИИ-описания на 3 языках. Листинги с видео дают +49% качественных лидов, +403% обращений.</p>
+      </div>
+      <div class="card">
+        <span class="tier t2">Приоритет 2 · поиск</span>
+        <h3 class="mt6">ИИ-поиск и «время в пути»</h3>
+        <p>Запрос обычным языком: «2-комнатная у парка, с ремонтом, до $X, рядом хорошая школа». Поиск по времени в пути и рисование области на карте (механика Rightmove).</p>
+      </div>
+      <div class="card">
+        <span class="tier t3">Приоритет 3 · воронка</span>
+        <h3 class="mt6">Ипотечная воронка + новостройки</h3>
+        <p>Предквалификация «что я реально могу купить» и маркетплейс банков (ГИК 4–8%). Раздел новостроек с ходом стройки и эскроу-защитой дольщика — доверие + лиды от застройщиков.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 ИИ-УЧАСТОК -->
+<section class="blk" id="land">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">07</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Флагман · то, чего нет ни у кого в регионе</span>
+        <h2 class="sec">ИИ-обзор участка: превратить <span class="u">пустую землю в досье</span></h2>
+        <p class="sec-sub">Заказчик прав — обзоры участков можно сделать красивыми и по-настоящему полезными. В США это уже отдельная индустрия (LandLogic, Acres, ArchiWise, InQI), но все они завязаны на американские данные. Для ЦА окно полностью открыто — собираем из <b>глобальных</b> гео-слоёв.</p>
+      </div>
+    </div>
+
+    <div class="prose rv" style="max-width:64ch;margin-bottom:26px">
+      <p>Пользователь вводит адрес или ставит точку на карте — и через минуту получает <strong>визуальный отчёт</strong>: рельеф и уклон, сколько солнца получает участок по месяцам, риски (подтопление, склон), что рядом (школа, дорога, вода, свет, газ — в минутах, а не в метрах), спутниковый снимок, и главное — <strong>«что здесь можно построить»</strong> с ориентировочным объёмом. Текст пишет Claude, картинку «как мог бы выглядеть дом» — генеративная модель.</p>
+    </div>
+
+    <h3 class="rv" style="font-family:var(--serif);font-size:1.25rem;margin-bottom:16px">Как это устроено — пайплайн</h3>
+    <div class="pipe rv">
+      <div class="step"><h4>Адрес → координаты</h4><p>Геокодинг точки участка, определение границ.</p></div>
+      <div class="step"><h4>Параллельный сбор слоёв</h4><p>10+ гео-источников тянутся одновременно.</p></div>
+      <div class="step"><h4>Структурный JSON</h4><p>Все данные сводятся в единый объект.</p></div>
+      <div class="step"><h4>Синтез Claude</h4><p>Нарратив + интегральный скор + рекомендации.</p></div>
+      <div class="step"><h4>Визуальный отчёт</h4><p>Карты-слои, графики солнца, 3D-рельеф, рендер дома.</p></div>
+    </div>
+
+    <h3 class="mt34 rv" style="font-family:var(--serif);font-size:1.25rem;margin-bottom:16px">Слои данных — и что реально работает вне США</h3>
+    <div class="layers rv">
+      <div class="layer"><div class="nm">Рельеф и уклон</div><div class="ds">Высоты, крутизна, экспозиция склона, риск оползня/подтопления низин</div><div class="src">Copernicus DEM · SRTM · OpenTopography</div></div>
+      <div class="layer"><div class="nm">Солнце (инсоляция)</div><div class="ds">Часовая радиация по месяцам с учётом затенения рельефом — сколько солнца и где ставить дом</div><div class="src">PVGIS (глобально, бесплатно)</div></div>
+      <div class="layer"><div class="nm">Инфраструктура</div><div class="ds">Школы, дороги, магазины, транспорт, ЛЭП, вода — в минутах доступности (изохроны)</div><div class="src">OpenStreetMap Overpass · Google Places/Isochrone</div></div>
+      <div class="layer"><div class="nm">Спутник и покров</div><div class="ds">Актуальный снимок, тип поверхности, растительность, застройка вокруг</div><div class="src">Sentinel-2 (10 м) · Google Earth Engine</div></div>
+      <div class="layer"><div class="nm">Что можно построить</div><div class="ds">Границы застройки, ориентировочный объём/этажность по локальным нормам</div><div class="src">DEM + нормы + LLM-разбор правил</div></div>
+      <div class="layer"><div class="nm">Кадастр / собственник</div><div class="ds">Границы, назначение земли, обременения — через локальные ГИС/кадастр КР</div><div class="src">Локальные источники (интеграция)</div></div>
+    </div>
+    <p class="mt14 rv" style="font-size:.84rem;color:var(--ink-faint)">Важно: американские сервисы (Regrid, Zoneomics, FEMA, First Street, Zestimate) вне США не работают — закладываем глобальный стек (Sentinel, Copernicus, PVGIS, OSM) плюс кадастр КР. Это и есть барьер входа, который мы преодолеваем первыми.</p>
+
+    <div class="callout gold rv">
+      <div class="lab">Двойная польза</div>
+      <p><strong>ИИ-обзор участка — это одновременно продукт и PR-повод.</strong> Красивое досье на участок продаёт землю лучше сухого объявления — и оно же становится вирусным форматом для маркетинга: блогер «разбирает» участок с ИИ на камеру (см. раздел 09). Одна фича закрывает и дифференциацию, и продвижение.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 БРОКЕРЫ -->
+<section class="blk" id="brokers">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">08</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Команда профи-брокеров</span>
+        <h2 class="sec">Профессионал против <span class="u">перекупа</span> — и как это доказать клиенту</h2>
+        <p class="sec-sub">Заказчик хочет «наших брокеров, которые продают профессионально». Мировая и СНГ-практика даёт готовый шаблон, как это построить и как это <b>продать</b> клиенту через доверие.</p>
+      </div>
+    </div>
+
+    <div class="grid g3 rv">
+      <div class="card"><div class="ic">◈</div><h4>Верификация и рейтинг по сделкам</h4><p>Отзыв привязан к конкретной закрытой сделке (механика RateMyAgent), нельзя платно удалить негатив. 62% покупателей выбирают агента по рейтингам. Профиль брокера = его репутация, а не реклама.</p></div>
+      <div class="card"><div class="ic">◉</div><h4>Индустриализация агента</h4><p>Модель Этажи: 2000+ часов обучения, 100+ прописанных бизнес-процессов, единый CRM, наставник 3 мес. Сертификация (аналог CRS/GRI) как trust-сигнал: «дизайнеры» зарабатывают ~×3.</p></div>
+      <div class="card"><div class="ic">◐</div><h4>Прозрачные сплиты</h4><p>Комиссия KR ~3% сделки. Внутренние сплиты по эталонам (eXp 80/20 с кэпом, KW mentor-модель). Реферальный стандарт 25% от комиссии — готовая экономика «привёл клиента».</p></div>
+    </div>
+
+    <div class="callout rv">
+      <div class="lab">Месседж «профи &gt; самодеятельность» — на цифрах</div>
+      <p>Продажа без агента (FSBO) уходит дешевле: медиана <strong>$360–380 тыс. против $425–435 тыс.</strong> с агентом — разрыв до <strong>~18% / $55 тыс.</strong> 64% FSBO не достигли желаемой цены. Наш фрейм: <strong>верификация + ответственность юрлица + гарантия юридической чистоты</strong> — то, чего частный маклер дать не может.</p>
+    </div>
+
+    <div class="grid g2 mt22 rv">
+      <div class="card">
+        <h4>Брокер как контент-актив</h4>
+        <p>Каждый профи-брокер ведёт объекты и снимает контент (туры, обзоры районов, «день риелтора»). Serhant и The Oppenheim Group доказали: <b>дистрибуция и контент-студия важнее самого объекта</b>. Брокер-звезда берёт премиальную комиссию и приводит лиды.</p>
+      </div>
+      <div class="card">
+        <h4>Гарантии — осторожно</h4>
+        <p>«Продано за N дней или…» работает как lead-магнит, но критикуется как уловка. Используем прозрачно: чёткие условия, заранее заложенный график цены, эскроу. Не обещаем «гарантированную продажу» как оферту.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ДЕНЬГИ -->
+<section class="blk" id="money">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">09</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Монетизация</span>
+        <h2 class="sec">Семь потоков выручки — <span class="u">и ни одного на свой баланс</span></h2>
+        <p class="sec-sub">Диверсифицированная модель по образцу idealista/Rightmove (инфраструктура сделки) и Самолёт Плюс (заработок на экосистеме, а не только на комиссии).</p>
+      </div>
+    </div>
+    <div class="streams rv">
+      <div class="stream core"><h4>Продвижение объявлений <span class="m">core</span></h4><p>Freemium + PREMIUM/VIP/TOP/Showcase. База, знакомая рынку по house.kg, но поверх чистой ленты.</p></div>
+      <div class="stream core"><h4>Лиды застройщиков <span class="m">core</span></h4><p>Оплата за целевой звонок/лид (модель ЦИАН). Раздел новостроек — сильный лидоген.</p></div>
+      <div class="stream"><h4>Ипотечный маркетплейс <span class="m">партнёр</span></h4><p>Комиссия банков (ГИК и др.) за выданный кредит; встроенная предквалификация.</p></div>
+      <div class="stream"><h4>Брокерская комиссия <span class="m">агентство</span></h4><p>~3% со сделок наших брокеров; сплиты с агентами.</p></div>
+      <div class="stream eco"><h4>Экосистема услуг <span class="m">маржа</span></h4><p>«Единое окно»: юрпроверка, страхование, оценка, ремонт, клининг, переезд. Модель Самолёт Плюс.</p></div>
+      <div class="stream eco"><h4>Элитка и зарубеж <span class="m">премиум</span></h4><p>Премиум-размещение трофейных объектов, консьерж, аукционный формат, комиссии по зарубежу.</p></div>
+      <div class="stream"><h4>Данные и аналитика <span class="m">B2B</span></h4><p>Индексы цен и рыночная аналитика как продукт для банков, застройщиков, оценщиков (модель idealista/data).</p></div>
+    </div>
+    <div class="callout rv">
+      <div class="lab">Чего избегаем</div>
+      <p><strong>iBuyer / выкуп на баланс — позже и осторожно.</strong> Opendoor при выручке $15,6 млрд (2022) дал чистый убыток $1,4 млрд; Zillow закрыл направление. Капиталоёмко и рискованно. «Быстрая продажа за кэш» — как партнёрский сервис, когда будет ликвидность и данные.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 МАРКЕТИНГ -->
+<section class="blk" id="pr">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">10</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Маркетинг и PR</span>
+        <h2 class="sec">Челлендж «Продай участок» — <span class="u">и системная воронка</span></h2>
+        <p class="sec-sub">Идея заказчика про блогеров реалистична и сильна — если упаковать её правильно и не спутать вирусность с лидами.</p>
+      </div>
+    </div>
+
+    <div class="card rv" style="border-color:color-mix(in srgb,var(--gold) 34%,transparent)">
+      <span class="tag" style="color:var(--gold);border-color:var(--gold)">Флагманская кампания</span>
+      <h3 class="mt6" style="font-size:1.4rem">🏆 «Продай участок» — reality-челлендж</h3>
+      <p class="mt6" style="color:var(--ink-soft)">Гибрид reality-соревнования (Selling Sunset) и челленджа со ставкой (MrBeast): кто первым продаст свой объект — забирает гран-при. Формат доказан: приз-ставка × соревнование = высокий досмотр и продажи.</p>
+      <div class="grid g2 mt22">
+        <div>
+          <h4 style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:10px">Механика</h4>
+          <ul style="color:var(--ink-soft);font-size:.92rem;padding-left:18px;margin:0">
+            <li>Пул 5–10 блогеров: 2–3 макро (охват) + 5–7 локальных/микро (гео-конверсия)</li>
+            <li>Каждому — <b>профи-брокер напарник</b>: снимает юр-риски и демонстрирует ценность брокера</li>
+            <li>Серийный контент: тизер → «вживание в риелтора» → показы → финал «кто продал»</li>
+            <li>Мотивация: фикс + бонус (доля комиссии, referral 25%) + гран-при</li>
+            <li>Атрибуция: у каждого промокод/UTM, лендинг, механика «угадай цену» для сбора контактов</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bad);margin-bottom:10px">Риски и как снять</h4>
+          <ul style="color:var(--ink-soft);font-size:.92rem;padding-left:18px;margin:0">
+            <li><b>Вирус ≠ лиды:</b> кейс Mike Hege — 50 млн просмотров, а лиды «от других риелторов». Платим за лиды/сделки, а не просмотры</li>
+            <li>Несовпадение аудитории (TikTok молодой) → балансируем локальными блогерами и YouTube/VK</li>
+            <li>Юр-требования КР: маркировка рекламы, договоры; объект юридически чист (за это отвечает брокер)</li>
+            <li>Не обещаем «гарантированную продажу» — это челлендж/лучшие усилия</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="mt34 rv" style="font-family:var(--serif);font-size:1.25rem;margin-bottom:14px">Кейсы, на которые опираемся</h3>
+    <div class="grid g4 rv">
+      <div class="stat-tile"><div class="n">35&nbsp;000</div><div class="l">лайков на кампании ПИК с Ириной Горбачёвой, +10 000 подписчиков</div><div class="src">Profitbase</div></div>
+      <div class="stat-tile"><div class="n">566&nbsp;000</div><div class="l">охват кампании «Ак Барс Дом» — 10 блогеров, 22 публикации</div><div class="src">DrugMedia</div></div>
+      <div class="stat-tile"><div class="n up">1730%</div><div class="l">ROMI на продаже недвижимости через блогеров</div><div class="src">RatingRuneta</div></div>
+      <div class="stat-tile"><div class="n">$22&nbsp;млн</div><div class="l">продаж за 3 года у TikTok-риелтора Rachel Kilmer</div><div class="src">Real Estate Rockstars</div></div>
+    </div>
+
+    <div class="grid g3 mt22 rv">
+      <div class="card"><h4>Контент-пилары</h4><p>Листинги / обзоры районов («сначала локация, потом экспертиза») / советы покупателю. Короткое вертикальное видео + длинный YouTube-recap. Реюз лучшего UGC в платный таргет (ROI выше студийного).</p></div>
+      <div class="card"><h4>Двусторонние рефералы</h4><p>Give-get механика (Dropbox: 100K→4M за 15 мес). Награда обеим сторонам работает ~×2 лучше односторонней. Дешёвая виральность на старте.</p></div>
+      <div class="card"><h4>SEO + партнёрства</h4><p>SEO/IDX как самый «тёплый» трафик (close-rate ~14,6% против 1,7% у outbound). Партнёрства: банки (ГИК), застройщики, нотариусы — «единое окно» = доверие + выручка.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 ДОРОЖНАЯ КАРТА -->
+<section class="blk" id="roadmap">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">11</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Дорожная карта</span>
+        <h2 class="sec">От чистой ленты к <span class="u">инфраструктуре региона</span></h2>
+        <p class="sec-sub">Последовательность важнее скорости: сначала доверие и крючок, потом ИИ и воронка, затем премиум и экспансия. Управляем ожиданиями — первый органический лид приходит через 60–120 дней контента.</p>
+      </div>
+    </div>
+    <div class="timeline rv">
+      <div class="phase">
+        <div class="ph-t">Фаза 0 · 0–3 мес · MVP</div>
+        <h3>Чистая лента + крючок</h3>
+        <p>Верифицированные объявления и антифрод, AVM «Оценка вашей недвижимости», базовый поиск и карта, Бишкек. Цель — первые 1 000 качественных пользователей и репутация «здесь не обманывают».</p>
+        <div class="chips"><span class="tag">Верификация</span><span class="tag">AVM</span><span class="tag">Бишкек</span><span class="tag">Веб + PWA</span></div>
+      </div>
+      <div class="phase">
+        <div class="ph-t">Фаза 1 · 3–9 мес · Сервис</div>
+        <h3>Брокеры, ипотека, новостройки, ИИ-визуал</h3>
+        <p>Запуск команды профи-брокеров и рейтингов, ипотечный маркетплейс (ГИК), раздел новостроек, ИИ-описания и стейджинг, мобильные приложения, оповещения (новые + снижение цены).</p>
+        <div class="chips"><span class="tag">Брокеры</span><span class="tag">Ипотека</span><span class="tag">Новостройки</span><span class="tag">iOS/Android</span></div>
+      </div>
+      <div class="phase">
+        <div class="ph-t">Фаза 2 · 9–18 мес · Флагман</div>
+        <h3>ИИ-обзор участка + PR-челлендж + элитка</h3>
+        <p>Запуск флагманского обзора участков, вирусная кампания «Продай участок», дашборд собственника, элитный раздел с кураторством и статусами Compass.</p>
+        <div class="chips"><span class="tag">ИИ-участок</span><span class="tag">Челлендж</span><span class="tag">Дашборд</span><span class="tag">Элитка</span></div>
+      </div>
+      <div class="phase">
+        <div class="ph-t">Фаза 3 · 18+ мес · Экспансия</div>
+        <h3>Международный мост и Центральная Азия</h3>
+        <p>Мультивалюта/мультиязык, гид иностранного покупателя, экосистема услуг («единое окно»), выход в Ош, затем Алматы/Ташкент. Данные как B2B-продукт.</p>
+        <div class="chips"><span class="tag">Зарубеж</span><span class="tag">Экосистема</span><span class="tag">ЦА-экспансия</span><span class="tag">Data B2B</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 РИСКИ + СТЕК -->
+<section class="blk" id="risks">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">12</div>
+      <div class="sec-titlewrap">
+        <span class="eyebrow">Риски и технологический стек</span>
+        <h2 class="sec">Что может пойти не так — и <span class="u">на чём строим</span></h2>
+      </div>
+    </div>
+
+    <div class="table-scroll rv">
+      <table>
+        <thead><tr><th>Риск</th><th>Severity</th><th>Как снимаем</th></tr></thead>
+        <tbody>
+          <tr><td>Коррекция/«пузырь» рынка 2026 давит на объёмы</td><td><span class="pill warn">средний</span></td><td>Именно в переоценку растёт спрос на честный AVM и чистую ленту; монетизация не только на сделках</td></tr>
+          <tr><td>house.kg/krisha копируют фичи</td><td><span class="pill warn">средний</span></td><td>Ров — экосистема (брокеры + данные + бренд доверия), а не отдельная фича</td></tr>
+          <tr><td>Вирусный маркетинг не даёт лидов</td><td><span class="pill warn">средний</span></td><td>Платим за лиды/сделки, локальные блогеры, промокоды и атрибуция</td></tr>
+          <tr><td>Гео-данные вне США надо собирать</td><td><span class="pill good">управляем</span></td><td>Глобальный стек (Sentinel, Copernicus, PVGIS, OSM) + кадастр КР</td></tr>
+          <tr><td>Операционная стоимость модерации и брокеров</td><td><span class="pill warn">средний</span></td><td>Автоматизация антифрода ИИ, поэтапный найм, экосистемная маржа</td></tr>
+          <tr><td>Юр-требования к рекламе (маркировка/ОРД)</td><td><span class="pill good">управляем</span></td><td>Договоры, маркировка, юр-сопровождение кампаний</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="mt34 rv" style="font-family:var(--serif);font-size:1.25rem;margin-bottom:14px">Технологический стек «под ключ»</h3>
+    <div class="grid g4 rv">
+      <div class="card"><h4>Текст и синтез</h4><p>Claude (Anthropic) — ИИ-описания «в голосе брокера», синтез обзоров участков, ассистент-подбор, квалификация лидов.</p></div>
+      <div class="card"><h4>Визуал</h4><p>Генеративные модели (Nano Banana / FLUX / SDXL + ControlNet) — стейджинг, редизайн, рендер «что построить».</p></div>
+      <div class="card"><h4>Гео-данные</h4><p>Sentinel-2, Copernicus DEM, PVGIS, OpenStreetMap, Google Maps Platform + кадастр КР.</p></div>
+      <div class="card"><h4>Оценка (AVM)</h4><p>Своя модель: цена/м² по дому и району → ML на истории сделок; отдельная модель аренды.</p></div>
+    </div>
+    <div class="callout gold rv">
+      <div class="lab">Экономика доказана</div>
+      <p>Виртуальный стейджинг $30–100 против дорогого физического; листинги с медиа дают +60–79% вовлечения; ИИ-ответ на лид быстрее 90 секунд повышает конверсию до ×3,4. ИИ здесь — не «фича ради фичи», а способ снизить стоимость качества и ускорить сделку.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="blk" id="method">
+  <div class="wrap">
+    <div class="method rv">
+      <h3>Методология и источники</h3>
+      <p>Документ собран на основе веб-ресерча и дип-ресерча по четырём параллельным направлениям (рынок КР и house.kg; лучшие мировые и элитные платформы; ИИ в недвижимости; маркетинг и модели брокеров) — суммарно ~110 поисковых запросов и фетчей — плюс отдельный разбор бенчмарка Казахстана (krisha.kz / Kolesa Group / Kaspi.kz).</p>
+      <ul>
+        <li><b>Ключевая поправка:</b> house.kg принадлежит ОсОО «ESPIRU» (Тилек Эшеналиев, та же компания, что mashina.kg) — <i>не</i> Lalafo и <i>не</i> Impress Media.</li>
+        <li><b>Честные пробелы:</b> точные посомовые тарифы услуг house.kg и отдельная (не суммарная с mashina.kg) посещаемость публично не раскрыты — сайт и ряд KG-СМИ закрыты от автоматического анализа Cloudflare-защитой. Цифры по рынку взяты из нескольких источников; при расхождении методологий это отмечено.</li>
+        <li><b>Гео-данные:</b> американские сервисы участков (Regrid, Zoneomics, FEMA, First Street, Zestimate) вне США не работают — для ЦА заложены глобальные слои.</li>
+      </ul>
+      <hr class="soft">
+      <div class="src-list">
+        <a href="https://www.house.kg/en/about/">house.kg/about</a>
+        <a href="https://kaktus.media/doc/459408_mashina.kg_i_house.kg_prilojeniia_kotorye_yproshaut_jizn.html">kaktus.media · ESPIRU</a>
+        <a href="https://economist.kg/niedvizhimost/2026/01/15/triendy-rynka-zhilia-v-bishkiekie-i-oshie-v-2025-ghodu-rost-tsien-oboghnal-infliatsiiu/">economist.kg · итоги 2025</a>
+        <a href="https://gosreg.gov.kg/ru/?p=6457">ГАЗРКГК · рынок</a>
+        <a href="https://gik.kg/ru/">Госипотечная компания (ГИК)</a>
+        <a href="https://open.kg/news/exclusive/102390-kto-pokupaet-bolshe-nedvizhimosti-v-kyrgyzstane-grazhdane-kitaja-turcii-ili-rossii.html">open.kg · иностранцы</a>
+        <a href="https://www.crunchbase.com/organization/krisha-kz">Krisha.kz · Crunchbase</a>
+        <a href="https://aimgroup.com/2025/07/18/kolesa-group-2024-steady-growth-despite-market-slowdown/">AIM Group · Kolesa 2024</a>
+        <a href="https://www.zillow.com/homeloans/buyability/">Zillow BuyAbility</a>
+        <a href="https://www.compass.com/private-exclusives/">Compass Private Exclusives</a>
+        <a href="https://www.jamesedition.com/">JamesEdition</a>
+        <a href="https://www.zoopla.co.uk/my-home/">Zoopla My Home</a>
+        <a href="https://developers.google.com/maps/documentation/solar/building-insights">Google Solar API</a>
+        <a href="https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis_en">PVGIS</a>
+        <a href="https://www.archiwise.ai/">ArchiWise · AI zoning</a>
+        <a href="https://www.etagi.com/franch/">Этажи · франшиза</a>
+        <a href="https://samoletplus.ru/business/">Самолёт Плюс</a>
+        <a href="https://blog.profitbase.ru/karty-dengi-dva-posta-kak-zastrojshchiki-reklamiruyutsya-u-blogerov/">Profitbase · ПИК/блогеры</a>
+        <a href="https://www.nar.realtor/magazine/real-estate-news/fsbos-reach-all-time-low-more-sellers-rely-on-agents">NAR · FSBO</a>
+        <a href="https://www.opendoor.com/articles/how-does-opendoor-make-money">Opendoor · модель</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="end">
+  <div class="narrow">
+    <p class="big rv">«Брокер» продаёт не квадратные метры, а уверенность в сделке.</p>
+    <p class="rv">Доверие как категория, профессиональные брокеры как гарантия, ИИ как сервис — и два крыла роста в элитную и зарубежную недвижимость. Это не улучшенная доска объявлений. Это следующая категория.</p>
+    <p class="meta">Аналитический дозор · подготовлено для проекта «Брокер» · веб-ресерч + дип-ресерч · 2026</p>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* theme toggle */
+(function(){
+  var btn=document.getElementById('tt');
+  btn.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    if(!cur){cur=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
+    document.documentElement.setAttribute('data-theme', cur==='dark'?'light':'dark');
+  });
+})();
+
+/* scroll progress */
+(function(){
+  var p=document.getElementById('prog');
+  function on(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;p.style.width=(max>0?(h.scrollTop/max*100):0)+'%';}
+  addEventListener('scroll',on,{passive:true});addEventListener('resize',on);on();
+})();
+
+/* reveal */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(e){io.observe(e);});
+})();
+
+/* topographic contour canvas */
+(function(){
+  var c=document.getElementById('topo');if(!c)return;var ctx=c.getContext('2d');
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var W,H,dpr,t=0;
+  function brand(){return getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()||'#1C6E4F';}
+  function size(){dpr=Math.min(devicePixelRatio||1,2);var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;H=H;c.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  size();addEventListener('resize',size);
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var col=brand();
+    var lines=16;
+    for(var i=0;i<lines;i++){
+      var baseY=(H/(lines-1))*i;
+      ctx.beginPath();
+      for(var x=0;x<=W;x+=8){
+        var y=baseY
+          +Math.sin((x*0.006)+(i*0.55)+t)*16
+          +Math.sin((x*0.013)-(i*0.3)+t*0.7)*9
+          +Math.cos((x*0.003)+t*0.4)*12;
+        if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+      }
+      var a=0.05+0.05*Math.sin(i*0.6+t);
+      ctx.strokeStyle=col;ctx.globalAlpha=Math.max(0.04,a);ctx.lineWidth=1;ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+  }
+  if(reduce){draw();return;}
+  function loop(){t+=0.0032;draw();requestAnimationFrame(loop);}
+  requestAnimationFrame(loop);
+})();
+</script>
