@@ -144,7 +144,7 @@
 
 ## Официальные плагины Anthropic (ставятся отдельно)
 
-Не скиллы, а плагины — ставятся командой `/plugin marketplace add anthropics/claude-code`, затем `/plugin install <имя>`: `feature-dev` (7-фазная разработка фич), `pr-review-toolkit` (агенты ревью PR), `commit-commands`, `security-guidance` (hook-напоминания о безопасности), `hookify` (создание hooks), `plugin-dev`, `agent-sdk-dev`.
+Не скиллы, а плагины. Официальный каталог — [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) (37 внутренних + 15 партнёрских, Apache-2.0): `/plugin marketplace add anthropics/claude-plugins-official`, затем `/plugin install <имя>`. Рекомендуемые: `feature-dev` (7-фазная разработка фич), `pr-review-toolkit` (агенты ревью PR), `commit-commands`, `security-guidance` (hook-напоминания о безопасности), `hookify` (создание hooks), `plugin-dev`, `agent-sdk-dev`.
 
 ## Безопасность сторонних скиллов
 
