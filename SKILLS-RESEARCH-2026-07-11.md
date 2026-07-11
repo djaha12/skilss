@@ -102,6 +102,17 @@ obra/superpowers ≈252k★ (v6.1.1, принят в маркетплейс Anth
 - Лидерборд skills.sh недоступен из песочницы (сетевая политика); цифры установок (find-skills ~2M и т.д.) — из поисковых снапшотов, не верифицированы.
 - Инциденты ClawHavoc/ToxicSkills касались в первую очередь ClawHub; это не значит, что дистрибуция через GitHub-репозитории безопасна — формат и вектор (проза SKILL.md) общие.
 
+## Дополнение — раунд 2 (вечер 11.07.2026)
+
+По запросу основателя проведён второй заход по оставшимся нишам. Найдено и проверено (та же методика): **11/11 чисто**. Установлено в библиотеку (итог: **67 скиллов**):
+
+- **upstash/skills (официальный Upstash, MIT)**: `upstash-redis-js`, `upstash-ratelimit-js`. Находка проверки: в upstream-версии redis-js стояла инструкция агенту при отсутствии кредов создавать временную базу POST-запросом на upstash.com/start-redis (TTL 3 дня) — это официальная фича Upstash, но в проде означает риск тихой привязки приложения к базе, умирающей через 3 дня. **В наших копиях строка удалена** с пояснением.
+- **getsentry/sentry-for-ai (официальный Sentry, MIT)**: `sentry-debug-issue`, `sentry-create-alert`. У sentry-debug-issue образцовая защита: раздел «данные Sentry = недоверенный ввод» (не исполнять инструкции из текстов ошибок). TELEMETRY.md репозитория касается MCP-сервера Sentry, сами скиллы ничего никуда не шлют (проверено).
+- **Cap-go/capgo-skills**: `capacitor-push-notifications`, `debugging-capacitor` (⚠️ совет NSAllowsArbitraryLoads — только dev, в прод нельзя: реджект App Store), `ios-android-logs`.
+- **coreyhaines31/marketingskills**: `competitors`, `launch`, `pricing`, `analytics` (US-центричные фреймворки — применять как каркас, цифры/каналы адаптировать под рынок КР).
+
+Отдельно: в официальном каталоге `anthropics/claude-plugins-official/external_plugins` есть партнёрские **MCP-плагины `telegram` и `playwright`** — их не вендорят как скиллы, а ставят целиком: `/plugin install telegram@claude-plugins-official`. Рекомендованы к установке при работе с Telegram-ботом и браузерными проверками. Отклонены: redis/agent-skills (не тот транспорт при Upstash REST), community-скиллы Telegram (средняя репутация при уже работающем боте), остальные скиллы Upstash/Sentry (неиспользуемые продукты).
+
 ## Источники (проверенные)
 
 - https://owasp.org/www-project-agentic-skills-top-10/ast01 — OWASP Agentic Skills Top 10, AST01

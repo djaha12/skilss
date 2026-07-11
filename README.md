@@ -8,9 +8,11 @@
 | [mattpocock/skills](https://github.com/mattpocock/skills) v1.1.0 (165k★) | MIT | рабочий процесс: 13 скиллов |
 | [obra/superpowers](https://github.com/obra/superpowers) v6.1.1, Джесси Винсент (252k★) | MIT | мультиагентная разработка: 9 скиллов |
 | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) (29k★) | MIT | React/Next.js/UI: 3 скилла |
-| [Cap-go/capgo-skills](https://github.com/Cap-go/capgo-skills) — команда Capgo | MIT | Capacitor/App Store: 4 скилла |
+| [Cap-go/capgo-skills](https://github.com/Cap-go/capgo-skills) — команда Capgo | MIT | Capacitor/App Store: 7 скиллов |
 | [trailofbits/skills](https://github.com/trailofbits/skills) — Trail of Bits | CC BY-SA 4.0 | security: 3 скилла |
-| [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) v2.6.0 (37.6k★) | MIT | SEO/ASO: 6 скиллов |
+| [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) v2.6.0 (37.6k★) | MIT | SEO/ASO/рост: 10 скиллов |
+| [upstash/skills](https://github.com/upstash/skills) — официальные скиллы Upstash | MIT | Redis/rate-limiting: 2 скилла |
+| [getsentry/sentry-for-ai](https://github.com/getsentry/sentry-for-ai) — официальный плагин Sentry | MIT | мониторинг ошибок: 2 скилла |
 
 Плюс `CLAUDE.md` в корне — поведенческие правила по мотивам наблюдений Андрея Карпатого ([forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)): думай прежде чем кодить, простота прежде всего, хирургические правки, движение к цели. Действуют постоянно во всех сессиях в этом репозитории.
 
@@ -104,6 +106,9 @@
 | `capacitor-apple-review-preflight` | Префлайт перед сабмитом/после реджекта Apple: чеклисты гайдлайнов, privacy manifests, типовые причины отказов |
 | `capacitor-ci-cd` | CI/CD для Capacitor: GitHub Actions, подпись, автоматизация релизов |
 | `safe-area-handling` | Safe area: notch, Dynamic Island, home indicator, Android cutouts |
+| `capacitor-push-notifications` | Push-уведомления: FCM/APNs настройка, токены, каналы, траблшутинг |
+| `debugging-capacitor` | Отладка Capacitor-приложений: WebView-инспекторы, white screen, сеть. ⚠️ Совет про `NSAllowsArbitraryLoads` — только для разработки, в прод нельзя (реджект App Store) |
+| `ios-android-logs` | Логи устройств: adb logcat, simctl, Console.app, крэш-логи |
 
 ### Security (Trail of Bits)
 
@@ -123,6 +128,19 @@
 | `ai-seo` | Видимость в AI-поиске (GEO/AEO): цитируемость в ChatGPT/Perplexity/AI Overviews, llms.txt |
 | `site-architecture` | Иерархия страниц, URL-структура, навигация, внутренняя перелинковка |
 | `aso` | App Store Optimization: аудит листинга App Store / Google Play, ключевые слова, конверсия |
+| `competitors` | Страницы сравнения с конкурентами (/vs, /alternatives), честный анализ |
+| `launch` | Плейбук запуска продукта/фичи: фазы, каналы, чек-лист |
+| `pricing` | Ценообразование: тарифы, фреймворки (Van Westendorp и др.), freemium vs trial |
+| `analytics` | Веб-аналитика: план событий, GA4/GTM, UTM-дисциплина, consent |
+
+### База данных и надёжность (Upstash, Sentry — официальные вендорские)
+
+| Скилл | Что делает |
+|---|---|
+| `upstash-redis-js` | Паттерны Upstash Redis: REST-семантика, пайплайны, Lua-атомарность, TTL/кеши/сессии. *Локальная правка: удалена upstream-инструкция агенту создавать временную базу (TTL 3 дня) — риск тихой потери данных в проде* |
+| `upstash-ratelimit-js` | Rate limiting: алгоритмы (sliding window, token bucket), стоимость в командах Redis, edge/serverless-ловушки |
+| `sentry-debug-issue` | Отладка продакшн-ошибок через Sentry; встроенная защита: данные Sentry = недоверенный ввод |
+| `sentry-create-alert` | Настройка алертов Sentry: правила, метрики, интеграции |
 
 ### Мета
 
@@ -141,6 +159,10 @@
 - **`/to-spec`, `/triage`, `/ask-matt`** и прочие процессные скиллы mattpocock — окупаются на проектах с потоком внешних issue.
 - **steeef/claude-skill-github-actions** — 1★, заброшен; не прошёл порог качества.
 - **everything-claude-code, awesome-агрегаторы** — сборники ссылок, не скиллы.
+- **Партнёрские плагины Anthropic `telegram` и `playwright`** (anthropics/claude-plugins-official/external_plugins) — это MCP-плагины с серверным кодом, вендорить как скиллы нельзя; ставить целиком: `/plugin install telegram@claude-plugins-official`.
+- **redis/agent-skills** (официальный Redis) — про «настоящий» Redis-протокол/кластеры; при Upstash REST лучше подходят скиллы Upstash.
+- **Остальные скиллы Upstash (qstash, vector, search, workflow) и Sentry (10 из 12)** — под продукты, которые не используются; добавить по мере надобности из уже проверенных источников.
+- **telegram-bot-builder (davila7 и др. community)** — средняя репутация, а рабочий Telegram-бот уже есть; официальный партнёрский плагин Anthropic закрывает нишу лучше.
 
 ## Официальные плагины Anthropic (ставятся отдельно)
 
@@ -148,7 +170,7 @@
 
 ## Безопасность сторонних скиллов
 
-Каждый сторонний скилл перед установкой прошёл проверку: чтение всех файлов, поиск prompt-injection, эксфильтрации, скрытых инструкций (zero-width символы, HTML-комментарии), внешних эндпоинтов, install-хуков и деструктивных команд + адверсариальная верификация флагов. Результат 11.07.2026: **34/34 чисто, 0 опасных**. Единственная найденная поверхность — `web-design-guidelines` тянул правила с изменяемого URL; закрыто локальным пином. Подробности и чеклист — в [SKILLS-RESEARCH-2026-07-11.md](SKILLS-RESEARCH-2026-07-11.md).
+Каждый сторонний скилл перед установкой прошёл проверку: чтение всех файлов, поиск prompt-injection, эксфильтрации, скрытых инструкций (zero-width символы, HTML-комментарии), внешних эндпоинтов, install-хуков и деструктивных команд + адверсариальная верификация флагов. Результат 11.07.2026 (два раунда): **45/45 чисто, 0 опасных**. Закрытые поверхности: `web-design-guidelines` тянул правила с изменяемого URL — запинен локально; `upstash-redis-js` содержал инструкцию агенту создавать временную базу (TTL 3 дня) — удалена. Подробности и чеклист — в [SKILLS-RESEARCH-2026-07-11.md](SKILLS-RESEARCH-2026-07-11.md).
 
 ## Обновление
 
