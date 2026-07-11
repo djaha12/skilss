@@ -1,0 +1,10 @@
+Skills `vercel-react-best-practices`, `web-design-guidelines`, `vercel-composition-patterns`
+are copied from https://github.com/vercel-labs/agent-skills (Vercel Labs).
+
+Upstream license: MIT — declared in the repository README ("## License — MIT")
+and in each skill's SKILL.md frontmatter (`license: MIT`). The upstream
+repository does not ship a standalone LICENSE file as of 2026-07-11.
+
+The pinned reference `web-design-guidelines/references/web-interface-guidelines-pinned-2026-07-11.md`
+is a snapshot of command.md from https://github.com/vercel-labs/web-interface-guidelines,
+licensed MIT (Copyright (c) 2025 Vercel Labs).
