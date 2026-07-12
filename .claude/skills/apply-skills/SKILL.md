@@ -56,6 +56,7 @@ description: >-
 | База данных, Redis, кеши | kv-data-patterns, upstash-redis-js, upstash-ratelimit-js |
 | GitHub Actions, проверка прода | actions-as-hands, agentic-actions-auditor, webapp-testing |
 | Цены, конкуренты, запуск | pricing, competitors, launch |
+| Платная реклама, таргет, объявления Meta/TikTok | ads, ad-creative, image, copywriting, competitors |
 | Контент, посты, SMM, «что постить» | garaj-content-week, content-strategy, social, video, copywriting, image, ai-seo |
 | Совет маркетологов, «как продвигать» | marketing-council, marketing-ideas, marketing-plan, customer-research |
 | Вебхуки (банк, платежи, интеграции) | webhook-handler-patterns, kv-data-patterns, differential-review |
