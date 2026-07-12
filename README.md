@@ -171,7 +171,7 @@
 
 - **`vercel-optimize`** — мощный аудитор стоимости/производительности Vercel-проектов, но 75+ исполняемых JS-модулей и требует локально аутентифицированный `vercel` CLI. Ставьте по надобности: `npx skills add vercel-labs/agent-skills@vercel-optimize`.
 - **`AgricIDaniel/claude-seo`** (11k★) — самый популярный SEO-скилл, но это тяжёлый Python-фреймворк (84 скрипта, свои install-хуки, MCP-расширения); в песочницах без сети не работает. Наш выбор — markdown-скиллы marketingskills. Для глубокого технического SEO локально: `git clone https://github.com/AgricIDaniel/claude-seo` + их установщик.
-- **superpowers: `test-driven-development`, `systematic-debugging`, `brainstorming`, `writing-skills`** — дублируют установленные `tdd`, `diagnosing-bugs`, `grilling`, `skill-creator`; двойное срабатывание вреднее пользы.
+- **superpowers: `test-driven-development`, `systematic-debugging`, `writing-skills`** — дублируют установленные `tdd`, `diagnosing-bugs`, `skill-creator`; двойное срабатывание вреднее пользы. (`brainstorming` добавлен в раунде 3 — генеративная идеация, дополняет «прожарку».)
 - **capawesome-team/skills** — хорошие Capacitor-скиллы, но пересекаются с набором Capgo; выбран один источник.
 - **Trail of Bits: остальные 37 плагинов** — для security-ресёрчеров (смарт-контракты, криптография, реверс, malware); не наш профиль.
 - **`/code-review`** (mattpocock) — конфликтует по имени со встроенной командой Claude Code.
