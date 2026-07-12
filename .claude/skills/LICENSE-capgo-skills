@@ -1,0 +1,7 @@
+Skills `capacitor-app-store`, `capacitor-apple-review-preflight`,
+`capacitor-ci-cd`, `safe-area-handling` are copied from
+https://github.com/Cap-go/capgo-skills (Capgo).
+
+Upstream license: MIT — declared in the repository README ("## License — MIT")
+and in package.json (`"license": "MIT"`). The upstream repository does not
+ship a standalone LICENSE file as of 2026-07-11.
