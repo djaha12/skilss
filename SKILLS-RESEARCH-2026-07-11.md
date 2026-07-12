@@ -113,6 +113,10 @@ obra/superpowers ≈252k★ (v6.1.1, принят в маркетплейс Anth
 
 Отдельно: в официальном каталоге `anthropics/claude-plugins-official/external_plugins` есть партнёрские **MCP-плагины `telegram` и `playwright`** — их не вендорят как скиллы, а ставят целиком: `/plugin install telegram@claude-plugins-official`. Рекомендованы к установке при работе с Telegram-ботом и браузерными проверками. Отклонены: redis/agent-skills (не тот транспорт при Upstash REST), community-скиллы Telegram (средняя репутация при уже работающем боте), остальные скиллы Upstash/Sentry (неиспользуемые продукты).
 
+## Дополнение — раунд 3 (12.07.2026): контент и маркетинг
+
+По запросу основателя («скиллы для маркетинга/контента, контент-план на неделю») проверено 12 кандидатов — **12/12 чисто**. Установлено в библиотеку (итог: **80 скиллов**): контент-пакет Кори Хейнса ×10 (content-strategy, social, video, copywriting, copy-editing, image, marketing-plan, marketing-ideas, marketing-council, customer-research), brainstorming (superpowers; ⚠️ отключаемый маячок в локальном сервере — задокументирован), webhook-handler-patterns (официальный Hookdeck — под платёжные вебхуки). Community-SMM-скиллы с маркетплейсов отклонены (авторы без репутации). Для GARAJ дополнительно написан и пофактово выверен кастомный **garaj-content-week**: 7-дневный контент-план из реальных SMM-документов проекта, только черновики, без автопостинга.
+
 ## Источники (проверенные)
 
 - https://owasp.org/www-project-agentic-skills-top-10/ast01 — OWASP Agentic Skills Top 10, AST01

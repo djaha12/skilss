@@ -6,13 +6,14 @@
 |---|---|---|
 | [anthropics/skills](https://github.com/anthropics/skills) — официальные скиллы Anthropic (160k★) | Anthropic | все 17, полный актуальный каталог |
 | [mattpocock/skills](https://github.com/mattpocock/skills) v1.1.0 (165k★) | MIT | рабочий процесс: 13 скиллов |
-| [obra/superpowers](https://github.com/obra/superpowers) v6.1.1, Джесси Винсент (252k★) | MIT | мультиагентная разработка: 9 скиллов |
+| [obra/superpowers](https://github.com/obra/superpowers) v6.1.1, Джесси Винсент (252k★) | MIT | мультиагентная разработка: 10 скиллов |
 | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) (29k★) | MIT | React/Next.js/UI: 3 скилла |
 | [Cap-go/capgo-skills](https://github.com/Cap-go/capgo-skills) — команда Capgo | MIT | Capacitor/App Store: 7 скиллов |
 | [trailofbits/skills](https://github.com/trailofbits/skills) — Trail of Bits | CC BY-SA 4.0 | security: 3 скилла |
-| [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) v2.6.0 (37.6k★) | MIT | SEO/ASO/рост: 10 скиллов |
+| [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) v2.6.0 (37.6k★) | MIT | SEO/ASO/рост/контент: 20 скиллов |
 | [upstash/skills](https://github.com/upstash/skills) — официальные скиллы Upstash | MIT | Redis/rate-limiting: 2 скилла |
 | [getsentry/sentry-for-ai](https://github.com/getsentry/sentry-for-ai) — официальный плагин Sentry | MIT | мониторинг ошибок: 2 скилла |
+| [hookdeck/webhook-skills](https://github.com/hookdeck/webhook-skills) — официальные скиллы Hookdeck | MIT | вебхуки: 1 скилл |
 
 Плюс `CLAUDE.md` в корне — поведенческие правила по мотивам наблюдений Андрея Карпатого ([forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)): думай прежде чем кодить, простота прежде всего, хирургические правки, движение к цели. Действуют постоянно во всех сессиях в этом репозитории.
 
@@ -72,6 +73,7 @@
 | `receiving-code-review` | Как принимать ревью: верификация вместо слепого согласия |
 | `verification-before-completion` | «Сделано» только после запуска проверок: evidence before assertions |
 | `finishing-a-development-branch` | Структурированное завершение: merge / PR / cleanup |
+| `brainstorming` | Дизайн до кода: вопросы по одному, 2–3 подхода, спека с гейтами. ⚠️ Локальный сервер-компаньон грузит логотип с primeradiant.com (маячок, отключается `SUPERPOWERS_DISABLE_TELEMETRY=1`) |
 
 ### Официальные скиллы Anthropic
 
@@ -133,6 +135,21 @@
 | `pricing` | Ценообразование: тарифы, фреймворки (Van Westendorp и др.), freemium vs trial |
 | `analytics` | Веб-аналитика: план событий, GA4/GTM, UTM-дисциплина, consent |
 
+### Контент и маркетинг (Corey Haines)
+
+| Скилл | Что делает |
+|---|---|
+| `content-strategy` | Контент-стратегия: столпы, кластеры тем, приоритизация 40/30/20/10 |
+| `social` | Соцсети: Reels/карусели/хуки/календарь, соушл-листенинг (только черновики, без автопостинга) |
+| `video` | AI-видео: сценарии, промпты (Veo/Sora/Runway/Kling/Seedance), Remotion-пайплайны |
+| `copywriting` | Продающие тексты страниц: заголовки, CTA, структура |
+| `copy-editing` | Редактура готовых текстов: сжать, усилить, освежить |
+| `image` | Картинки для маркетинга: размеры площадок, OG-картинки (@vercel/og), оптимизация |
+| `marketing-plan` | Полный маркетинг-план по AARRR (13 разделов) |
+| `marketing-ideas` | 139 идей роста по категориям — когда «не знаю, что ещё попробовать» |
+| `marketing-council` | «Совет маркетологов»: Годин, Огилви, Хормози и др. спорят о вашем вопросе |
+| `customer-research` | Исследование клиентов: интервью, JTBD, майнинг отзывов |
+
 ### База данных и надёжность (Upstash, Sentry — официальные вендорские)
 
 | Скилл | Что делает |
@@ -141,6 +158,7 @@
 | `upstash-ratelimit-js` | Rate limiting: алгоритмы (sliding window, token bucket), стоимость в командах Redis, edge/serverless-ловушки |
 | `sentry-debug-issue` | Отладка продакшн-ошибок через Sentry; встроенная защита: данные Sentry = недоверенный ввод |
 | `sentry-create-alert` | Настройка алертов Sentry: правила, метрики, интеграции |
+| `webhook-handler-patterns` | Обработчики вебхуков (Hookdeck): подпись на raw body до parse, идемпотентность, ретраи, ловушки Next.js |
 
 ### Мета
 
@@ -164,6 +182,7 @@
 - **redis/agent-skills** (официальный Redis) — про «настоящий» Redis-протокол/кластеры; при Upstash REST лучше подходят скиллы Upstash.
 - **Остальные скиллы Upstash (qstash, vector, search, workflow) и Sentry (10 из 12)** — под продукты, которые не используются; добавить по мере надобности из уже проверенных источников.
 - **telegram-bot-builder (davila7 и др. community)** — средняя репутация, а рабочий Telegram-бот уже есть; официальный партнёрский плагин Anthropic закрывает нишу лучше.
+- **Community-SMM-скиллы** (Social Media Content Engine, Social Media Manager и т.п. с маркетплейсов) — авторы без репутации; контент-пакет Кори Хейнса покрывает то же из проверенного источника.
 
 ## Официальные плагины Anthropic (ставятся отдельно)
 
@@ -171,7 +190,7 @@
 
 ## Безопасность сторонних скиллов
 
-Каждый сторонний скилл перед установкой прошёл проверку: чтение всех файлов, поиск prompt-injection, эксфильтрации, скрытых инструкций (zero-width символы, HTML-комментарии), внешних эндпоинтов, install-хуков и деструктивных команд + адверсариальная верификация флагов. Результат 11.07.2026 (два раунда): **45/45 чисто, 0 опасных**. Закрытые поверхности: `web-design-guidelines` тянул правила с изменяемого URL — запинен локально; `upstash-redis-js` содержал инструкцию агенту создавать временную базу (TTL 3 дня) — удалена. Подробности и чеклист — в [SKILLS-RESEARCH-2026-07-11.md](SKILLS-RESEARCH-2026-07-11.md).
+Каждый сторонний скилл перед установкой прошёл проверку: чтение всех файлов, поиск prompt-injection, эксфильтрации, скрытых инструкций (zero-width символы, HTML-комментарии), внешних эндпоинтов, install-хуков и деструктивных команд + адверсариальная верификация флагов. Результат 11–12.07.2026 (три раунда): **57/57 чисто, 0 опасных**. Закрытые поверхности: `web-design-guidelines` тянул правила с изменяемого URL — запинен локально; `upstash-redis-js` содержал инструкцию агенту создавать временную базу (TTL 3 дня) — удалена. Подробности и чеклист — в [SKILLS-RESEARCH-2026-07-11.md](SKILLS-RESEARCH-2026-07-11.md).
 
 ## Обновление
 
