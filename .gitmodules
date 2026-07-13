@@ -1,0 +1,3 @@
+[submodule "reference/ECC"]
+	path = reference/ECC
+	url = https://github.com/affaan-m/ECC
