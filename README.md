@@ -177,7 +177,8 @@
 - **`/code-review`** (mattpocock) — конфликтует по имени со встроенной командой Claude Code.
 - **`/to-spec`, `/triage`, `/ask-matt`** и прочие процессные скиллы mattpocock — окупаются на проектах с потоком внешних issue.
 - **steeef/claude-skill-github-actions** — 1★, заброшен; не прошёл порог качества.
-- **everything-claude-code, awesome-агрегаторы** — сборники ссылок, не скиллы.
+- **awesome-агрегаторы** (`hesreallyhim/awesome-claude-code` и подобные) — курируемые списки ссылок, а не устанавливаемые скиллы. Не путать с ECC (он же *everything-claude-code*): это не список ссылок, а полноценная плагин-система — разобрана отдельным разделом ниже.
+- **ECC / everything-claude-code** (`affaan-m/ECC`) — не отдельные скиллы, а плагин-маркетплейс с авто-хуками, self-learning и серверным кодом (278 скиллов + 67 агентов + 6 MCP). Вендорить как скиллы нельзя; массовая установка сломала бы курирование и перебила описаниями наши 91. Кому нужно — ставить целиком через `/plugin`; подробный разбор, установка и caveats — в разделе «ECC (Everything Claude Code)» ниже.
 - **Партнёрские плагины Anthropic `telegram` и `playwright`** (anthropics/claude-plugins-official/external_plugins) — это MCP-плагины с серверным кодом, вендорить как скиллы нельзя; ставить целиком: `/plugin install telegram@claude-plugins-official`.
 - **redis/agent-skills** (официальный Redis) — про «настоящий» Redis-протокол/кластеры; при Upstash REST лучше подходят скиллы Upstash.
 - **Остальные скиллы Upstash (qstash, vector, search, workflow) и Sentry (10 из 12)** — под продукты, которые не используются; добавить по мере надобности из уже проверенных источников.
@@ -187,6 +188,21 @@
 ## Официальные плагины Anthropic (ставятся отдельно)
 
 Не скиллы, а плагины. Официальный каталог — [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) (37 внутренних + 15 партнёрских, Apache-2.0): `/plugin marketplace add anthropics/claude-plugins-official`, затем `/plugin install <имя>`. Рекомендуемые: `feature-dev` (7-фазная разработка фич), `pr-review-toolkit` (агенты ревью PR), `commit-commands`, `security-guidance` (hook-напоминания о безопасности), `hookify` (создание hooks), `plugin-dev`, `agent-sdk-dev`.
+
+## ECC (Everything Claude Code) — сторонний плагин-маркетплейс (ставится отдельно, НЕ вендорится)
+
+[`affaan-m/ECC`](https://github.com/affaan-m/ECC) (MIT; отдельно — платный ECC Pro в виде GitHub App) — не набор markdown-скиллов, а харнесс-система: **278 скиллов, 67 агентов, 94 legacy-command-шима, 34 правила**, авто-хуки на события (`PreToolUse`/`PostToolUse`/`SessionStart`/`Stop`/`SessionEnd` — перехватывают shell, правки файлов, MCP), **self-learning** (Continuous Learning v2 читает ваши сессии и пишет «инстинкты» в `~/.local/share/ecc-homunculus`; memory-хуки — в `~/.claude`), 6 встроенных MCP-серверов, кросс-платформенные Node-скрипты, Python/Tkinter-дашборд, инсталлеры `install.sh`/`install.ps1`, npm-пакеты `ecc-universal` / `ecc-agentshield`.
+
+**Почему не в `.claude/skills/`:** это плагин с серверным/скриптовым кодом и авто-хуками — вендорить как скиллы нельзя (та же логика, что для telegram/playwright выше). 278 скиллов + 67 агентов перебили бы описаниями наши 91 (тот самый вред двойного срабатывания, из-за которого ранее отклонены дубли superpowers), а скрипт/хук-поверхность не проходила наш пофайловый security-веттинг.
+
+**Если всё-таки нужно** — ставить целиком в своей сессии Claude Code:
+
+```
+/plugin marketplace add https://github.com/affaan-m/ECC
+/plugin install ecc@ecc
+```
+
+Осторожно: (1) **не ставьте всё сразу** — при установке выбирайте минимальный набор (иначе путаница из 67 агентов — предупреждение самого автора); (2) авто-хуки перехватывают shell/правки/MCP, а self-learning читает сессии и пишет в `~/.claude` и `~/.local/share/ecc-homunculus` — перед включением прогоните полный пофайловый веттинг (методика — раздел «Безопасность» ниже); (3) в MCP-конфигах замените плейсхолдеры `YOUR_*_HERE` своими ключами. Отдельно полезен **AgentShield** как самостоятельный сканер, без принятия всей системы: `npx ecc-agentshield scan` (флаг `--opus` — состязательная кросс-проверка тремя агентами). Полный разбор — в [SKILLS-RESEARCH-2026-07-11.md](SKILLS-RESEARCH-2026-07-11.md), раунд 4.
 
 ## Безопасность сторонних скиллов
 
