@@ -14,6 +14,7 @@
 | [upstash/skills](https://github.com/upstash/skills) — официальные скиллы Upstash | MIT | Redis/rate-limiting: 2 скилла |
 | [getsentry/sentry-for-ai](https://github.com/getsentry/sentry-for-ai) — официальный плагин Sentry | MIT | мониторинг ошибок: 2 скилла |
 | [hookdeck/webhook-skills](https://github.com/hookdeck/webhook-skills) — официальные скиллы Hookdeck | MIT | вебхуки: 1 скилл |
+| [emilkowalski/skills](https://github.com/emilkowalski/skills) — Эмиль Ковальски (ex-Vercel/Linear) | MIT | дизайн интерфейсов: 1 скилл |
 
 Плюс `CLAUDE.md` в корне — поведенческие правила по мотивам наблюдений Андрея Карпатого ([forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)): думай прежде чем кодить, простота прежде всего, хирургические правки, движение к цели. Действуют постоянно во всех сессиях в этом репозитории.
 
@@ -99,6 +100,14 @@
 | `vercel-react-best-practices` | 72 правила производительности React/Next.js от Vercel Engineering (App Router, RSC, бандл, кеширование) |
 | `web-design-guidelines` | Ревью UI по Web Interface Guidelines (доступность, UX, 100+ правил). Правила пинятся локально: `references/web-interface-guidelines-pinned-2026-07-11.md` — работает и офлайн |
 | `vercel-composition-patterns` | Паттерны композиции React 19: compound components, render props, `use()` |
+
+### Дизайн интерфейсов (Emil Kowalski)
+
+Принципы дизайна Apple с WWDC-докладов, перенесённые на веб-платформу (CSS, Pointer Events, `requestAnimationFrame`, spring-библиотеки). Не набор эффектов, а системные подходы.
+
+| Скилл | Что делает |
+|---|---|
+| `apple-design` | 17 принципов «живого» интерфейса с примерами кода: отклик без задержек, 1:1-манипуляция, interruptibility, springs вместо анимаций, velocity handoff, momentum projection, rubber-banding, translucent materials/глубина, типографика (optical sizing, tracking, leading), reduced-motion |
 
 ### Мобильное / App Store (Capgo)
 
@@ -191,6 +200,8 @@
 ## Безопасность сторонних скиллов
 
 Каждый сторонний скилл перед установкой прошёл проверку: чтение всех файлов, поиск prompt-injection, эксфильтрации, скрытых инструкций (zero-width символы, HTML-комментарии), внешних эндпоинтов, install-хуков и деструктивных команд + адверсариальная верификация флагов. Результат 11–12.07.2026 (три раунда): **57/57 чисто, 0 опасных**. Закрытые поверхности: `web-design-guidelines` тянул правила с изменяемого URL — запинен локально; `upstash-redis-js` содержал инструкцию агенту создавать временную базу (TTL 3 дня) — удалена. Подробности и чеклист — в [SKILLS-RESEARCH-2026-07-11.md](SKILLS-RESEARCH-2026-07-11.md).
+
+Добавлено позже: `apple-design` (emilkowalski/skills) прогнан 19.07.2026 через ту же методику — механический скан (zero-width/bidi-символы, внешние эндпоинты, install-хуки, exec-паттерны, скрытые инструкции) плюс адверсариальная проверка четырьмя независимыми линзами (prompt-injection, вредоносный код в сниппетах, unicode-стеганография, целостность). Чисто: файл содержит только дизайн-документацию и безопасные CSS/JS-примеры, внешних вызовов нет.
 
 ## Обновление
 
