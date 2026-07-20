@@ -1,0 +1,2718 @@
+{
+  "counts": {
+    "research": 8,
+    "candidates": 278,
+    "shortlist": 48,
+    "availChecked": 48
+  },
+  "candidates": [
+    {
+      "domain": "akcha.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,200-3,000",
+      "rationale": "«Акча» — деньги по-кыргызски, идеальный корень для финтеха, платёжных и кредитных сервисов.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search surfaced 'Akchabar' (akchabar.kg), a Kyrgyz financial news/analytics platform, which is a different domain, not akcha.kg itself. No direct evidence for the exact akcha.kg domain.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "pay.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "ULTRA",
+      "est_price_usd": "$2,500-6,000",
+      "rationale": "Трёхбуквенный глобальный keyword платежей — ликвиден для любого финтех-проекта в Кыргызстане.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No exact match for a live site at pay.kg found; related Kyrgyz payment brands exist (gopay.kg, pay.payqr.kg, balance.kg) but none at the exact 'pay.kg' domain.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "job.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "Ключевое слово рынка труда, готовый бренд для job-борды и HR-платформы.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "Multiple independent hits explicitly reference 'Job.kg' as a brand/site: a Facebook page titled 'Job.kg', an X/Twitter account 'Сайт Job.kg', a Telegram channel 'Job.kg / Официальный канал', and Instagram accounts using the job.kg handle — consistent with an active Kyrgyzstan job portal operating at job.kg (alongside related site newjob.kg).",
+      "avail_confidence": "medium"
+    },
+    {
+      "domain": "car.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2,200",
+      "rationale": "Авторынок активен, короткий keyword для продажи машин, автосервисов и объявлений.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search results were dominated by unrelated 'car weight in kg' content. Only tangential hits were Instagram accounts '@cars.kg' (plural, different handle), not car.kg itself. No direct evidence of an active site at the exact domain car.kg.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "top.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "Универсальный премиум-keyword для рейтингов, каталогов и медиапроектов.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search results were dominated by unrelated content (kg-to-lbs conversion, HVAC 'KG-Top' units, clothing brand). No evidence found of an active site, parking page, or brand at the exact domain top.kg.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "app.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "Ёмкий технокорень для мобильных приложений и IT-стартапов.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search returned only generic .kg TLD registration info; no active site found at app.kg specifically.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "biz.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$400-900",
+      "rationale": "Короткий деловой keyword для бизнес-каталогов и B2B-сервисов."
+    },
+    {
+      "domain": "vip.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$350-800",
+      "rationale": "Премиальный трёхбуквенник для luxury-услуг, клубов и консьерж-сервисов."
+    },
+    {
+      "domain": "eco.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$400-1,000",
+      "rationale": "Эко-тематика растёт; корень для туризма, органики и зелёных проектов."
+    },
+    {
+      "domain": "nova.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "Звучное четырёхбуквенное бренд-слово, легко произносится и подходит любой отрасли."
+    },
+    {
+      "domain": "luxe.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$300-650",
+      "rationale": "Международный маркер люкса для fashion, недвижимости и премиум-товаров."
+    },
+    {
+      "domain": "zeta.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "Короткое нейтральное бренд-имя из греческого алфавита, удобно для tech и финтеха."
+    },
+    {
+      "domain": "box.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1,400",
+      "rationale": "Трёхбуквенный keyword для доставки, логистики, хранения и e-commerce.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search returned results about the unrelated .box gTLD (owned by Box Inc.), not the .kg domain box.kg; no evidence of an active site at box.kg.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "aqsha.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "ULTRA",
+      "est_price_usd": "$2,000-5,000",
+      "rationale": "«Ақша» — деньги по-казахски, топовый корень для финтеха и платёжных сервисов на госязыке.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No results for the exact domain aqsha.kz; similar-named Kazakh finance sites exist (smartaqsha.kz, zhenilaksha.kz, aqsham.kz) but not the exact string.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "pay.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "ULTRA",
+      "est_price_usd": "$4,000-9,000",
+      "rationale": "Трёхбуквенный платёжный keyword в крупнейшей и самой платёжеспособной экономике региона.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No exact hit for pay.kz; Kazakhstan payment space is crowded with similarly named brands (paygate.kz, epayment.kz, apipay.kz, spay.kz, Kaspi.kz) but none confirm the exact domain is live.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "job.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,500-3,500",
+      "rationale": "Ключевое слово рекрутинга для развитого казахстанского рынка труда.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search surfaced HeadHunter.kz, Rabota.kz, and enbek.kz as Kazakhstan's major job platforms, but no mention of job.kz itself as an active site.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "car.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,500-3,500",
+      "rationale": "Крупный авторынок делает короткий keyword очень ликвидным для площадок объявлений.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search surfaced autokazak.com, astana-motors.kz, bossauto.kz as Kazakhstan car sites, but no direct evidence of an active site at car.kz.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "gold.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,200-3,000",
+      "rationale": "Ценное словарное слово для ювелирки, инвестиций в металлы и премиум-брендинга.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search found nationalbank.kz and various gold price tracking sites, but explicitly no site found at gold.kz itself.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "tour.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,000-2,500",
+      "rationale": "Туризм в Казахстане растёт; keyword идеален для турагентств и travel-платформ.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search found welcome.kz, kaziatour.kz and other Kazakhstan tour operators, but no direct evidence of an active site at tour.kz.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "taxi.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,200-3,000",
+      "rationale": "Массовый спрос на такси-сервисы делает keyword высоколиквидным.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "Active website at taxi.kz for a taxi driver services/rental platform in Kazakhstan (Astana, Almaty, Shymkent), developing a mobile app.",
+      "avail_confidence": "high"
+    },
+    {
+      "domain": "top.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,000-2,500",
+      "rationale": "Универсальный премиум-keyword для рейтингов, медиа и каталогов.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "Active cleaning/maintenance services company website at top.kz operating in Almaty/Astana with social media, app, and business presence.",
+      "avail_confidence": "high"
+    },
+    {
+      "domain": "app.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,000-2,500",
+      "rationale": "Технокорень для мобильной разработки и IT-экосистемы страны.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search returned various unrelated 'KZ'-branded apps (APPS.kz, KZ App, ALL KZ Pro) but no clear evidence of an active site specifically at the exact domain app.kz.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "vip.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$500-1,200",
+      "rationale": "Премиальный трёхбуквенник для luxury-услуг и закрытых клубов."
+    },
+    {
+      "domain": "eco.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$500-1,200",
+      "rationale": "Зелёная повестка усиливается; корень для эко-товаров и устойчивых проектов."
+    },
+    {
+      "domain": "nova.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$400-900",
+      "rationale": "Звучное бренд-слово, универсально для стартапов любой отрасли."
+    },
+    {
+      "domain": "cash.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,200-3,000",
+      "rationale": "Прямой финансовый keyword для микрозаймов, кошельков и обменных сервисов.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search results point to a related but distinct domain kz.cash (and kzcash.kz) for the KZCash cryptocurrency; no direct evidence found of an active site at the exact domain cash.kz.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "pul.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "ULTRA",
+      "est_price_usd": "$1,500-4,000",
+      "rationale": "«Пул» — деньги по-узбекски, короткий и мощный корень для финтеха и платежей.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search surfaced 'pultop.uz' (a currency/finance site) as the closest match, not the exact 'pul.uz' domain; no direct confirmation found.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "bozor.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$1,000-2,500",
+      "rationale": "«Бозор» — базар/рынок, интуитивный бренд для маркетплейса и e-commerce.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Multiple similarly-named marketplace brands and social accounts exist (online-bozor.uz, abozor.uz, Bozor.uz Instagram/Facebook groups), but no clear confirmation of an active site at the exact domain bozor.uz itself.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "ish.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2,200",
+      "rationale": "«Иш» — работа по-узбекски, короткий keyword для job-платформ.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "Active job-search platform website at ish.uz ('Ўзбекистонда иш топишнинг тезкор усули') with multiple language versions, job listings, LinkedIn page, and subdomain (tasks.ish.uz).",
+      "avail_confidence": "high"
+    },
+    {
+      "domain": "savdo.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "«Савдо» — торговля, естественный корень для e-commerce и B2B-площадок.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No exact-match active site found; results all point to related domains like savdo.uzavtosanoat.uz, b2b-savdo.uz, uzavtosavdo.uz — none is the bare 'savdo.uz'.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "pay.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "ULTRA",
+      "est_price_usd": "$2,000-5,000",
+      "rationale": "Трёхбуквенный платёжный keyword на фоне бума финтеха и денежных переводов в стране.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Found an Instagram account @pay.uz with minimal activity and various other Uzbek payment brands (payme.uz, oxuspay.uz, pay-tech.uz), but no confirmed live website at the exact pay.uz domain.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "avto.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2,200",
+      "rationale": "«Авто» в местной транслитерации — keyword для растущего авторынка и объявлений.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search surfaced auto.uz (spelled with 'u') as the major car marketplace, plus avtoelon.uz, uzautomotors.com — no exact 'avto.uz' site confirmed active.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "taksi.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "Локальное написание «такси» — keyword для сервисов поездок с массовым спросом.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Many taxi services found (onlinetaxi.uz, mytaxi.uz, orienttaxi.uz, taxi1313.uz) but none at exact 'taksi.uz'; no parking/for-sale page found either.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "top.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "Универсальный премиум-keyword для рейтингов, каталогов и медиа.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "Search result explicitly lists https://top.uz/ as an active business portal for Uzbekistan covering multiple business categories.",
+      "avail_confidence": "high"
+    },
+    {
+      "domain": "app.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "Технокорень для мобильных приложений в быстрорастущей IT-сфере Узбекистана.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No direct evidence of an active site at exact 'app.uz'; results were unrelated apps (app.uz.gov.ua, App Store listings) not the bare domain itself.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "vip.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$400-950",
+      "rationale": "Премиальный трёхбуквенник для luxury-услуг и клубных сервисов."
+    },
+    {
+      "domain": "tur.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "Короткий корень «тур» для быстрорастущего внутреннего и въездного туризма.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No exact match for 'tur.uz' found; closest relevant site is turar.uz (rental marketplace), a different domain, plus unrelated Turkish company results.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "eco.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$400-900",
+      "rationale": "Эко-корень для органики, туризма и устойчивых проектов."
+    },
+    {
+      "domain": "nova.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "short-premium",
+      "tier": "MID",
+      "est_price_usd": "$350-800",
+      "rationale": "Звучное четырёхбуквенное бренд-слово, универсально для стартапов."
+    },
+    {
+      "domain": "kripto.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "ULTRA",
+      "est_price_usd": "$2000-6000",
+      "rationale": "Локальная транслитерация слова 'крипто' — точное ключевое слово на растущем рынке криптообмена в Кыргызстане.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Found a Facebook page 'Kripto.com.kg' suggesting a related brand, but no confirmation of an active site at the exact kripto.kg domain.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "obmenka.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2500",
+      "rationale": "'Обменка' — повседневное название пунктов обмена валют по всей Центральной Азии, готовый трафиковый бренд.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No active site found at obmenka.kg exactly; related brands exist at obmenka.kharkov.ua, obmenka.online, obmen.kg (Instagram/Facebook) but not this exact .kg domain.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "tolom.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$600-2000",
+      "rationale": "Кыргызское 'төлөм' (платёж) в ASCII-написании — точный отраслевой термин для платёжного сервиса.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "tolom.kg is an active, live website (Kyrgyzstan traffic fine/penalty checker service) with its own TikTok and Instagram presence.",
+      "avail_confidence": "high"
+    },
+    {
+      "domain": "koshelek.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1800",
+      "rationale": "'Кошелёк' на русском — базовое слово для e-wallet, понятное всей аудитории Кыргызстана.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Koshelek brand is active at koshelek.app, koshelek.ru, koshelek.org, but no evidence of an active site specifically at koshelek.kg.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "zaim.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2200",
+      "rationale": "'Займ' — высококонверсионный ключевик в сегменте микрокредитования и онлайн-займов.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Related loan services exist (zaim.kz, somo-zaim.kg, zaim-pod-avto-kg.com) but no direct evidence of an active site at zaim.kg itself.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "valuta.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1600",
+      "rationale": "'Валюта' — короткий словарный ключ для обменных и курсовых сервисов.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "valuta.kg is an active, live website providing Bishkek/Kyrgyzstan currency exchange rate info, with an associated Android app and Telegram channel (@Valuta_KG).",
+      "avail_confidence": "high"
+    },
+    {
+      "domain": "sompay.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2500",
+      "rationale": "Связка национальной валюты 'сом' и 'pay' — сильный брендируемый нейм для платёжной системы.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "SomPay brand exists at sompay.io, sompay.net, sompay.so, sompayone.com, but no evidence found of an active site at the .kg domain specifically.",
+      "avail_confidence": "medium"
+    },
+    {
+      "domain": "akchapay.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$600-2000",
+      "rationale": "Кыргызское 'акча' (деньги) + 'pay' — локально-релевантный и запоминающийся платёжный бренд.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No search results found for this exact domain; searches surfaced only the unrelated akchabar.kg site. No evidence of active site or parking page.",
+      "avail_confidence": "medium"
+    },
+    {
+      "domain": "birja.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$600-2000",
+      "rationale": "'Биржа' — прямой ключевик для крипто- и валютной биржи, короткое понятное слово.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No content found specifically at birja.kg; one stray result shows 'birja.kg.bitverzo.com' which may suggest a parked/placeholder domain, but no clear active site confirmed.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "neobank.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1800",
+      "rationale": "'Необанк' — трендовый термин цифрового банкинга, актуален для финтех-стартапов Кыргызстана.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No search results for this exact domain; only generic 'neobank' industry results (neobank.com, neobanks.app, etc.) unrelated to the .kg TLD.",
+      "avail_confidence": "medium"
+    },
+    {
+      "domain": "mikrozaim.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "MID",
+      "est_price_usd": "$250-700",
+      "rationale": "'Микрозайм' — нишевый, но стабильно востребованный запрос в сегменте МФО."
+    },
+    {
+      "domain": "monety.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "fintech-crypto",
+      "tier": "MID",
+      "est_price_usd": "$200-600",
+      "rationale": "'Монеты' — двусмысленный ключ для криптомонет и нумизматики, широкий охват."
+    },
+    {
+      "domain": "aksha.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "ULTRA",
+      "est_price_usd": "$2500-8000",
+      "rationale": "Казахское 'ақша' (деньги) в латинице — фундаментальное финансовое слово с максимальной локальной ценностью.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No search result resolves directly to aksha.kz; results show similar-named sites (aksha-kz.com, zaksha.kz, akshabar.kz) but no confirmed active site at the exact domain. One accessify listing suggests it may redirect/relate to rabota.kz job listings, but this is weak/ambiguous evidence.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "tolem.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$900-3000",
+      "rationale": "Казахское 'төлем' (платёж) — точный отраслевой ключевик для платёжных решений в РК.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "tolem.kz hosts subdomains (kokshe.tolem.kz) for the 'Tolem' transport card payment system in Kazakhstan, an active service with app, Instagram, and related tolemcard.kz site.",
+      "avail_confidence": "high"
+    },
+    {
+      "domain": "qarjy.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2500",
+      "rationale": "Казахское 'қаржы' (финансы) — государственно-релевантный термин на фоне казахизации брендов.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "Search results show 'qarjy' as a common word/brand used by unrelated businesses (Digital Qarjy at digitalqarjy.kz, Qarjy Qyzmet collection agency, Qarjy Center Consulting) but no evidence of an active site specifically at qarjy.kz.",
+      "avail_confidence": "medium"
+    },
+    {
+      "domain": "kripto.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$900-3000",
+      "rationale": "'Крипто' в локальном написании — ключевое слово крупнейшего в регионе крипторынка.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "A scam-detector review page specifically analyzes kripto.kz as an existing (if low-quality/suspicious) live website with a trust score, confirming an active site exists at this domain.",
+      "avail_confidence": "high"
+    },
+    {
+      "domain": "obmen.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2200",
+      "rationale": "'Обмен' — короткий высокочастотный ключ для валютных и криптообменников."
+    },
+    {
+      "domain": "koshelek.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$600-2000",
+      "rationale": "'Кошелёк' — понятный всем русскоязычным пользователям базовый термин для e-wallet."
+    },
+    {
+      "domain": "tengepay.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2800",
+      "rationale": "Национальная валюта 'тенге' + 'pay' — сильный брендируемый платёжный нейм."
+    },
+    {
+      "domain": "birja.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2400",
+      "rationale": "'Биржа' — прямой ключевик для крипто- и фондовой биржи, короткое слово."
+    },
+    {
+      "domain": "neobank.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2500",
+      "rationale": "'Необанк' — трендовый термин цифрового банкинга в развитом финтех-рынке Казахстана."
+    },
+    {
+      "domain": "valuta.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1800",
+      "rationale": "'Валюта' — словарный ключ для курсовых и обменных сервисов."
+    },
+    {
+      "domain": "cryptopay.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2200",
+      "rationale": "'Cryptopay' — англоязычный брендируемый нейм для криптоплатежей, понятный международной аудитории."
+    },
+    {
+      "domain": "zaim.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2200",
+      "rationale": "'Займ' — высококонверсионный запрос в сегменте онлайн-кредитования и МФО."
+    },
+    {
+      "domain": "mikrokredit.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "fintech-crypto",
+      "tier": "MID",
+      "est_price_usd": "$250-700",
+      "rationale": "'Микрокредит' — устойчивый нишевый ключ для рынка быстрых займов."
+    },
+    {
+      "domain": "pulpay.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "ULTRA",
+      "est_price_usd": "$2000-6000",
+      "rationale": "Узбекское 'pul' (деньги) + 'pay' — предельно релевантный и короткий бренд для платёжной системы Узбекистана.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No direct hit for pulpay.uz; only a similarly named Android app 'PulPay' (com.ahmadovstudios.pulpay) and an unrelated Baku Facebook page were found. No evidence of an active website at this exact domain.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "tolov.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$900-3000",
+      "rationale": "Узбекское 'to‘lov' (платёж) в ASCII — точный отраслевой ключ на быстрорастущем платёжном рынке."
+    },
+    {
+      "domain": "hamyon.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2500",
+      "rationale": "Узбекское 'hamyon' (кошелёк) — родное слово для e-wallet, сильная локальная привязка."
+    },
+    {
+      "domain": "kripto.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2500",
+      "rationale": "'Крипто' в локальном написании — ключевик развивающегося регулируемого крипторынка Узбекистана."
+    },
+    {
+      "domain": "obmen.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1800",
+      "rationale": "'Обмен' — высокочастотный ключ для валютных и криптообменных сервисов среди русскоязычной аудитории."
+    },
+    {
+      "domain": "sompay.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2200",
+      "rationale": "Национальная валюта 'сум/сом' + 'pay' — брендируемый нейм для платёжного сервиса."
+    },
+    {
+      "domain": "kredit.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2200",
+      "rationale": "'Кредит' — прямой высококонверсионный ключ для кредитных и займовых продуктов."
+    },
+    {
+      "domain": "birja.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$600-2000",
+      "rationale": "'Биржа' — ключевик для крипто- и валютной биржи, короткое узнаваемое слово."
+    },
+    {
+      "domain": "neobank.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2500",
+      "rationale": "'Необанк' — трендовый термин на фоне бума цифрового банкинга в Узбекистане."
+    },
+    {
+      "domain": "valyuta.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1600",
+      "rationale": "'Валюта' в узбекском написании — словарный ключ для курсовых и обменных сервисов."
+    },
+    {
+      "domain": "hamyonpay.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "MID",
+      "est_price_usd": "$300-900",
+      "rationale": "'Hamyon' (кошелёк) + 'pay' — брендируемая связка для мобильного платёжного кошелька."
+    },
+    {
+      "domain": "fintech.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2500",
+      "rationale": "'Fintech' — обобщающий отраслевой ключ, ценный для медиа, сообществ и инкубаторов сектора."
+    },
+    {
+      "domain": "qarz.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "fintech-crypto",
+      "tier": "MID",
+      "est_price_usd": "$300-800",
+      "rationale": "Узбекское 'qarz' (долг/займ) — короткое родное слово для P2P-кредитования и займов."
+    },
+    {
+      "domain": "optom.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1,500",
+      "rationale": "Слово «оптом» — ключевой запрос для оптовой торговли, крайне востребовано у поставщиков и рынков Бишкека."
+    },
+    {
+      "domain": "sklad.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1,000",
+      "rationale": "«Склад» — точный запрос для логистики, хранения и оптовых площадок, короткое и запоминающееся."
+    },
+    {
+      "domain": "zakaz.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1,200",
+      "rationale": "«Заказ» универсально для интернет-магазинов и служб доставки, высокая коммерческая ценность."
+    },
+    {
+      "domain": "dostavim.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$400-900",
+      "rationale": "«Доставим» — брендируемый глагол для курьерских и логистических сервисов, растущий рынок доставки."
+    },
+    {
+      "domain": "skidki.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1,000",
+      "rationale": "«Скидки» — магнит трафика для агрегаторов акций и купонных площадок."
+    },
+    {
+      "domain": "kupi.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1,200",
+      "rationale": "«Купи» — короткий призыв к действию, идеален для маркетплейса или магазина."
+    },
+    {
+      "domain": "tovar.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "«Товар» — базовый торговый термин, подходит для каталога или маркетплейса товаров."
+    },
+    {
+      "domain": "optommarket.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$350-800",
+      "rationale": "Комбинация «оптом» и «маркет» точно описывает оптовую торговую площадку."
+    },
+    {
+      "domain": "rynok.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$250-700",
+      "rationale": "«Рынок» — понятный термин для онлайн-маркетплейса или классифайда."
+    },
+    {
+      "domain": "torg.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1,000",
+      "rationale": "Короткое «торг» ассоциируется с торговлей и торгами, сильный брендовый потенциал."
+    },
+    {
+      "domain": "optovik.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$200-500",
+      "rationale": "«Оптовик» нацелен на B2B-сегмент оптовых закупщиков, стабильный спрос."
+    },
+    {
+      "domain": "prodam.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "«Продам» — ключевое слово для досок объявлений и C2C-классифайдов."
+    },
+    {
+      "domain": "bazary.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "Вариация «базары» отсылает к рынкам, брендируема для маркетплейса и менее вероятно занята."
+    },
+    {
+      "domain": "optom.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "ULTRA",
+      "est_price_usd": "$2,000-5,000",
+      "rationale": "Оптовая торговля — огромный сегмент в Казахстане, «оптом» топовый коммерческий запрос.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No direct match for optom.kz itself; results show many other '*-optom.kz' domains (hoz-optom.kz, cosmetica-optom.kz, baraholkaoptom.kz) and Instagram accounts using 'optom.kz' as a handle name, but no confirmation of a live website at the bare optom.kz domain.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "sauda.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "«Сауда» (торговля по-казахски) — локально сильное ключевое слово для торговой площадки."
+    },
+    {
+      "domain": "duken.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "«Дүкен» (магазин по-казахски) в ASCII — брендируемо и близко местной аудитории."
+    },
+    {
+      "domain": "tauar.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "«Тауар» (товар по-казахски) подходит для каталога или маркетплейса с локальным акцентом."
+    },
+    {
+      "domain": "sklad.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1,500",
+      "rationale": "«Склад» — ключевой запрос для логистики и фулфилмента растущего e-commerce Казахстана."
+    },
+    {
+      "domain": "zakaz.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "«Заказ» — универсальный коммерческий термин для магазинов и служб доставки."
+    },
+    {
+      "domain": "skidka.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1,500",
+      "rationale": "«Скидка» — трафиковое слово для купонных и акционных агрегаторов."
+    },
+    {
+      "domain": "kupi.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "«Купи» — короткий призыв к покупке, отличная база для маркетплейса."
+    },
+    {
+      "domain": "dostavim.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1,400",
+      "rationale": "«Доставим» брендируемо для курьерских сервисов на быстрорастущем рынке доставки."
+    },
+    {
+      "domain": "optomarket.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1,200",
+      "rationale": "Связка «опто» и «маркет» точно позиционирует оптовую B2B-площадку."
+    },
+    {
+      "domain": "tovar.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$350-800",
+      "rationale": "«Товар» — базовое торговое слово для каталога товаров и маркетплейса."
+    },
+    {
+      "domain": "optovik.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "«Оптовик» ориентирован на B2B-сегмент оптовых закупок, стабильный спрос."
+    },
+    {
+      "domain": "saudamarket.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "«Сауда-маркет» сочетает казахское «торговля» с «маркет» для локальной площадки."
+    },
+    {
+      "domain": "prodam.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "«Продам» — ключевое слово для досок объявлений и C2C-торговли."
+    },
+    {
+      "domain": "dokon.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,600",
+      "rationale": "«Дўкон» (магазин по-узбекски) — локально понятно и брендируемо для интернет-магазина."
+    },
+    {
+      "domain": "arzon.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "«Арзон» (дешёвый) — сильный триггер для дискаунтеров и акционных площадок."
+    },
+    {
+      "domain": "optom.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "Оптовая торговля активно растёт в Узбекистане, «оптом» — топовый запрос поставщиков."
+    },
+    {
+      "domain": "chegirma.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1,200",
+      "rationale": "«Чегирма» (скидка) — трафиковое слово для купонных и акционных сервисов."
+    },
+    {
+      "domain": "xarid.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1,400",
+      "rationale": "«Харид» (покупка) — ключевой коммерческий термин для маркетплейса."
+    },
+    {
+      "domain": "ombor.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$350-800",
+      "rationale": "«Омбор» (склад) — точный запрос для логистики и фулфилмента."
+    },
+    {
+      "domain": "mahsulot.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "«Махсулот» (продукт/товар) подходит для каталога товаров с локальным акцентом."
+    },
+    {
+      "domain": "yetkazib.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "«Етказиб» (доставка) — ключ для курьерских сервисов растущего рынка доставки."
+    },
+    {
+      "domain": "optombozor.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1,200",
+      "rationale": "«Оптом-бозор» точно описывает оптовый рынок, сильно резонирует с местными закупщиками."
+    },
+    {
+      "domain": "savdogar.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "«Савдогар» (торговец) брендируемо для B2B-платформы продавцов и поставщиков."
+    },
+    {
+      "domain": "dostavka.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1,500",
+      "rationale": "«Доставка» — русскоязычный ключ, актуальный для логистики в двуязычном Узбекистане."
+    },
+    {
+      "domain": "bozorcha.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "ecommerce-marketplace",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "«Бозорча» (базарчик) — тёплое брендируемое имя для нишевого маркетплейса или классифайда."
+    },
+    {
+      "domain": "issykkul.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "ULTRA",
+      "est_price_usd": "$2000-6000",
+      "rationale": "Иссык-Куль — главная туристическая жемчужина Кыргызстана, гео-домен для отелей, туров и пляжного отдыха.",
+      "likely_status": "LIKELY_TAKEN",
+      "avail_evidence": "A tourism site (eng.issykkul.kg / 'DOS Tour - Rest at Issyk-Kul') actively resolves under this domain, and an Instagram account references a subdomain fontan.issykkul.kg, indicating the domain is registered and in active use.",
+      "avail_confidence": "medium"
+    },
+    {
+      "domain": "trekking.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2500",
+      "rationale": "Кыргызстан — мировое направление горного треккинга, точный англоязычный ключевик для приёма иностранных туристов."
+    },
+    {
+      "domain": "nomad.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2200",
+      "rationale": "Номадический туризм и юрточные лагеря — визитная карточка страны и World Nomad Games."
+    },
+    {
+      "domain": "sayakat.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1500",
+      "rationale": "«Саякат» — путешествие по-кыргызски, естественный ключевик для тревел-бренда на местном языке."
+    },
+    {
+      "domain": "karakol.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1800",
+      "rationale": "Каракол — база горнолыжного и трекингового туризма на восточном Иссык-Куле, сильный гео-домен."
+    },
+    {
+      "domain": "ski.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2000",
+      "rationale": "Короткий домен для горнолыжных курортов (Каракол, Чункурчак, ЗиЛ) и растущего зимнего туризма."
+    },
+    {
+      "domain": "yurta.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1200",
+      "rationale": "Юрточные кемпинги — популярный формат аутентичного размещения для въездных туристов."
+    },
+    {
+      "domain": "avia.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$600-2000",
+      "rationale": "Короткий узнаваемый ключевик для авиабилетов и онлайн-турагентства."
+    },
+    {
+      "domain": "hostel.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1500",
+      "rationale": "Растущий рынок бэкпекеров и хостелов в Бишкеке и Караколе."
+    },
+    {
+      "domain": "viza.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1200",
+      "rationale": "Визовая поддержка и оформление для въездного и выездного туризма."
+    },
+    {
+      "domain": "transfer.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$300-900",
+      "rationale": "Трансферы из аэропорта Манас и по регионам — стабильный туристический спрос."
+    },
+    {
+      "domain": "otel.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1100",
+      "rationale": "«Отель» в тюркском написании — универсальный ключевик размещения для локального рынка."
+    },
+    {
+      "domain": "gid.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$300-900",
+      "rationale": "«Гид» — услуги экскурсоводов и локальных гидов, короткий запоминающийся домен."
+    },
+    {
+      "domain": "bishkektaxi.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$300-800",
+      "rationale": "Комбинация гео и услуги такси в столице — прямой коммерческий трафик."
+    },
+    {
+      "domain": "turizm.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2800",
+      "rationale": "Прямой ключевик «туризм» на крупнейшем и платёжеспособном рынке Центральной Азии."
+    },
+    {
+      "domain": "kurort.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2000",
+      "rationale": "«Курорт» — санатории и курорты Казахстана (Боровое, Алаколь), сильный внутренний спрос."
+    },
+    {
+      "domain": "charyn.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1800",
+      "rationale": "Чарынский каньон — топовая природная достопримечательность и цель туров из Алматы."
+    },
+    {
+      "domain": "alakol.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1800",
+      "rationale": "Алаколь — быстрорастущий пляжный курорт, гео-домен под отели и туроператоров."
+    },
+    {
+      "domain": "viza.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1800",
+      "rationale": "Визовые центры и оформление виз — большой выездной турпоток из Казахстана."
+    },
+    {
+      "domain": "turpaket.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1200",
+      "rationale": "«Турпакет» — готовые пакетные туры, коммерческий ключевик для турагентств."
+    },
+    {
+      "domain": "sanatorii.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1200",
+      "rationale": "Санаторно-курортное лечение — сильный и стабильный сегмент внутреннего туризма."
+    },
+    {
+      "domain": "hostel.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1500",
+      "rationale": "Хостелы для бюджетных и молодёжных туристов в Алматы и Астане."
+    },
+    {
+      "domain": "aviatur.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1200",
+      "rationale": "Комбо «авиа+тур» — узнаваемый бренд-паттерн для агентства авиабилетов и туров."
+    },
+    {
+      "domain": "transfer.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1100",
+      "rationale": "Аэропортовые и корпоративные трансферы в мегаполисах — устойчивый спрос."
+    },
+    {
+      "domain": "gid.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$300-900",
+      "rationale": "«Гид» — услуги экскурсоводов, короткий и брендируемый домен."
+    },
+    {
+      "domain": "puteshestvie.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$300-800",
+      "rationale": "«Путешествие» — контентный и тревел-медиа бренд для русскоязычной аудитории."
+    },
+    {
+      "domain": "almatytaxi.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$300-900",
+      "rationale": "Гео плюс такси в крупнейшем городе страны — прямой коммерческий трафик."
+    },
+    {
+      "domain": "sayohat.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2000",
+      "rationale": "«Саёхат» — путешествие на узбекском, ключевой тревел-термин для местного рынка."
+    },
+    {
+      "domain": "mehmonxona.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1800",
+      "rationale": "«Мехмонхона» — гостиница по-узбекски, точный ключевик сегмента размещения."
+    },
+    {
+      "domain": "samarkandtour.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2000",
+      "rationale": "Самарканд — центр въездного туризма Шёлкового пути, гео плюс tour под турпакеты."
+    },
+    {
+      "domain": "bukharatour.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1800",
+      "rationale": "Бухара — второй по значимости туристический город, прямой домен для туроператоров."
+    },
+    {
+      "domain": "ipakyuli.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1500",
+      "rationale": "«Ипак йўли» — Шёлковый путь на узбекском, мощный национальный туристический бренд."
+    },
+    {
+      "domain": "karvon.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1200",
+      "rationale": "«Карвон» (караван) — колоритный образ Шёлкового пути для тревел- или отельного бренда."
+    },
+    {
+      "domain": "viza.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1800",
+      "rationale": "Визовая поддержка для быстрорастущего въездного турпотока и выездных туристов."
+    },
+    {
+      "domain": "hostel.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1500",
+      "rationale": "Бум бэкпекерского туризма в Самарканде, Бухаре и Хиве создаёт спрос на хостелы."
+    },
+    {
+      "domain": "khivatour.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1200",
+      "rationale": "Хива — город-музей и третий магнит Шёлкового пути, гео плюс tour."
+    },
+    {
+      "domain": "transfer.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$300-900",
+      "rationale": "Межгородские трансферы по маршруту Ташкент-Самарканд-Бухара-Хива — растущий спрос."
+    },
+    {
+      "domain": "gid.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$300-900",
+      "rationale": "Гиды и экскурсоводы по историческим городам Шёлкового пути."
+    },
+    {
+      "domain": "turpaket.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$300-800",
+      "rationale": "«Турпакет» — пакетные туры для внутреннего и въездного рынка."
+    },
+    {
+      "domain": "otel.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "travel-tourism",
+      "tier": "MID",
+      "est_price_usd": "$400-1100",
+      "rationale": "«Отель» — универсальный ключевик размещения, короткий и легко запоминаемый домен."
+    },
+    {
+      "domain": "bishkeknedvizhimost.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1500",
+      "rationale": "Связка столицы и слова «недвижимость» — ядро самого денежного вертикала (аренда и продажа жилья) в Бишкеке."
+    },
+    {
+      "domain": "avtobishkek.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1200",
+      "rationale": "Авторынок столицы — высокочастотный запрос, идеален для площадки объявлений о продаже машин."
+    },
+    {
+      "domain": "arenda-bishkek.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1000",
+      "rationale": "«Аренда + Бишкек» — прямой коммерческий запрос по съёму квартир и коммерческих помещений в столице."
+    },
+    {
+      "domain": "kvartirabishkek.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$400-900",
+      "rationale": "«Квартира» плюс город — прямой лид на покупку и аренду жилья, высокая конверсия."
+    },
+    {
+      "domain": "avtorynok.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1200",
+      "rationale": "Общий брендируемый ключ «авторынок» без привязки к городу — сильное имя для национальной автоплощадки."
+    },
+    {
+      "domain": "oshnedvizhimost.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$200-450",
+      "rationale": "Ош — второй по величине город страны, недвижимость там растёт, а нишевых порталов почти нет."
+    },
+    {
+      "domain": "oshavto.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$200-450",
+      "rationale": "Авторынок Оша — самостоятельный региональный сегмент с растущим спросом на объявления."
+    },
+    {
+      "domain": "rabotaosh.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$180-400",
+      "rationale": "«Работа + Ош» — локальный рекрутинговый запрос без сильных местных конкурентов."
+    },
+    {
+      "domain": "novostiosh.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$150-350",
+      "rationale": "Городские новости Оша — база для медиапроекта с постоянным поисковым трафиком."
+    },
+    {
+      "domain": "pogodabishkek.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$150-350",
+      "rationale": "«Погода + Бишкек» — стабильно высокочастотный информационный запрос с рекламной монетизацией."
+    },
+    {
+      "domain": "afishaosh.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$150-350",
+      "rationale": "Афиша событий Оша — ниша культурного гида для второго города страны."
+    },
+    {
+      "domain": "dombishkek.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$200-450",
+      "rationale": "Короткое «дом + столица» — брендируемо для портала по жилью и стройке."
+    },
+    {
+      "domain": "arendaosh.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$180-400",
+      "rationale": "Аренда жилья в Оше — прямой коммерческий запрос для регионального сайта объявлений."
+    },
+    {
+      "domain": "nedvizhimost-almaty.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$1500-4000",
+      "rationale": "Алматы — крупнейший рынок недвижимости Казахстана, а ключ «недвижимость» — самый маржинальный вертикал."
+    },
+    {
+      "domain": "astananedvizhimost.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$1200-3000",
+      "rationale": "Столичная недвижимость Астаны — премиальный сегмент с высоким чеком сделок и рекламы."
+    },
+    {
+      "domain": "avtoshymkent.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1800",
+      "rationale": "Шымкент — третий мегаполис страны, авторынок там крупный, а профильных доменов мало."
+    },
+    {
+      "domain": "arendaalmaty.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2200",
+      "rationale": "«Аренда + Алматы» — один из самых частотных коммерческих запросов по съёму жилья в стране."
+    },
+    {
+      "domain": "kvartiryastana.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1800",
+      "rationale": "«Квартиры + Астана» — прямой запрос на покупку жилья в быстрорастущей столице."
+    },
+    {
+      "domain": "avtoastana.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2000",
+      "rationale": "Авторынок столицы — высокочастотный запрос, идеальное имя для площадки объявлений о машинах."
+    },
+    {
+      "domain": "shymkentavto.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1300",
+      "rationale": "Региональный авторынок Шымкента — растущий спрос при слабой конкуренции нишевых порталов."
+    },
+    {
+      "domain": "afishaastana.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1400",
+      "rationale": "Афиша событий столицы — сильный ключ для гида по концертам, кино и мероприятиям."
+    },
+    {
+      "domain": "almatyarenda.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2000",
+      "rationale": "Аренда в Алматы — крупнейший рынок съёма жилья Казахстана с ежедневным спросом."
+    },
+    {
+      "domain": "pogodashymkent.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$200-500",
+      "rationale": "«Погода + Шымкент» — стабильный информационный трафик крупного южного города."
+    },
+    {
+      "domain": "novostishymkent.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "Городские новости Шымкента — основа регионального медиа с постоянной аудиторией."
+    },
+    {
+      "domain": "domalmaty.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "Короткое «дом + Алматы» — брендируемо для портала о жилье, ремонте и стройке."
+    },
+    {
+      "domain": "arendashymkent.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "Аренда жилья в Шымкенте — прямой коммерческий запрос третьего города страны."
+    },
+    {
+      "domain": "rabotaastana.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1400",
+      "rationale": "«Работа + Астана» — высокочастотный рекрутинговый запрос столичного рынка труда."
+    },
+    {
+      "domain": "tashkentnedvizhimost.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1800",
+      "rationale": "Ташкент — крупнейший рынок недвижимости страны, а «недвижимость» — самый денежный вертикал."
+    },
+    {
+      "domain": "arendatashkent.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1500",
+      "rationale": "«Аренда + Ташкент» — прямой запрос на съём жилья в самом населённом городе Узбекистана."
+    },
+    {
+      "domain": "avtotashkent.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1500",
+      "rationale": "Столичный авторынок — высокочастотный запрос для площадки объявлений о продаже машин."
+    },
+    {
+      "domain": "kvartiratashkent.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1300",
+      "rationale": "«Квартира + Ташкент» — прямой лид на покупку и аренду жилья с высокой конверсией."
+    },
+    {
+      "domain": "rabotatashkent.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1300",
+      "rationale": "«Работа + Ташкент» — ядро столичного рынка труда, идеально для рекрутингового портала."
+    },
+    {
+      "domain": "tashkentarenda.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1000",
+      "rationale": "Альтернативный порядок «Ташкент + аренда» усиливает охват запросов по съёму недвижимости."
+    },
+    {
+      "domain": "avtosamarkand.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1000",
+      "rationale": "Самарканд — второй мегаполис страны, авторынок растёт при малом числе профильных сайтов."
+    },
+    {
+      "domain": "samarkandnedvizhimost.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "Недвижимость Самарканда — туристический и жилой спрос делают вертикал перспективным."
+    },
+    {
+      "domain": "pogodatashkent.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$200-500",
+      "rationale": "«Погода + Ташкент» — стабильно высокочастотный информационный запрос столицы."
+    },
+    {
+      "domain": "novostibukhara.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$180-450",
+      "rationale": "Городские новости Бухары — база для регионального медиапроекта с поисковым трафиком."
+    },
+    {
+      "domain": "afishasamarkand.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$180-450",
+      "rationale": "Афиша событий Самарканда — культурный гид для туристического города с потоком гостей."
+    },
+    {
+      "domain": "domtashkent.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "Короткое «дом + Ташкент» — брендируемо для портала о жилье, ремонте и строительстве."
+    },
+    {
+      "domain": "rabotasamarkand.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$180-450",
+      "rationale": "«Работа + Самарканд» — локальный рекрутинговый запрос второго города страны."
+    },
+    {
+      "domain": "arendabukhara.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$180-450",
+      "rationale": "Аренда в Бухаре — сочетание туристического и жилого спроса даёт коммерческую ценность."
+    },
+    {
+      "domain": "samarkandavto.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "geo-local",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "Обратный порядок «Самарканд + авто» расширяет охват запросов по местному авторынку."
+    },
+    {
+      "domain": "aihub.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "ULTRA",
+      "est_price_usd": "$1500-4000",
+      "rationale": "Короткий и запоминающийся хаб для ИИ-стартапов и IT-сообщества Бишкека, где растёт спрос на AI-бренды.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No search results reference aihub.kg specifically; all hits are for aihub.org, aihub.com, aihub.ai, aihub.group, etc. No evidence of any site at the .kg domain, but absence of results is weak evidence given .kg sites may be poorly indexed.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "neuro.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2000",
+      "rationale": "Универсальный корень 'нейро' для ИИ-, медтех- и образовательных проектов на местном рынке."
+    },
+    {
+      "domain": "aicloud.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1500",
+      "rationale": "Связка 'AI + облако' актуальна для провайдеров облачных и вычислительных услуг в Кыргызстане."
+    },
+    {
+      "domain": "datalab.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1200",
+      "rationale": "Готовый бренд для лабораторий данных, аналитики и дата-инжиниринга, которых почти нет в регионе."
+    },
+    {
+      "domain": "devhub.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1200",
+      "rationale": "Идеально для сообществ разработчиков и IT-коворкингов растущей бишкекской tech-сцены."
+    },
+    {
+      "domain": "edgeai.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1000",
+      "rationale": "Перспективный термин edge-вычислений и IoT, который будет дорожать по мере цифровизации."
+    },
+    {
+      "domain": "gpucloud.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1200",
+      "rationale": "GPU-облака для обучения моделей — растущая ниша, а точный keyword-домен усиливает бренд."
+    },
+    {
+      "domain": "aiagent.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1500",
+      "rationale": "Тема ИИ-агентов на пике тренда, домен подходит под SaaS и автоматизацию."
+    },
+    {
+      "domain": "deeptech.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$400-1100",
+      "rationale": "Собирательный бренд для глубоких технологий и венчурных проектов Кыргызстана."
+    },
+    {
+      "domain": "cybersec.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "Кибербезопасность востребована банками и госсектором, короткое sec-имя ценно."
+    },
+    {
+      "domain": "codebase.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "Брандируемое имя для дев-инструментов, аутсорс-студий и репозиториев кода."
+    },
+    {
+      "domain": "smartcloud.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$200-500",
+      "rationale": "Понятный бренд для облачных и SaaS-сервисов малого бизнеса Кыргызстана."
+    },
+    {
+      "domain": "dataflow.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$200-550",
+      "rationale": "Технический термин для интеграции и потоков данных, удобен для B2B-бренда."
+    },
+    {
+      "domain": "botlab.kg",
+      "tld": ".kg",
+      "country": "Kyrgyzstan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$200-500",
+      "rationale": "Ниша чат-ботов и автоматизации для локального e-commerce и поддержки."
+    },
+    {
+      "domain": "aihub.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "ULTRA",
+      "est_price_usd": "$3000-8000",
+      "rationale": "Казахстан активно инвестирует в ИИ (Alem.AI, министерство ИИ), премиальный AI-хаб-домен крайне ценен.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No exact match for aihub.kz found; closest related domains are ai-hubaogu.kz (different domain) and ai.kz (different domain). No confirmed active site at the exact aihub.kz domain.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "aicloud.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$1000-3000",
+      "rationale": "Облачно-ИИ связка востребована на крупнейшем IT-рынке Центральной Азии."
+    },
+    {
+      "domain": "datacenter.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$1200-3500",
+      "rationale": "Казахстан строит майнинг- и дата-центры, точный keyword-домен высоко ликвиден."
+    },
+    {
+      "domain": "neuro.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$1000-2800",
+      "rationale": "Короткий корень 'нейро' под ИИ-, финтех- и медтех-бренды крупного рынка."
+    },
+    {
+      "domain": "fintech.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$1500-4000",
+      "rationale": "Финтех-сектор Казахстана (Kaspi, финансовый хаб МФЦА) делает этот keyword высокоценным."
+    },
+    {
+      "domain": "gpucloud.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2200",
+      "rationale": "Спрос на GPU-мощности для обучения ИИ растёт вместе с гос-инициативами."
+    },
+    {
+      "domain": "devops.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1800",
+      "rationale": "DevOps-услуги массово нужны банкам и корпоратам, точное имя усиливает агентство."
+    },
+    {
+      "domain": "smartcity.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2500",
+      "rationale": "Государственные программы 'умных городов' (Астана, Алматы) делают домен стратегическим."
+    },
+    {
+      "domain": "datalab.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1600",
+      "rationale": "Аналитика и big data востребованы банками и нефтегазом Казахстана."
+    },
+    {
+      "domain": "aiagent.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2000",
+      "rationale": "ИИ-агенты — главный тренд SaaS, keyword-домен на крупном рынке дорогой."
+    },
+    {
+      "domain": "cybersec.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1800",
+      "rationale": "Кибербезопасность приоритет для банков и госсектора Казахстана."
+    },
+    {
+      "domain": "deeptech.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1600",
+      "rationale": "Собирательный бренд для венчура и глубоких технологий крупнейшей экономики региона."
+    },
+    {
+      "domain": "quantum.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2200",
+      "rationale": "Форвард-луккинг keyword для науки и вычислений, редкий и брандируемый."
+    },
+    {
+      "domain": "streaming.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$400-1000",
+      "rationale": "Растущий рынок онлайн-видео и медиа в Казахстане повышает ценность прямого keyword."
+    },
+    {
+      "domain": "edgeai.kz",
+      "tld": ".kz",
+      "country": "Kazakhstan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1400",
+      "rationale": "Edge-вычисления и IoT — перспективная ниша для промышленности и телекома."
+    },
+    {
+      "domain": "aihub.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "ULTRA",
+      "est_price_usd": "$1500-5000",
+      "rationale": "IT Park Uzbekistan и госкурс на цифру делают AI-хаб-домен крайне перспективным.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No search results found for the exact aihub.uz domain (Uzbekistan ccTLD). Only unrelated aihub.com/.org/.group sites appeared. No parking/for-sale page found either.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "aicloud.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$700-2000",
+      "rationale": "Облачно-ИИ бренд для быстрорастущего IT-сектора Ташкента."
+    },
+    {
+      "domain": "neuro.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1700",
+      "rationale": "Короткий корень 'нейро' под ИИ- и медтех-стартапы на молодом рынке."
+    },
+    {
+      "domain": "datalab.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1400",
+      "rationale": "Дата-аналитика — дефицитная ниша при активной цифровизации госуслуг."
+    },
+    {
+      "domain": "devhub.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1400",
+      "rationale": "IT Park растит тысячи разработчиков — бренд для сообществ и аутсорса востребован."
+    },
+    {
+      "domain": "aiagent.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1500",
+      "rationale": "ИИ-агенты на пике тренда, точный keyword усиливает будущий SaaS-бренд."
+    },
+    {
+      "domain": "gpucloud.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$450-1300",
+      "rationale": "GPU-мощности для ИИ-обучения — растущая инфраструктурная ниша региона."
+    },
+    {
+      "domain": "cybersec.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1400",
+      "rationale": "Кибербезопасность нужна банкам и госцифровизации Узбекистана."
+    },
+    {
+      "domain": "smartcity.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1700",
+      "rationale": "Государственные проекты 'умного Ташкента' делают домен стратегическим."
+    },
+    {
+      "domain": "deeptech.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$350-900",
+      "rationale": "Собирательный бренд для стартап-экосистемы и венчура IT Park."
+    },
+    {
+      "domain": "codebase.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$250-650",
+      "rationale": "Брандируемое имя для дев-студий и аутсорс-команд растущего рынка."
+    },
+    {
+      "domain": "edgeai.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$300-800",
+      "rationale": "Edge-вычисления и IoT перспективны для промышленности и агротеха страны."
+    },
+    {
+      "domain": "streamly.uz",
+      "tld": ".uz",
+      "country": "Uzbekistan",
+      "category": "tech-ai",
+      "tier": "MID",
+      "est_price_usd": "$200-550",
+      "rationale": "Брандируемое имя для стриминга и медиа при быстром росте онлайн-аудитории."
+    },
+    {
+      "domain": "baa.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "ULTRA",
+      "est_price_usd": "$2,000-5,000",
+      "rationale": "Короткое трёхбуквенное кыргызское слово 'баа' (цена) — редкий премиальный домен для сервиса сравнения цен и маркетплейса.",
+      "likely_status": "UNKNOWN",
+      "avail_evidence": "No search results reference an actual baa.kg website; hits were all about 'BAA' as an acronym (Business Associate Agreement) or an unrelated German company 'BAA Boysen...GmbH & Co. KG'. No evidence of an active site or parking page at baa.kg.",
+      "avail_confidence": "low"
+    },
+    {
+      "domain": "jumush.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "'Жумуш' — прямое кыргызское слово 'работа', идеальный точный домен для сайта поиска вакансий."
+    },
+    {
+      "domain": "unaa.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "'Унаа' — кыргызское слово для транспорта и авто, точный ключ для авторынка и объявлений."
+    },
+    {
+      "domain": "sooda.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1,500",
+      "rationale": "'Соода' означает торговлю — ценный домен для маркетплейса или e-commerce платформы."
+    },
+    {
+      "domain": "tamak.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "'Тамак' — еда по-кыргызски, точное совпадение для сервисов доставки еды и ресторанов."
+    },
+    {
+      "domain": "arzan.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$600-1,500",
+      "rationale": "'Арзан' значит 'дёшево' — сильный ключ для сайта скидок, акций и распродаж."
+    },
+    {
+      "domain": "altyn.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,600",
+      "rationale": "'Алтын' — золото, ценно для ювелирного, финансового и ломбардного бизнеса."
+    },
+    {
+      "domain": "nan.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "'Нан' — хлеб, короткий трёхбуквенный домен для пекарен и продуктового ритейла."
+    },
+    {
+      "domain": "salamat.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$500-1,200",
+      "rationale": "'Саламат' связано со здоровьем — ценно для медицинских, аптечных и wellness-сервисов."
+    },
+    {
+      "domain": "okuu.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "'Окуу' означает учёбу и образование — хороший домен для онлайн-курсов и школ."
+    },
+    {
+      "domain": "nark.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$300-700",
+      "rationale": "'Нарк' — цена/стоимость, полезно для финансовых и торговых сервисов."
+    },
+    {
+      "domain": "kiyim.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "'Кийим' — одежда, точный ключевой домен для интернет-магазина одежды."
+    },
+    {
+      "domain": "konok.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$200-500",
+      "rationale": "'Конок' значит 'гость' — брендируемо для отельного и туристического бизнеса."
+    },
+    {
+      "domain": "kymbat.kg",
+      "tld": "kg",
+      "country": "Kyrgyzstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$200-500",
+      "rationale": "'Кымбат' значит 'дорого/премиум' — подойдёт для люксовых товаров и услуг."
+    },
+    {
+      "domain": "satu.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$1,000-2,500",
+      "rationale": "'Сату' — продажа по-казахски, точный домен для e-commerce и досок объявлений."
+    },
+    {
+      "domain": "zher.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2,200",
+      "rationale": "'Жер' означает 'земля' — короткий домен для недвижимости и агросектора."
+    },
+    {
+      "domain": "baspana.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2,200",
+      "rationale": "'Баспана' означает жильё — сильный ключевой домен для рынка недвижимости."
+    },
+    {
+      "domain": "zhumys.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2,200",
+      "rationale": "'Жұмыс' — работа, точный ключ для сайта вакансий и рекрутинга."
+    },
+    {
+      "domain": "kolik.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "'Көлік' — транспорт/авто, ценный точный домен для авторынка."
+    },
+    {
+      "domain": "naryk.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "'Нарық' значит 'рынок' — отличный домен для маркетплейса и торговой площадки."
+    },
+    {
+      "domain": "altyn.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$800-1,800",
+      "rationale": "'Алтын' — золото, ценно для ювелирного и финансового бизнеса."
+    },
+    {
+      "domain": "arzan.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,800",
+      "rationale": "'Арзан' значит 'дёшево' — сильный домен для скидок, купонов и акций."
+    },
+    {
+      "domain": "azyq.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$400-900",
+      "rationale": "'Азық' — еда/продукты, хорош для продуктовой доставки и фудтеха."
+    },
+    {
+      "domain": "nan.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$400-1,000",
+      "rationale": "'Нан' — хлеб, короткий домен для пекарен и продуктового сектора."
+    },
+    {
+      "domain": "mal.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$400-1,000",
+      "rationale": "'Мал' означает 'скот' — трёхбуквенный домен для агросектора и животноводства."
+    },
+    {
+      "domain": "densaulyk.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$400-900",
+      "rationale": "'Денсаулық' — здоровье, тематический домен для медицины и wellness."
+    },
+    {
+      "domain": "kiim.kz",
+      "tld": "kz",
+      "country": "Kazakhstan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$350-800",
+      "rationale": "'Киім' — одежда, точный ключ для fashion-ритейла."
+    },
+    {
+      "domain": "suv.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2,200",
+      "rationale": "'Сув' — вода, короткий трёхбуквенный домен для доставки воды и напитков."
+    },
+    {
+      "domain": "yer.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$900-2,200",
+      "rationale": "'Ер' означает 'земля' — короткий домен для недвижимости и сельского хозяйства."
+    },
+    {
+      "domain": "narx.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$800-2,000",
+      "rationale": "'Нарх' — цена, ценный домен для сервиса сравнения цен и агрегатора."
+    },
+    {
+      "domain": "talim.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$800-1,800",
+      "rationale": "'Таълим' означает образование — сильный домен для EdTech и онлайн-школ."
+    },
+    {
+      "domain": "oltin.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$800-1,800",
+      "rationale": "'Олтин' — золото, ценно для ювелирного и финансового бизнеса."
+    },
+    {
+      "domain": "salomatlik.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "HIGH",
+      "est_price_usd": "$700-1,600",
+      "rationale": "'Саломатлик' — здоровье, ценно для медицинских и аптечных сервисов."
+    },
+    {
+      "domain": "non.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$500-1,200",
+      "rationale": "'Нон' — хлеб, короткий домен для пекарен и продуктового ритейла."
+    },
+    {
+      "domain": "oziq.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$400-900",
+      "rationale": "'Озиқ' — еда/продукты, подходит для продуктовой доставки и фудтеха."
+    },
+    {
+      "domain": "kiyim.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$400-900",
+      "rationale": "'Кийим' — одежда, точный ключ для fashion-магазина."
+    },
+    {
+      "domain": "bola.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$350-800",
+      "rationale": "'Бола' — ребёнок, брендируемо для детских товаров и услуг."
+    },
+    {
+      "domain": "qimmat.uz",
+      "tld": "uz",
+      "country": "Uzbekistan",
+      "category": "local-lexicon",
+      "tier": "MID",
+      "est_price_usd": "$250-600",
+      "rationale": "'Қиммат' значит 'дорого/премиум' — подойдёт для люксового сегмента."
+    }
+  ],
+  "sources": [
+    "https://www.cctld.kg/en/service-regulations",
+    "https://www.cctld.kg/en",
+    "https://www.cctld.kg/en/whois",
+    "https://www.cctld.kg/en/tariffs",
+    "https://www.cctld.kg/en/news",
+    "https://www.cctld.kg/en/news/2",
+    "https://www.cctld.kg/en/news/4",
+    "https://www.cctld.kg/en/register",
+    "http://www.iana.org/domains/root/db/kg.html",
+    "https://en.wikipedia.org/wiki/.kg",
+    "https://icannwiki.org/.kg",
+    "https://tld-list.com/tld/kg",
+    "https://www.domnest.com/tld/kg",
+    "https://domainoffer.net/tld/kg",
+    "https://www.gandi.net/en-US/domain/tld/kg",
+    "https://www.bb-online.com/domainfactsheets/kg.shtml",
+    "https://www.bb-online.com/domainfactsheets/gov.kg.shtml",
+    "https://www.bb-online.com/countryinformation/gov.kg.shtml",
+    "https://fuguesolutions.com/domains/tld/kg-domain-names/",
+    "https://domaindetails.com/tlds/kg",
+    "https://web-solutions.eu/kg-domain-name-registration.htm",
+    "https://www.marcaria.com/ws/en/domains/kyrgyzstan-domain-registration-kg",
+    "https://www.safenames.net/domain-names/domain-name-regulations/kg",
+    "https://www.whois.com/whois/domain.kg",
+    "https://nic.kz/",
+    "https://nic.kz/lang?set=EN",
+    "https://egov.kz/cms/en/articles/domain_name",
+    "http://www.iana.org/domains/root/db/kz.html",
+    "https://www.iana.org/domains/root/db/xn--80ao21a.html",
+    "https://www.iana.org/reports/2012/kaz-report-20120109.html",
+    "https://domaindetails.com/tlds/kz",
+    "https://fuguesolutions.com/domains/tld/kz-domain-names/",
+    "https://support.marcaria.com/hc/en-us/articles/115003322086-What-are-the-registration-requirements-for-registering-a-KZ-domain",
+    "https://dns.ultraproducts.support/hc/en-us/articles/18093139014683--kz-Domain-Requirements-and-DNS-Hosting-Rules",
+    "https://onehost.kz/en/news/s-1-yanvarya-2026-goda-izmenitsya-stoimost-domenov-v-zonakh-kz-i-kaz/",
+    "https://tld-list.com/tld/kz",
+    "https://tld-list.com/tld/com.kz",
+    "https://tld-list.com/tld/org.kz",
+    "https://tld-list.com/tld/%D2%9B%D0%B0%D0%B7",
+    "https://hostings.info/domain-kz",
+    "https://www.nic.kz/docs/poryadok_vnedreniya_kaz_en.pdf",
+    "https://nic.kz/docs/registration_rules_eng.pdf",
+    "https://nic.kz/docs/main-rules-eng.pdf",
+    "https://medialaw.asia/document/-1008",
+    "https://adilet.zan.kz/rus/docs/V1800016654",
+    "https://cisarbitration.com/2019/09/18/domain-disputes-resolution-in-kazakhstan/",
+    "https://bolotovip.com/publication/domain-names-regulations-in-kazakhstan/",
+    "https://www.country-index.com/articles/article_152.pdf",
+    "https://en.wikipedia.org/wiki/.kz",
+    "https://en.wikipedia.org/wiki/.%D2%9B%D0%B0%D0%B7",
+    "https://grokipedia.com/page/.kz",
+    "https://www.worldtrademarkreview.com/article/kazakhstan-now-third-country-in-the-world-offer-cyrillic-domain-names",
+    "https://kaznix.kz/en/about",
+    "https://kaznix.kz/en/reglament",
+    "https://webatla.com/tld/kz/",
+    "https://domains-index.com/downloads/kz-kazakhstan-current-domains-list-download-kz-zone-file/",
+    "https://netapi.com/kz-domains/",
+    "https://whois.marcaria.com/en/asia/kz-domain-search",
+    "https://www.ip2whois.com/domain/nic.kz",
+    "https://intername.uk/domains/asia/kazakhstan/kz/whois/"
+  ]
+}
