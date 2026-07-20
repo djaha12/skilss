@@ -1,0 +1,4325 @@
+
+<style>
+:root{
+  --paper:#EFF2F1; --card:#FBFCFB; --ink:#182226; --muted:#5C6B6E; --faint:#7E8D90;
+  --line:#D8DEDC; --line2:#E7EBEA;
+  --accent:#12857E; --accent-soft:#0f6f69; --gold:#B08327;
+  --taken-bg:#F6E2DC; --taken-fg:#9C3A28; --taken-bd:#E4B9AE;
+  --free-bg:#DFEEE2; --free-fg:#2E6B45; --free-bd:#BED9C6;
+  --check-bg:transparent; --check-fg:#6C7A7D; --check-bd:#C7CFCD;
+  --serif:Georgia,'Iowan Old Style','Palatino Linotype','Times New Roman',serif;
+  --sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono','JetBrains Mono','Cascadia Code',Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#0E1417; --card:#151E22; --ink:#E4EBEC; --muted:#9DAEB0; --faint:#7E9093;
+    --line:#243035; --line2:#1C262A;
+    --accent:#37C2B8; --accent-soft:#57d0c7; --gold:#DFB35C;
+    --taken-bg:#3A211C; --taken-fg:#EB9584; --taken-bd:#5A2E26;
+    --free-bg:#182E22; --free-fg:#7FC79A; --free-bd:#274A36;
+    --check-bg:transparent; --check-fg:#95A6A9; --check-bd:#334247;
+  }
+}
+:root[data-theme="light"]{
+  --paper:#EFF2F1; --card:#FBFCFB; --ink:#182226; --muted:#5C6B6E; --faint:#7E8D90;
+  --line:#D8DEDC; --line2:#E7EBEA; --accent:#12857E; --accent-soft:#0f6f69; --gold:#B08327;
+  --taken-bg:#F6E2DC; --taken-fg:#9C3A28; --taken-bd:#E4B9AE;
+  --free-bg:#DFEEE2; --free-fg:#2E6B45; --free-bd:#BED9C6;
+  --check-bg:transparent; --check-fg:#6C7A7D; --check-bd:#C7CFCD;
+}
+:root[data-theme="dark"]{
+  --paper:#0E1417; --card:#151E22; --ink:#E4EBEC; --muted:#9DAEB0; --faint:#7E9093;
+  --line:#243035; --line2:#1C262A; --accent:#37C2B8; --accent-soft:#57d0c7; --gold:#DFB35C;
+  --taken-bg:#3A211C; --taken-fg:#EB9584; --taken-bd:#5A2E26;
+  --free-bg:#182E22; --free-fg:#7FC79A; --free-bd:#274A36;
+  --check-bg:transparent; --check-fg:#95A6A9; --check-bd:#334247;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+
+/* Masthead */
+.mast{max-width:1180px;margin:0 auto;padding:56px 28px 8px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 14px}
+.mast h1.title{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5vw,50px);
+  line-height:1.08;margin:0 0 14px;letter-spacing:-.01em;text-wrap:balance;max-width:20ch}
+.lede{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:64ch;margin:0 0 22px}
+.metaline{font-family:var(--mono);font-size:12.5px;color:var(--faint);display:flex;
+  flex-wrap:wrap;gap:6px 18px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.metaline b{color:var(--ink);font-weight:600}
+
+/* stat strip */
+.stats{max-width:1180px;margin:26px auto 0;padding:0 28px;display:grid;
+  grid-template-columns:repeat(6,1fr);gap:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat .n{font-family:var(--mono);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;
+  line-height:1;letter-spacing:-.02em}
+.stat.gold .n{color:var(--gold)} .stat.tk .n{color:var(--taken-fg)} .stat.ac .n{color:var(--accent)}
+.stat .l{font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.3}
+
+/* country KPI */
+.kpi{max-width:1180px;margin:16px auto 0;padding:0 28px;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:14px}
+.cc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;
+  position:relative;overflow:hidden}
+.cc:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.cc h3{margin:0 0 2px;font-family:var(--mono);font-size:20px;font-weight:600;letter-spacing:.01em}
+.cc .cn{font-size:12px;color:var(--faint);text-transform:uppercase;letter-spacing:.12em;margin-bottom:11px}
+.cc ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.cc li{font-size:13px;color:var(--muted);padding-left:16px;position:relative;line-height:1.4}
+.cc li:before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;
+  background:var(--accent);opacity:.7}
+.cc li b{color:var(--ink);font-weight:600}
+
+/* callout */
+.callout{max-width:1180px;margin:16px auto 0;padding:0 28px}
+.callout .box{background:var(--taken-bg);border:1px solid var(--taken-bd);border-radius:14px;
+  padding:16px 20px;display:flex;gap:14px;align-items:flex-start}
+.callout .ic{font-size:20px;line-height:1.4}
+.callout .box p{margin:0;font-size:13.5px;color:var(--ink)}
+.callout .box b{color:var(--taken-fg)}
+
+/* layout: toc + report */
+.layout{max-width:1180px;margin:34px auto 60px;padding:0 28px;display:grid;
+  grid-template-columns:236px minmax(0,1fr);gap:40px;align-items:start}
+.toc{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow:auto;
+  border-left:1px solid var(--line);padding:2px 0 2px 16px}
+.toc .th{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:12px}
+.toc a{display:block;font-size:12.5px;color:var(--muted);padding:4px 0;line-height:1.35;
+  border-bottom:1px solid transparent}
+.toc a.t1{color:var(--ink);font-weight:600;margin-top:10px}
+.toc a.t2{padding-left:12px}
+.toc a:hover{color:var(--accent);text-decoration:none}
+
+/* report body */
+.report{min-width:0;font-size:15.5px}
+.report h1{font-family:var(--serif);font-weight:600;font-size:26px;margin:52px 0 14px;
+  padding-top:20px;border-top:2px solid var(--line);letter-spacing:-.01em;text-wrap:balance}
+.report > h1:first-child{border-top:none;padding-top:0;margin-top:0;font-size:15px;
+  color:var(--faint);font-family:var(--mono);font-weight:500;letter-spacing:.04em}
+.report h2{font-family:var(--serif);font-weight:600;font-size:22px;margin:40px 0 12px;
+  padding-bottom:8px;border-bottom:1px solid var(--line);letter-spacing:-.01em;text-wrap:balance}
+.report h3{font-family:var(--sans);font-weight:700;font-size:16px;margin:26px 0 10px;color:var(--ink)}
+.report h4{font-family:var(--mono);font-weight:600;font-size:13px;margin:20px 0 8px;
+  color:var(--accent);letter-spacing:.02em}
+.report p{margin:0 0 14px;max-width:74ch}
+.report ul,.report ol{margin:0 0 16px;padding-left:22px;max-width:74ch}
+.report li{margin:5px 0}
+.report strong{font-weight:650;color:var(--ink)}
+.report blockquote{margin:0 0 16px;padding:12px 18px;background:var(--card);
+  border-left:3px solid var(--gold);border-radius:0 8px 8px 0;color:var(--muted);font-size:14px}
+.report blockquote p{margin:0;max-width:none}
+.report hr{border:none;border-top:1px solid var(--line2);margin:34px 0}
+.report code{font-family:var(--mono);font-size:.9em;background:var(--line2);
+  padding:1px 6px;border-radius:5px}
+.report code.dom{background:transparent;color:var(--accent);font-weight:600;padding:0;font-size:.94em}
+
+/* tables */
+.twrap{overflow-x:auto;margin:0 0 20px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+thead th{background:var(--line2);text-align:left;font-weight:600;font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:10px 13px;
+  white-space:nowrap;position:sticky;top:0}
+tbody td{padding:10px 13px;border-top:1px solid var(--line);vertical-align:top;line-height:1.45}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--card) 100%,var(--ink) 3%)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:12.5px}
+.sigcell{white-space:nowrap}
+
+/* tier badges */
+.tier{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  letter-spacing:.06em;padding:2px 8px;border-radius:20px;border:1px solid transparent}
+.tier.ultra{color:var(--gold);border-color:var(--gold);
+  background:color-mix(in srgb,var(--gold) 14%,transparent)}
+.tier.high{color:var(--accent);border-color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.tier.mid{color:var(--faint);border-color:var(--line);background:transparent}
+
+/* chips */
+.chip{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:20px;
+  border:1px solid;line-height:1.5}
+.chip.taken{background:var(--taken-bg);color:var(--taken-fg);border-color:var(--taken-bd)}
+.chip.free{background:var(--free-bg);color:var(--free-fg);border-color:var(--free-bd)}
+.chip.check{background:var(--check-bg);color:var(--check-fg);border-color:var(--check-bd);font-weight:500}
+
+/* collapsible category */
+details.cat{border:1px solid var(--line);border-radius:12px;margin:0 0 12px;background:var(--card);overflow:hidden}
+details.cat > summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:14px;
+  list-style:none;display:flex;align-items:center;gap:10px}
+details.cat > summary::-webkit-details-marker{display:none}
+details.cat > summary:before{content:"▸";color:var(--accent);font-size:12px;transition:transform .15s}
+details.cat[open] > summary:before{transform:rotate(90deg)}
+details.cat > summary:hover{color:var(--accent)}
+details.cat .twrap{border:none;border-top:1px solid var(--line);border-radius:0;margin:0}
+
+/* theme toggle */
+.tt{position:fixed;right:16px;top:16px;z-index:50;width:38px;height:38px;border-radius:10px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;
+  font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.tt:hover{border-color:var(--accent);color:var(--accent)}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:8px}
+  .toc{display:none}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .kpi{grid-template-columns:1fr}
+}
+@media (max-width:520px){ .stats{grid-template-columns:repeat(2,1fr)} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<button class="tt" id="tt" aria-label="Переключить тему">☾</button>
+
+<header class="mast">
+  <p class="eyebrow">Deep research · Domain investing · Central Asia</p>
+  <h1 class="title">Ценные и потенциально свободные домены .kg / .kz / .uz</h1>
+  <p class="lede">Аналитический отчёт для инвестора, совмещающего перепродажу и запуск собственных проектов в Кыргызстане, Казахстане и Узбекистане.</p>
+  <div class="metaline">
+    <span><b>20 июля 2026</b></span>
+    <span>3 рынка ccTLD</span>
+    <span>24 агента</span>
+    <span>7 категорий × 3 страны</span>
+    <span>60 источников</span>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="stat ac"><div class="n">278</div><div class="l">кандидатов всего</div></div>
+  <div class="stat gold"><div class="n">14</div><div class="l">тир ULTRA</div></div>
+  <div class="stat"><div class="n">168</div><div class="l">тир HIGH</div></div>
+  <div class="stat tk"><div class="n">10</div><div class="l">вероятно заняты</div></div>
+  <div class="stat"><div class="n">25</div><div class="l">приоритетных целей</div></div>
+  <div class="stat"><div class="n">60</div><div class="l">источников</div></div>
+</section>
+
+<section class="kpi">
+  <div class="cc">
+    <h3>.kg</h3><div class="cn">Кыргызстан</div>
+    <ul>
+      <li><b>Самый открытый</b> для иностранцев — резиденты и нерезиденты, first-come</li>
+      <li><b>Нет IDN</b> (кириллица .кг не работает) — только латиница/транслит</li>
+      <li>Рынок наименьший; цена регистрации варьируется в 4× между регистраторами</li>
+      <li>Сильные ниши: <b>туризм</b> и переводы/обменники</li>
+    </ul>
+  </div>
+  <div class="cc">
+    <h3>.kz</h3><div class="cn">Казахстан</div>
+    <ul>
+      <li><b>Крупнейший и платёжеспособный</b> рынок; флагман финтеха — Kaspi</li>
+      <li>Владеть может нерезидент, но <b>DNS+хостинг в РК</b> + HTTPS обязательны</li>
+      <li>Регистрация только через аккредитованного KZ-регистратора</li>
+      <li>Сильные ниши: <b>финтех, крипто, опт</b></li>
+    </ul>
+  </div>
+  <div class="cc">
+    <h3>.uz</h3><div class="cn">Узбекистан</div>
+    <ul>
+      <li>Большой рынок (~<b>37 млн</b>); бум финтеха и маркетплейсов</li>
+      <li>Родные keyword: pul, bozor, savdo, hamyon — сильная локальная релевантность</li>
+      <li><b>Правила реестра требуют отдельной проверки</b> — главный правовой риск</li>
+      <li>Сильные ниши: <b>e-commerce, финтех</b> по масштабу населения</li>
+    </ul>
+  </div>
+</section>
+
+<section class="callout">
+  <div class="box">
+    <div class="ic">⚠️</div>
+    <p><b>Доступность НЕ проверялась вживую.</b> Прямой доступ к WHOIS/RDAP реестров был заблокирован сетевой политикой окружения. Каждый домен — <b>цель для проверки</b>, а не подтверждённо свободное имя. Сигнал занятости — косвенный (наличие активного сайта в поиске), не WHOIS-факт. Пошаговая проверка — в разделе 8.</p>
+  </div>
+</section>
+<div class="layout"><nav class="toc"><div class="th">Содержание</div><a class="t2" href="#_1">Важнейшая оговорка о достоверности (прочитать до всего остального)</a>
+<a class="t2" href="#1-executive-summary">1. Резюме (Executive Summary)</a>
+<a class="t2" href="#2-kg-kz-uz">2. Обзор рынков доменов .kg / .kz / .uz</a>
+<a class="t2" href="#3">3. Экономика и денежные ниши региона</a>
+<a class="t2" href="#4">4. Как оценивается стоимость домена</a>
+<a class="t2" href="#5">5. Лексикон ценных ключевых слов</a>
+<a class="t2" href="#6-">6. Списки доменов-кандидатов</a>
+<a class="t2" href="#7-25">7. Топ-25 приоритетных целей</a>
+<a class="t2" href="#8">8. Пошаговая инструкция: проверка доступности и регистрация</a>
+<a class="t2" href="#9">9. Риски и оговорки</a>
+<a class="t2" href="#10-30">10. План действий на 30 дней</a>
+<a class="t1" href="#a-278">Приложение A. Полный каталог кандидатов (278 доменов)</a>
+<a class="t2" href="#a1">A.1. Короткие / премиум</a>
+<a class="t2" href="#a2">A.2. Финтех / крипто</a>
+<a class="t2" href="#a3-e-commerce">A.3. E-commerce / маркетплейсы</a>
+<a class="t2" href="#a4">A.4. Туризм / услуги</a>
+<a class="t2" href="#a5-generic">A.5. Гео / локальные generic</a>
+<a class="t2" href="#a6-ai-emerging">A.6. Технологии / AI / emerging</a>
+<a class="t2" href="#a7">A.7. Локальный лексикон (родные слова)</a>
+<a class="t1" href="#b">Приложение B. Источники</a>
+<a class="t1" href="#c">Приложение C. Методология исследования</a></nav><main class="report"><h2 id="_1">⚠️ Важнейшая оговорка о достоверности (прочитать до всего остального)</h2>
+<p><strong>Доступность доменов в этом отчёте НЕ проверялась «вживую».</strong> Прямой доступ к реестрам (cctld.kg, nic.kz, cctld.uz), к WHOIS/RDAP и даже к нейтральным сайтам (Wikipedia, IANA, example.com) был заблокирован сетевой политикой окружения, в котором готовился материал. Все факты о реестрах взяты из вторичных источников (сниппеты поисковой выдачи), а не из первоисточников, прочитанных дословно.</p>
+<p>Практические следствия:</p>
+<ol>
+<li><strong>Ни один домен в отчёте нельзя считать гарантированно свободным.</strong> Кандидаты — это <em>цели для проверки</em>, а не подтверждённо доступные имена.</li>
+<li>Домены с пометкой <strong>LIKELY_TAKEN</strong> почти наверняка заняты (есть косвенные доказательства действующего сайта/бренда) — их нужно вычёркивать или рассматривать как объект переговоров о выкупе, а не регистрации.</li>
+<li>Всё остальное помечено как <strong>«требует проверки»</strong> — это статус UNKNOWN, а не «свободно».</li>
+<li>Цены реестров, требования резидентства и точные формулировки правил нужно <strong>перепроверить на первоисточниках</strong> до любого денежного решения.</li>
+</ol>
+<p>Пошаговая инструкция проверки — в разделе 8.</p>
+<hr />
+<h2 id="1-executive-summary">1. Резюме (Executive Summary)</h2>
+<p><strong>Суть возможности.</strong> Три центральноазиатских ccTLD (.kg, .kz, .uz) сочетают короткие, ещё не полностью разобранные словарные и keyword-домены с быстрорастущими цифровыми экономиками (финтех, e-commerce, туризм). Это создаёт две разные стратегии: (а) <strong>строительство собственного проекта</strong> на точном keyword-домене — где ценность домена реализуется через ваш бизнес; (б) <strong>перепродажа</strong> — где ценность реализуется через продажу третьему лицу.</p>
+<p><strong>Ключевые выводы, которые нужно принять трезво:</strong></p>
+<ul>
+<li><strong>Резалтный рынок ccTLD Центральной Азии — тонкий.</strong> Ликвидность перепродажи .kg/.kz/.uz на порядки ниже, чем у .com. Публичных сделок, аукционов и активных брокеров почти нет. Домен может «стоить $2000» по логике keyword-ценности и при этом <strong>не иметь покупателя годами</strong>. Флиппинг здесь работает в основном как <em>продажа конкретному локальному бизнесу</em> («end-user sale»), а не как биржевая торговля.</li>
+<li><strong>Настоящая ценность этих доменов — операционная, а не спекулятивная.</strong> <code>optom.kz</code>, <code>sklad.kg</code>, <code>taksi.uz</code> стоят дорого не потому, что их легко перепродать, а потому что на них можно <em>построить трафиковый бизнес</em>. Для инвестора с двойной целью логичнее смещать акцент в сторону «строю сам / держу под проект», а перепродажу рассматривать как бонусный сценарий.</li>
+<li><strong>.kz — самый крупный и платёжеспособный рынок</strong>, но с важной технической оговоркой: сам домен второго уровня может зарегистрировать нерезидент, однако <strong>серверы (DNS и хостинг) должны физически находиться в Казахстане</strong>, плюс требование HTTPS. Это не барьер владения, но барьер эксплуатации.</li>
+<li><strong>.kg — самый открытый для иностранцев</strong> (регистрируют и резиденты, и нерезиденты), без IDN-кириллицы, дешевле по цене регистрации у реестра, но с самым маленьким рынком.</li>
+<li><strong>.uz</strong> — крупный рынок по населению (~37 млн), сильный бум финтеха и маркетплейсов; данные по правилам реестра в этом брифе наиболее скудные и требуют отдельной верификации.</li>
+<li><strong>Реалистичные ожидания по деньгам:</strong> большинство «HIGH»-доменов реально продаются локальному бизнесу в диапазоне <strong>сотен долларов</strong>, редкие ликвидные keyword — низкие тысячи. Оценки «$/ULTRA» в таблицах ниже — это <em>потолок при идеальном покупателе</em>, а не медиана. Не закладывайте их в модель как ожидаемую выручку.</li>
+</ul>
+<p><strong>Рекомендованная стратегия в одну фразу:</strong> регистрируйте недорого небольшой портфель точных keyword-доменов под <em>конкретные</em> проектные гипотезы (финтех, доставка, туризм), держите издержки владения низкими, а перепродажу стройте через прямые продажи локальным операторам, а не через ожидание рыночной ликвидности.</p>
+<hr />
+<h2 id="2-kg-kz-uz">2. Обзор рынков доменов .kg / .kz / .uz</h2>
+<h3 id="_2">Сравнительная таблица</h3>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th><strong>.kg</strong> (Кыргызстан)</th>
+<th><strong>.kz</strong> (Казахстан)</th>
+<th><strong>.uz</strong> (Узбекистан)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Реестр / оператор</td>
+<td>AsiaInfo Telecommunication Enterprise («ASIAINFO» LLC), Бишкек</td>
+<td>Association of IT Companies of Kazakhstan (спонсор); операционный оператор — <strong>KazNIC</strong> (nic.kz)</td>
+<td>Госрегулятор связи Узбекистана; оператор реестра cctld.uz <em>(данные требуют верификации)</em></td>
+</tr>
+<tr>
+<td>Делегирование IANA</td>
+<td>Июль 1995</td>
+<td>1994</td>
+<td>— <em>(требует проверки)</em></td>
+</tr>
+<tr>
+<td>Кто может регистрировать (2-й уровень)</td>
+<td>Резиденты <strong>и нерезиденты</strong>, физ- и юрлица. Один источник упоминает требование кыргызского персонального ID — <strong>противоречиво, не подтверждено</strong></td>
+<td>Резиденты <strong>и нерезиденты</strong>, физ- и юрлица, first-come-first-served. Требуется копия удостоверения/паспорта в WHOIS-запись</td>
+<td>Исторически .uz часто требовал локального присутствия/резидентства для ряда зон — <strong>обязательно перепроверить</strong></td>
+</tr>
+<tr>
+<td>Требование резидентства владельца</td>
+<td>Не выявлено чёткого требования</td>
+<td><strong>Нет</strong> требования резидентства для владения</td>
+<td><strong>Требует проверки</strong> (риск ограничений выше, чем в .kg/.kz)</td>
+</tr>
+<tr>
+<td>Технические требования эксплуатации</td>
+<td>Не выявлено</td>
+<td><strong>DNS и хостинг физически в Казахстане</strong> + требование HTTPS/SSL; несоблюдение → возможна приостановка</td>
+<td>Требует проверки (возможны требования к локальному хостингу)</td>
+</tr>
+<tr>
+<td>IDN / кириллица</td>
+<td><strong>Нет</strong> поддержки (.кг не работает); только ASCII</td>
+<td>Есть кириллический вариант .қаз/.kz-практики — <strong>уточнить</strong>; латиница стандартна</td>
+<td>Латиница стандартна; уточнить</td>
+</tr>
+<tr>
+<td>Длина / синтаксис</td>
+<td>2–63 или 3–63 символа (источники расходятся); ASCII буквы/цифры/дефис, без ведущего/замыкающего/двойного дефиса</td>
+<td>Стандартные LDH-правила</td>
+<td>Стандартные LDH-правила</td>
+</tr>
+<tr>
+<td>Третий уровень (открытые)</td>
+<td>com.kg, net.kg, org.kg, edu.kg</td>
+<td>com.kz (коммерч.), — <em>остальные ограничены</em></td>
+<td>co.uz, com.uz и др. <em>(уточнить)</em></td>
+</tr>
+<tr>
+<td>Третий уровень (ограниченные)</td>
+<td><strong>gov.kg, mil.kg</strong> — только госструктуры</td>
+<td>org.kz (НКО), edu.kz (лиценз. вузы), net.kz (операторы связи), gov.kz (госорганы), mil.kz (Минобороны)</td>
+<td>gov.uz, mil.uz и др.</td>
+</tr>
+<tr>
+<td>com.kz / com.kg — нужен ли товарный знак/юрлицо?</td>
+<td>com.kg открыт</td>
+<td><strong>Нет</strong> требования иметь товарный знак или казахстанское юрлицо для com.kz; практически — документарная верификация + KZ-хостинг</td>
+<td>Требует проверки</td>
+</tr>
+<tr>
+<td>Цена регистрации (ориентир)</td>
+<td>~$65–282/год у сторонних регистраторов; реестр биллит в KGS + НДС/налог</td>
+<td>Через аккредитованных KZ-регистраторов; ориентир — десятки USD/год <em>(уточнить у регистратора)</em></td>
+<td>Через локальных регистраторов <em>(уточнить)</em></td>
+</tr>
+<tr>
+<td>Премиум / зарезервированные</td>
+<td>Нет публичного премиум-прайса; gov/mil зарезервированы</td>
+<td>Категорийные зоны зарезервированы; премиум-листов не выявлено</td>
+<td>Требует проверки</td>
+</tr>
+<tr>
+<td>Проверка доступности</td>
+<td>WHOIS: cctld.kg/en/whois; хост whois.kg; RDAP: rdap.cctld.kg</td>
+<td>WHOIS через nic.kz; регистраторы</td>
+<td>WHOIS через cctld.uz / локальные регистраторы</td>
+</tr>
+<tr>
+<td>Споры (UDRP)</td>
+<td><strong>НЕ</strong> входит в UDRP; разбор через регламент реестра + суды КР</td>
+<td>Регулируется приказами Мининформ/ИИ-развития; споры по нац. правилам</td>
+<td>Национальные правила; UDRP-статус уточнить</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="kg">.kg — ключевое</h3>
+<ul>
+<li>Самый дружелюбный к иностранному регистранту TLD из трёх. Аллокация — first-come-first-served.</li>
+<li><strong>Нет IDN</strong> — кириллические варианты невозможны, работаем только с латиницей/транслитом.</li>
+<li>Цена у сторонних регистраторов варьируется в 4+ раза ($65 → $282), поэтому выбор регистратора критичен для издержек владения портфеля.</li>
+<li>Свежайшая новость реестра — пилот бесплатной регистрации NET.KG для резидентов КР (студенты, люди с инвалидностью), июль 2024. Для инвестора это нерелевантно (льгота для резидентов), но показывает, что политика реестра меняется — проверяйте актуальные тарифы.</li>
+<li>Дисклеймер: сам оператор биллит в сомах (KGS) с НДС-подобными надбавками; долларовые цифры выше — от агрегаторов, не от реестра.</li>
+</ul>
+<h3 id="kz">.kz — ключевое</h3>
+<ul>
+<li>Крупнейший и самый платёжеспособный рынок региона; развитый финтех (Kaspi.kz как флагман).</li>
+<li>Владеть доменом нерезидент может, <strong>но эксплуатировать нужно с казахстанского хостинга</strong> (DNS + контент в РК) и по HTTPS. Это реальная операционная стоимость: при строительстве проекта закладывайте локальный хостинг; при чистом холде под перепродажу — риск приостановки за несоблюдение технических правил (уточните, применяется ли правило к «припаркованным» доменам).</li>
+<li>Регистраторы — аккредитованные казахстанские юрлица; работать придётся через локального регистратора (напр., reg.gov.kz и коммерческие).</li>
+<li>com.kz доступен без товарного знака и без казахстанского юрлица — удобная альтернатива, если нужное имя во втором уровне занято.</li>
+</ul>
+<h3 id="uz">.uz — ключевое</h3>
+<ul>
+<li>Наименее верифицированный в этом исследовании реестр. Исторически .uz имел более строгие требования к присутствию для отдельных зон — <strong>это главный правовой риск, требующий проверки перед покупкой.</strong></li>
+<li>Рынок большой (население, растущий финтех — Payme, Click; маркетплейсы), keyword-домены на узбекском (pul, bozor, savdo, ish) обладают сильной локальной релевантностью.</li>
+</ul>
+<hr />
+<h2 id="3">3. Экономика и денежные ниши региона</h2>
+<p>Где концентрируется платёжеспособный спрос и, соответственно, ценность keyword-доменов:</p>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Сектор</th>
+<th>Почему «денежный»</th>
+<th>Сильнее всего в</th>
+<th>Примеры keyword-корней</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Финтех / платежи / переводы</strong></td>
+<td>Бум мобильных платежей, денежные переводы (крупные потоки трудовой миграции в КГ/УЗ), микрозаймы, необанки. Kaspi (KZ), Payme/Click (UZ) задают планку.</td>
+<td>KZ (глубина), UZ (масштаб), KG (переводы)</td>
+<td>pay, akcha/aqsha/pul, tolom/tolem/tolov, zaim/kredit, koshelek/hamyon, birja</td>
+</tr>
+<tr>
+<td><strong>Крипто / обмен валют</strong></td>
+<td>Регулируемые крипто-инициативы (KZ — майнинг/биржи; UZ — регулируемый рынок), повсеместные обменники валют.</td>
+<td>KZ, UZ</td>
+<td>kripto, obmen, valuta/valyuta, birja, neobank</td>
+</tr>
+<tr>
+<td><strong>E-commerce / маркетплейсы / опт</strong></td>
+<td>Оптовая торговля (базары Бишкека, Ташкента), рост доставки, классифайды.</td>
+<td>Все три</td>
+<td>optom, sklad/ombor, zakaz, dostavka, skidki/chegirma, kupi/xarid, bozor/savdo/sauda</td>
+</tr>
+<tr>
+<td><strong>Туризм</strong></td>
+<td>КГ — мировой горный/номадический туризм (Иссык-Куль, Каракол, треккинг); KZ — растущий внутренний/въездной; UZ — Самарканд/Бухара (не в выборке кандидатов, но потенциал).</td>
+<td>KG (профиль), KZ, UZ</td>
+<td>issykkul, trekking, nomad, sayakat, ski, turizm, kurort, tur</td>
+</tr>
+<tr>
+<td><strong>Работа / HR</strong></td>
+<td>Активные job-рынки; трудовая мобильность.</td>
+<td>Все три</td>
+<td>job/ish, rabota (занято лидерами)</td>
+</tr>
+<tr>
+<td><strong>Транспорт / такси / авто</strong></td>
+<td>Массовый спрос на такси и авто-классифайды.</td>
+<td>Все три</td>
+<td>taxi/taksi, car/avto</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Привязка к странам (короткий ориентир):</strong>
+- <strong>KG</strong> — сильнее всего туризм и переводы/обменники; самый открытый TLD → удобен для экспериментов и холда.
+- <strong>KZ</strong> — сильнее всего финтех/крипто/опт; самый платёжеспособный, но с хостинг-требованием.
+- <strong>UZ</strong> — сильнее всего e-commerce/маркетплейсы и финтех по масштабу населения; правовые требования — главный риск.</p>
+<hr />
+<h2 id="4">4. Как оценивается стоимость домена</h2>
+<h3 id="_3">Фреймворк оценки (что реально двигает цену)</h3>
+<ol>
+<li><strong>Длина.</strong> 3-буквенные (pay, top, car, box) и короткие 4-буквенные — самый ликвидный класс. Каждая лишняя буква снижает брендируемость.</li>
+<li><strong>Точность ключевого слова.</strong> Домен, равный высокочастотному коммерческому запросу на языке аудитории (<code>optom</code>, <code>zaim</code>, <code>taksi</code>), имеет встроенный SEO/type-in трафик → операционную ценность.</li>
+<li><strong>Брендируемость.</strong> Легко произносится, пишется без ошибок, не требует объяснений (nova, zeta, luxe). Важнее для стартап-продажи, чем keyword-точность.</li>
+<li><strong>Ликвидность.</strong> Есть ли <em>несколько</em> потенциальных покупателей? У <code>pay.kz</code> — теоретически много финтех-претендентов; у <code>optommarket.kg</code> — единицы. Ликвидность, а не «красота», определяет реальную выручку.</li>
+<li><strong>ccTLD-дисконт.</strong> Ключевой и часто игнорируемый фактор: <strong>тот же keyword в ccTLD Центральной Азии стоит кратно дешевле, чем в .com</strong>, потому что рынок покупателей узкий и локальный. Не переносите .com-логику цен на .kg/.kz/.uz.</li>
+<li><strong>Язык.</strong> Латинский транслит местного слова (akcha, bozor, tolom) ценен для локального бизнеса, но почти бесполезен для международной перепродажи → ещё сужает пул покупателей.</li>
+</ol>
+<h3 id="_4">Реалистичные диапазоны (честно)</h3>
+<ul>
+<li><strong>Медиана реальной сделки по keyword-ccTLD региону</strong> — чаще всего <strong>$100–800</strong>, при прямой продаже конкретному локальному бизнесу.</li>
+<li><strong>Верхние тысячи ($1–5k+)</strong> достижимы только для по-настоящему коротких/ликвидных (<code>pay.*</code>, <code>optom.kz</code>) и только при наличии мотивированного покупателя — что может не случиться никогда.</li>
+<li>Оценки «$2000–9000 / ULTRA» в таблицах ниже — <strong>это оценочный потолок keyword-ценности, а не ожидаемая цена продажи.</strong> Относитесь к ним как к «сколько это <em>могло бы</em> стоить нужному покупателю», а не «сколько вы выручите».</li>
+</ul>
+<h3 id="_5">Маркетплейсы и каналы</h3>
+<ul>
+<li><strong>Международные:</strong> Sedo, Dan.com/Afternic, GoDaddy Auctions — теоретически принимают ccTLD, но <strong>спрос на .kg/.kz/.uz там почти нулевой</strong>. Полезны как «витрина», не как источник продаж.</li>
+<li><strong>Реальный канал продажи в регионе:</strong> прямой аутрич локальному бизнесу (компания в нужной нише, которой ваш keyword-домен закрывает потребность), локальные объявления, профильные Telegram-сообщества. Это «end-user sales», ручная работа.</li>
+<li><strong>Публичных подтверждённых сделок/листингов по этим TLD найти не удалось</strong> (окружение блокировало проверку). Не полагайтесь на «сравнимые продажи» — их прозрачной базы по этим зонам практически нет.</li>
+</ul>
+<h3 id="_6">Предупреждение против хайпа</h3>
+<p>Не стройте портфель в расчёте на пассивную капитализацию. В тонком рынке домен без покупателя = ежегодный расход без дохода. Единственная надёжная монетизация здесь — <strong>вы сами строите на домене трафиковый продукт</strong> либо <strong>находите одного конкретного покупателя вручную</strong>.</p>
+<hr />
+<h2 id="5">5. Лексикон ценных ключевых слов</h2>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Значение</th>
+<th>RU (транслит)</th>
+<th>KY (кыргыз., транслит)</th>
+<th>KZ (казах., транслит)</th>
+<th>UZ (узбек., транслит)</th>
+<th>EN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Деньги</td>
+<td>dengi</td>
+<td>akcha</td>
+<td>aqsha / aksha</td>
+<td>pul</td>
+<td>money</td>
+</tr>
+<tr>
+<td>Платёж</td>
+<td>platyozh</td>
+<td>tolom (төлөм)</td>
+<td>tolem (төлем)</td>
+<td>tolov (to'lov)</td>
+<td>pay / payment</td>
+</tr>
+<tr>
+<td>Кошелёк</td>
+<td>koshelek</td>
+<td>—</td>
+<td>—</td>
+<td>hamyon</td>
+<td>wallet</td>
+</tr>
+<tr>
+<td>Заём / кредит</td>
+<td>zaim, kredit</td>
+<td>—</td>
+<td>zaim, mikrokredit</td>
+<td>qarz, kredit</td>
+<td>loan / credit</td>
+</tr>
+<tr>
+<td>Обмен валют</td>
+<td>obmen, valuta</td>
+<td>valuta</td>
+<td>obmen, valuta</td>
+<td>obmen, valyuta</td>
+<td>exchange</td>
+</tr>
+<tr>
+<td>Биржа</td>
+<td>birja</td>
+<td>birja</td>
+<td>birja</td>
+<td>birja</td>
+<td>exchange (bourse)</td>
+</tr>
+<tr>
+<td>Торговля</td>
+<td>torgovlya</td>
+<td>—</td>
+<td>sauda</td>
+<td>savdo</td>
+<td>trade</td>
+</tr>
+<tr>
+<td>Магазин</td>
+<td>magazin</td>
+<td>—</td>
+<td>duken (дүкен)</td>
+<td>dokon (do'kon)</td>
+<td>shop</td>
+</tr>
+<tr>
+<td>Рынок / базар</td>
+<td>rynok, bazar</td>
+<td>bazar</td>
+<td>bazar</td>
+<td>bozor</td>
+<td>market / bazaar</td>
+</tr>
+<tr>
+<td>Оптом</td>
+<td>optom</td>
+<td>optom</td>
+<td>optom</td>
+<td>optom</td>
+<td>wholesale</td>
+</tr>
+<tr>
+<td>Товар</td>
+<td>tovar</td>
+<td>tovar</td>
+<td>tauar</td>
+<td>mahsulot</td>
+<td>goods</td>
+</tr>
+<tr>
+<td>Склад</td>
+<td>sklad</td>
+<td>sklad</td>
+<td>sklad</td>
+<td>ombor</td>
+<td>warehouse</td>
+</tr>
+<tr>
+<td>Скидка</td>
+<td>skidka</td>
+<td>skidki</td>
+<td>skidka</td>
+<td>chegirma</td>
+<td>discount</td>
+</tr>
+<tr>
+<td>Покупка / купить</td>
+<td>kupi, pokupka</td>
+<td>kupi</td>
+<td>kupi, satyp alu</td>
+<td>xarid</td>
+<td>buy</td>
+</tr>
+<tr>
+<td>Доставка</td>
+<td>dostavka</td>
+<td>dostavim</td>
+<td>dostavim</td>
+<td>yetkazib</td>
+<td>delivery</td>
+</tr>
+<tr>
+<td>Работа</td>
+<td>rabota</td>
+<td>ish/job</td>
+<td>jumys</td>
+<td>ish</td>
+<td>job</td>
+</tr>
+<tr>
+<td>Путешествие / тур</td>
+<td>tur, puteshestvie</td>
+<td>sayakat</td>
+<td>turizm</td>
+<td>sayohat, tur</td>
+<td>travel</td>
+</tr>
+<tr>
+<td>Такси</td>
+<td>taksi</td>
+<td>taksi</td>
+<td>taksi</td>
+<td>taksi</td>
+<td>taxi</td>
+</tr>
+<tr>
+<td>Авто</td>
+<td>avto</td>
+<td>—</td>
+<td>avto</td>
+<td>avto</td>
+<td>car</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="6-">6. Списки доменов-кандидатов</h2>
+<p><strong>Легенда статуса занятости:</strong>
+- <strong>LIKELY_TAKEN</strong> — есть косвенные признаки действующего сайта/бренда; вероятно занят (перепроверить, при интересе — переговоры о выкупе).
+- <strong>требует проверки</strong> — статус UNKNOWN; НЕ означает «свободно». Обязательна живая WHOIS-проверка.</p>
+<blockquote>
+<p>Колонка «Оценка $» = оценочный потолок keyword-ценности, НЕ ожидаемая цена продажи (см. раздел 4).</p>
+</blockquote>
+<h3 id="61-short-premium">6.1 Короткие премиум-домены (short-premium)</h3>
+<h4 id="kg_1">.kg</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">pay.kg</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">2 500–6 000</span></td>
+<td>3-букв. глобальный keyword платежей</td>
+<td class="sigcell"><span class="chip check">требует проверки (нет прямого сайта; рядом gopay.kg, balance.kg)</span></td>
+</tr>
+<tr>
+<td><code class="dom">akcha.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 200–3 000</span></td>
+<td>«Акча» — деньги по-кыргызски, корень финтеха</td>
+<td class="sigcell"><span class="chip check">требует проверки (есть Akchabar — другой домен)</span></td>
+</tr>
+<tr>
+<td><code class="dom">car.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">900–2 200</span></td>
+<td>Короткий keyword авторынка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">box.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 400</span></td>
+<td>Логистика/доставка/e-commerce</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">job.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 000</span></td>
+<td>Keyword рынка труда</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (FB/TG/IG «Job.kg», связка newjob.kg)</span></td>
+</tr>
+<tr>
+<td><code class="dom">top.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–1 800</span></td>
+<td>Универсальный keyword рейтингов/медиа</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">app.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–1 800</span></td>
+<td>Технокорень для приложений</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">biz.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">400–900</span></td>
+<td>Деловой keyword, B2B-каталоги</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">eco.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">400–1 000</span></td>
+<td>Эко-туризм/органика</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">vip.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">350–800</span></td>
+<td>Luxury-услуги</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nova.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>Звучное бренд-слово</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">luxe.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–650</span></td>
+<td>Маркер люкса</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zeta.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">250–600</span></td>
+<td>Нейтральное бренд-имя</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="kz_1">.kz</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">pay.kz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">4 000–9 000</span></td>
+<td>3-букв. платёжный keyword в самой платёжеспособной экономике</td>
+<td class="sigcell"><span class="chip check">требует проверки (рынок насыщен: Kaspi, paygate.kz)</span></td>
+</tr>
+<tr>
+<td><code class="dom">aqsha.kz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">2 000–5 000</span></td>
+<td>«Ақша» — деньги по-казахски</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">job.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 500–3 500</span></td>
+<td>Keyword рекрутинга</td>
+<td class="sigcell"><span class="chip check">требует проверки (лидеры — hh.kz, rabota.kz)</span></td>
+</tr>
+<tr>
+<td><code class="dom">car.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 500–3 500</span></td>
+<td>Крупный авторынок</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">gold.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 200–3 000</span></td>
+<td>Ювелирка/металлы/премиум</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tour.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 000–2 500</span></td>
+<td>Туризм растёт</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">cash.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 200–3 000</span></td>
+<td>Микрозаймы/кошельки/обмен</td>
+<td class="sigcell"><span class="chip check">требует проверки (рядом kz.cash, kzcash.kz)</span></td>
+</tr>
+<tr>
+<td><code class="dom">app.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 000–2 500</span></td>
+<td>Технокорень IT</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">taxi.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 200–3 000</span></td>
+<td>Такси-сервисы</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (действующая платформа такси, high confidence)</span></td>
+</tr>
+<tr>
+<td><code class="dom">top.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 000–2 500</span></td>
+<td>Keyword рейтингов</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (действующий сайт клининга, high confidence)</span></td>
+</tr>
+<tr>
+<td><code class="dom">vip.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">500–1 200</span></td>
+<td>Luxury</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">eco.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">500–1 200</span></td>
+<td>Зелёная повестка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nova.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">400–900</span></td>
+<td>Бренд-слово</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="uz_1">.uz</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">pay.uz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">2 000–5 000</span></td>
+<td>Платёжный keyword на фоне бума финтеха/переводов</td>
+<td class="sigcell"><span class="chip check">требует проверки (IG @pay.uz малоактивен; payme.uz и др.)</span></td>
+</tr>
+<tr>
+<td><code class="dom">pul.uz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">1 500–4 000</span></td>
+<td>«Пул» — деньги по-узбекски</td>
+<td class="sigcell"><span class="chip check">требует проверки (рядом pultop.uz)</span></td>
+</tr>
+<tr>
+<td><code class="dom">bozor.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">1 000–2 500</span></td>
+<td>«Бозор» — базар/рынок, бренд маркетплейса</td>
+<td class="sigcell"><span class="chip check">требует проверки (online-bozor.uz и др.)</span></td>
+</tr>
+<tr>
+<td><code class="dom">ish.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">900–2 200</span></td>
+<td>«Иш» — работа</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (действующая job-платформа, high confidence)</span></td>
+</tr>
+<tr>
+<td><code class="dom">savdo.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–1 800</span></td>
+<td>«Савдо» — торговля</td>
+<td class="sigcell"><span class="chip check">требует проверки (рядом b2b-savdo.uz)</span></td>
+</tr>
+<tr>
+<td><code class="dom">avto.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">900–2 200</span></td>
+<td>Авторынок (осн. конкурент auto.uz)</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">taksi.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 000</span></td>
+<td>Локальное «такси»</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">top.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 000</span></td>
+<td>Keyword рейтингов</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (действующий бизнес-портал, high confidence)</span></td>
+</tr>
+<tr>
+<td><code class="dom">app.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 000</span></td>
+<td>Технокорень</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tur.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–1 800</span></td>
+<td>Туризм</td>
+<td class="sigcell"><span class="chip check">требует проверки (рядом turar.uz)</span></td>
+</tr>
+<tr>
+<td><code class="dom">vip.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">400–950</span></td>
+<td>Luxury</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">eco.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">400–900</span></td>
+<td>Эко/органика</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nova.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">350–800</span></td>
+<td>Бренд-слово</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="62-fintech-crypto">6.2 Финтех / крипто (fintech-crypto)</h3>
+<h4 id="kg_2">.kg</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">kripto.kg</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">2 000–6 000</span></td>
+<td>Локальный «крипто» на растущем рынке</td>
+<td class="sigcell"><span class="chip check">требует проверки (есть FB Kripto.com.kg)</span></td>
+</tr>
+<tr>
+<td><code class="dom">zaim.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 200</span></td>
+<td>Микрокредиты/онлайн-займы</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sompay.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 500</span></td>
+<td>«Сом» + pay, платёжный бренд</td>
+<td class="sigcell"><span class="chip check">требует проверки (sompay.io и др., не .kg)</span></td>
+</tr>
+<tr>
+<td><code class="dom">obmenka.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 500</span></td>
+<td>«Обменка» — трафиковый бренд</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">akchapay.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–2 000</span></td>
+<td>«Акча» + pay, локальный платёжный бренд</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">koshelek.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 800</span></td>
+<td>E-wallet</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">birja.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–2 000</span></td>
+<td>Крипто-/валютная биржа</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">neobank.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 800</span></td>
+<td>Цифровой банкинг</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tolom.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–2 000</span></td>
+<td>«Төлөм» — платёж</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (действующий сервис проверки штрафов, high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">valuta.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 600</span></td>
+<td>Обмен/курсы</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (действующий сайт курсов + app, high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">mikrozaim.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">250–700</span></td>
+<td>Нишевый МФО-keyword</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">monety.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">200–600</span></td>
+<td>Криптомонеты/нумизматика</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="kz_2">.kz</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">aksha.kz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">2 500–8 000</span></td>
+<td>«Ақша» — деньги по-казахски</td>
+<td class="sigcell"><span class="chip check">требует проверки (рядом aksha-kz.com, akshabar.kz)</span></td>
+</tr>
+<tr>
+<td><code class="dom">tengepay.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 800</span></td>
+<td>«Тенге» + pay</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">qarjy.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 500</span></td>
+<td>«Қаржы» — финансы (казахизация брендов)</td>
+<td class="sigcell"><span class="chip check">требует проверки (есть digitalqarjy.kz)</span></td>
+</tr>
+<tr>
+<td><code class="dom">cryptopay.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 200</span></td>
+<td>Криптоплатежи, международно-читаемый</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">neobank.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 500</span></td>
+<td>Цифровой банкинг на развитом рынке</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">birja.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 400</span></td>
+<td>Крипто-/фондовая биржа</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">obmen.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 200</span></td>
+<td>Валютный/крипто-обмен</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zaim.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 200</span></td>
+<td>Онлайн-кредитование</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">koshelek.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–2 000</span></td>
+<td>E-wallet</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">valuta.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 800</span></td>
+<td>Курсы/обмен</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tolem.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">900–3 000</span></td>
+<td>«Төлем» — платёж</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (система Tolem, транспортная карта, high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">kripto.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">900–3 000</span></td>
+<td>Keyword крупнейшего крипторынка</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (действующий сайт, high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">mikrokredit.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">250–700</span></td>
+<td>Быстрые займы</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="uz_2">.uz</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">pulpay.uz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">2 000–6 000</span></td>
+<td>«Пул» + pay, предельно релевантно</td>
+<td class="sigcell"><span class="chip check">требует проверки (есть Android-app PulPay)</span></td>
+</tr>
+<tr>
+<td><code class="dom">tolov.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">900–3 000</span></td>
+<td>«To'lov» — платёж</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">hamyon.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 500</span></td>
+<td>«Hamyon» — кошелёк</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kripto.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 500</span></td>
+<td>Регулируемый крипторынок</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kredit.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 200</span></td>
+<td>Кредитные продукты</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">neobank.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 500</span></td>
+<td>Бум цифрового банкинга</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">fintech.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 500</span></td>
+<td>Отраслевой keyword для медиа/инкубаторов</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sompay.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 200</span></td>
+<td>«Сум/сом» + pay</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">birja.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–2 000</span></td>
+<td>Биржа</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">obmen.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 800</span></td>
+<td>Обмен (рус. аудитория)</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">valyuta.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 600</span></td>
+<td>Курсы/обмен</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">hamyonpay.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–900</span></td>
+<td>Кошелёк + pay</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">qarz.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–800</span></td>
+<td>«Qarz» — долг/P2P</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="63-e-commerce">6.3 E-commerce / маркетплейсы</h3>
+<h4 id="kg_3">.kg</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">optom.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 500</span></td>
+<td>«Оптом» — топ-запрос оптовиков Бишкека</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zakaz.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 200</span></td>
+<td>Магазины/доставка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kupi.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 200</span></td>
+<td>Призыв к покупке</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">skidki.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">400–1 000</span></td>
+<td>Купоны/акции</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sklad.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">400–1 000</span></td>
+<td>Логистика/хранение</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">torg.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">400–1 000</span></td>
+<td>Торговля/торги</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">dostavim.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">400–900</span></td>
+<td>Курьерские сервисы</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optommarket.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">350–800</span></td>
+<td>Оптовая площадка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">bazary.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>Маркетплейс/базары</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tovar.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">250–600</span></td>
+<td>Каталог товаров</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">rynok.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">250–700</span></td>
+<td>Маркетплейс/классифайд</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">prodam.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">250–600</span></td>
+<td>Доски объявлений</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optovik.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">200–500</span></td>
+<td>B2B-опт</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="kz_3">.kz</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">optom.kz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">2 000–5 000</span></td>
+<td>Огромный оптовый сегмент</td>
+<td class="sigcell"><span class="chip check">требует проверки (много *-optom.kz, но не bare)</span></td>
+</tr>
+<tr>
+<td><code class="dom">kupi.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 000</span></td>
+<td>Призыв к покупке</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sauda.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 000</span></td>
+<td>«Сауда» — торговля по-казахски</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zakaz.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–1 800</span></td>
+<td>Магазины/доставка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">duken.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–1 800</span></td>
+<td>«Дүкен» — магазин</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sklad.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 500</span></td>
+<td>Логистика/фулфилмент</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">skidka.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 500</span></td>
+<td>Купоны/акции</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">dostavim.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 400</span></td>
+<td>Курьерские сервисы</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optomarket.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 200</span></td>
+<td>B2B-площадка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tauar.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>«Тауар» — товар</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tovar.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">350–800</span></td>
+<td>Каталог</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optovik.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>B2B-опт</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">saudamarket.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>Локальная площадка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">prodam.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>Классифайды</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="uz_3">.uz</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">optom.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 000</span></td>
+<td>Топ-запрос оптовиков</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">arzon.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–1 800</span></td>
+<td>«Арзон» — дёшево, триггер дискаунтеров</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">xarid.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 400</span></td>
+<td>«Харид» — покупка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">dokon.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–1 600</span></td>
+<td>«Дўкон» — магазин</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">dostavka.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 500</span></td>
+<td>Логистика (рус. keyword)</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">chegirma.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 200</span></td>
+<td>«Чегирма» — скидка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optombozor.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 200</span></td>
+<td>Оптовый рынок</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">ombor.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">350–800</span></td>
+<td>«Омбор» — склад</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">mahsulot.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>«Махсулот» — товар</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">yetkazib.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>«Етказиб» — доставка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">savdogar.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>«Савдогар» — торговец, B2B</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">bozorcha.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–700</span></td>
+<td>Нишевый маркетплейс</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="64-travel-tourism">6.4 Туризм (travel-tourism)</h3>
+<h4 id="kg_4">.kg</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">issykkul.kg</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">2 000–6 000</span></td>
+<td>Главная тур-жемчужина КР, гео-домен</td>
+<td class="sigcell"><span class="chip taken"><strong>LIKELY_TAKEN</strong> (тур-сайт eng.issykkul.kg, medium)</span></td>
+</tr>
+<tr>
+<td><code class="dom">trekking.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">800–2 500</span></td>
+<td>КР — мировое направление треккинга</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nomad.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 200</span></td>
+<td>Номад-туризм, World Nomad Games</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">karakol.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–1 800</span></td>
+<td>База горнолыжного/трек-туризма</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">avia.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">600–2 000</span></td>
+<td>Авиабилеты/онлайн-турагентство</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">ski.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">700–2 000</span></td>
+<td>Горнолыжные курорты</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">hostel.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 500</span></td>
+<td>Бэкпекеры/хостелы</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sayakat.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">500–1 500</span></td>
+<td>«Саякат» — путешествие</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">yurta.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">400–1 200</span></td>
+<td>Юрточные кемпинги</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">viza.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">400–1 200</span></td>
+<td>Визовая поддержка</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">otel.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">400–1 100</span></td>
+<td>«Отель» (тюрк. написание)</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">transfer.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–900</span></td>
+<td>Трансферы из Манаса</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">gid.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–900</span></td>
+<td>Услуги гидов</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">bishkektaxi.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">300–800</span></td>
+<td>Гео + такси</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="kz_4">.kz</h4>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">turizm.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">900–2 800</span></td>
+<td>Прямой keyword «туризм» на крупнейшем рынке</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kurort.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td>(оценка ~800–2 500)*</td>
+<td>«Курорт» — санатории/курорты</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>* Данные по .kz-туризму в исходном материале были обрезаны; <code>kurort.kz</code> подтверждён как кандидат, точная оценка — ориентировочная, перепроверить.</p>
+<hr />
+<h2 id="7-25">7. Топ-25 приоритетных целей</h2>
+<p>Ранжирование учитывает: (1) операционную/keyword-ценность, (2) вероятность быть свободным (LIKELY_TAKEN исключены или понижены), (3) двойную применимость «строю сам / перепродажа», (4) открытость TLD для иностранца. Все — <strong>требуют живой проверки</strong>.</p>
+<div class="twrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Домен</th>
+<th>TLD</th>
+<th>Тир</th>
+<th>Почему в топе</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code class="dom">pay.kg</code></td>
+<td>.kg</td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td>3-букв. платёжный keyword в самом открытом для иностранца TLD; двойное применение</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code class="dom">optom.kz</code></td>
+<td>.kz</td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td>Топ-коммерческий keyword огромного оптового рынка KZ</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code class="dom">pul.uz</code></td>
+<td>.uz</td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td>«Деньги» по-узбекски, короткий финтех-корень на массовом рынке</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code class="dom">aqsha.kz</code></td>
+<td>.kz</td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td>«Деньги» по-казахски, фундамент финтех-бренда</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code class="dom">akcha.kg</code></td>
+<td>.kg</td>
+<td><span class="tier high">HIGH</span></td>
+<td>«Деньги» по-кыргызски, открытый TLD, финтех</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code class="dom">bozor.uz</code></td>
+<td>.uz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Готовый бренд маркетплейса на узбекском</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code class="dom">pay.uz</code></td>
+<td>.uz</td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td>Платёжный keyword на фоне бума переводов</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code class="dom">zaim.kg</code></td>
+<td>.kg</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Высококонверсионный МФО-keyword, открытый TLD</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code class="dom">kripto.kg</code></td>
+<td>.kg</td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td>Крипто-keyword, открытый TLD (в отличие от занятого kripto.kz)</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code class="dom">savdo.uz</code></td>
+<td>.uz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>«Торговля», естественный e-commerce корень</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code class="dom">sauda.kz</code></td>
+<td>.kz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>«Торговля» по-казахски, локально сильный</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code class="dom">duken.kz</code></td>
+<td>.kz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>«Магазин» по-казахски, брендируемо</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code class="dom">trekking.kg</code></td>
+<td>.kg</td>
+<td><span class="tier high">HIGH</span></td>
+<td>КР = мировой треккинг; въездной турист платит в валюте</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code class="dom">nomad.kg</code></td>
+<td>.kg</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Уникальный для КР бренд-корень, международно-читаемый</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code class="dom">sklad.kg</code></td>
+<td>.kg</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Логистика/фулфилмент, дешёвый вход, открытый TLD</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code class="dom">arzon.uz</code></td>
+<td>.uz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>«Дёшево» — мощный дискаунт-триггер</td>
+</tr>
+<tr>
+<td>17</td>
+<td><code class="dom">tengepay.kz</code></td>
+<td>.kz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Нац. валюта + pay, сильный платёжный бренд</td>
+</tr>
+<tr>
+<td>18</td>
+<td><code class="dom">zakaz.kg</code></td>
+<td>.kg</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Универсальный e-commerce keyword, открытый TLD</td>
+</tr>
+<tr>
+<td>19</td>
+<td><code class="dom">turizm.kz</code></td>
+<td>.kz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Прямой тур-keyword на платёжеспособном рынке</td>
+</tr>
+<tr>
+<td>20</td>
+<td><code class="dom">hamyon.uz</code></td>
+<td>.uz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>«Кошелёк» по-узбекски, родное слово для e-wallet</td>
+</tr>
+<tr>
+<td>21</td>
+<td><code class="dom">qarjy.kz</code></td>
+<td>.kz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>«Финансы» по-казахски (тренд казахизации брендов)</td>
+</tr>
+<tr>
+<td>22</td>
+<td><code class="dom">avia.kg</code></td>
+<td>.kg</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Авиабилеты/тур, короткий, открытый TLD</td>
+</tr>
+<tr>
+<td>23</td>
+<td><code class="dom">optom.uz</code></td>
+<td>.uz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Оптовый keyword растущего рынка UZ</td>
+</tr>
+<tr>
+<td>24</td>
+<td><code class="dom">neobank.uz</code></td>
+<td>.uz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Тренд цифрового банкинга, отраслевой бренд</td>
+</tr>
+<tr>
+<td>25</td>
+<td><code class="dom">kupi.kz</code></td>
+<td>.kz</td>
+<td><span class="tier high">HIGH</span></td>
+<td>Короткий призыв к покупке на крупнейшем рынке</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Осознанно исключены из топа как LIKELY_TAKEN:</em> job.kg, taxi.kz, top.kz, ish.uz, top.uz, tolom.kg, valuta.kg, tolem.kz, kripto.kz, issykkul.kg.</p>
+<hr />
+<h2 id="8">8. Пошаговая инструкция: проверка доступности и регистрация</h2>
+<h3 id="1-whoisrdap-">Шаг 1. Живая WHOIS/RDAP-проверка (обязательно)</h3>
+<p>Проверяйте каждый кандидат перед любыми действиями. Сигналы в этом отчёте — косвенные; истина только в живом WHOIS.</p>
+<p><strong>.kg</strong>
+- Веб-WHOIS реестра: <code>https://www.cctld.kg/en/whois</code> (и <code>/whois</code>)
+- Протокольный хост: <code>whois whois.kg &lt;domain&gt;.kg</code> (CLI)
+- RDAP: <code>https://rdap.cctld.kg/</code>
+- Резерв: whois.com/whois/<code>&lt;domain&gt;</code>.kg</p>
+<p><strong>.kz</strong>
+- WHOIS через оператора: сайт <code>nic.kz</code> (WHOIS-форма)
+- CLI: <code>whois -h whois.nic.kz &lt;domain&gt;.kz</code>
+- Резерв: whois-агрегаторы</p>
+<p><strong>.uz</strong>
+- WHOIS реестра: <code>cctld.uz</code> (WHOIS-форма) / локальные регистраторы
+- CLI: <code>whois -h whois.cctld.uz &lt;domain&gt;.uz</code></p>
+<p><strong>Как читать результат:</strong>
+- «No match / not found / available» → возможно свободен (перепроверьте у 2 источников — WHOIS-кэш бывает устаревшим).
+- Есть запись с датами <code>created/expires</code> → занят. Смотрите <code>expires</code>: близкая дата = потенциальный дроп-кандидат.
+- Ошибка/пустой ответ ≠ свободен. Повторите через CLI и через регистратора.</p>
+<h3 id="2">Шаг 2. Массовая проверка (для портфеля)</h3>
+<ul>
+<li>CLI-скрипт: цикл <code>whois -h &lt;host&gt; &lt;name&gt;.&lt;tld&gt;</code> по списку с парсингом «no match». Соблюдайте rate-limit реестра (задержки 2–5 сек), иначе бан по IP.</li>
+<li>Кросс-проверка через поле поиска у регистратора, продающего нужный TLD (форма доступности тянет те же данные реестра).</li>
+<li>Проверьте не только сам домен, но и живой сайт: откройте <code>https://&lt;domain&gt;</code> и соцсети — LIKELY_TAKEN-сигналы в этом отчёте именно так и получены.</li>
+</ul>
+<h3 id="3_1">Шаг 3. Выбор регистратора</h3>
+<ul>
+<li><strong>.kg:</strong> цены у сторонних регистраторов разнятся в 4+ раза ($65→$282). Сравните минимум 3 (напр., Regery, Regtons, Gandi) по <em>сумме</em> «регистрация + продление + трансфер», а не только по первому году. Дешёвая регистрация с дорогим продлением убьёт экономику холда.</li>
+<li><strong>.kz:</strong> работайте через <strong>аккредитованного казахстанского регистратора</strong> (напр., reg.gov.kz или коммерческий). Сразу уточните требование хостинга/DNS в РК — под проект понадобится казахстанский хостинг + SSL.</li>
+<li><strong>.uz:</strong> через локального узбекского регистратора; <strong>до оплаты выясните требования к присутствию/резидентству</strong> — это главный барьер именно для .uz.</li>
+</ul>
+<h3 id="4_1">Шаг 4. Когда нашли свободный</h3>
+<ol>
+<li>Регистрируйте немедленно (first-come-first-served; ценные keyword уходят быстро). Задержка на «подумать» = потеря.</li>
+<li>Берите минимальный срок для теста гипотезы, но для ключевых целей — сразу несколько лет, чтобы снять риск случайного непродления.</li>
+<li>Настройте авто-продление и напоминания об <code>expires</code> — потеря keyword-домена по забывчивости невосполнима.</li>
+<li>Для .kz заранее подготовьте казахстанский хостинг/DNS, иначе домен могут приостановить.</li>
+<li>Задокументируйте у себя дату регистрации, регистратора, стоимость и целевой сценарий (проект vs холд) по каждому имени.</li>
+</ol>
+<h3 id="5-likely_taken-">Шаг 5. Мониторинг дропов (для LIKELY_TAKEN-целей)</h3>
+<p>Для занятых, но нужных имён (напр., top.uz, kripto.kz): отслеживайте <code>expires</code> в WHOIS, ставьте бэкордер у регистратора, если он поддерживается для данного TLD; для действующих бизнесов — прямой оффер о выкупе (обычно дешевле и надёжнее, чем ждать дропа).</p>
+<hr />
+<h2 id="9">9. Риски и оговорки</h2>
+<ol>
+<li><strong>Доступность не проверена вживую.</strong> Всё в отчёте — гипотезы для верификации. Первое действие — WHOIS-проверка (раздел 8). Не регистрируйте и не бюджетируйте ничего до этого.</li>
+<li><strong>Тонкая ликвидность перепродажи.</strong> Рынок вторичной продажи ccTLD Центральной Азии кратно уже, чем .com. Нет прозрачных бирж, брокеров и базы сравнимых сделок. Перепродажа = ручные end-user продажи, потенциально долгие или нулевые. Не стройте финмодель на быстрый флип.</li>
+<li><strong>Оценки — потолок, не выручка.</strong> Диапазоны «$/ULTRA/HIGH» отражают keyword-ценность при идеальном покупателе. Медиана реальной сделки существенно ниже (см. раздел 4).</li>
+<li><strong>Требования резидентства/присутствия.</strong>
+   - <strong>.kz:</strong> владеть может нерезидент, но <strong>DNS и хостинг обязаны быть в Казахстане</strong> + HTTPS; несоблюдение → риск приостановки. Регистрация только через KZ-регистратора.
+   - <strong>.uz:</strong> исторически возможны требования к локальному присутствию для ряда зон — <strong>проверить до покупки</strong>; это главный правовой риск.
+   - <strong>.kg:</strong> самый открытый, но один источник упоминает требование кыргызского персонального ID — противоречиво, уточнить у регистратора.</li>
+<li><strong>Товарные знаки / правовые риски.</strong> Регистрируя keyword или бренд-слово, вы отвечаете за неинфрингмент. <code>.kg</code> НЕ в UDRP — споры через регламент реестра и суды КР; <code>.kz</code>/<code>.uz</code> — по национальным правилам. Проверяйте товарные знаки в нужной стране, избегайте имён, конфликтующих с существующими брендами (напр., чужие финтех-марки). Риск потери домена и претензий реален.</li>
+<li><strong>Издержки владения.</strong> Каждый домен = ежегодный расход (у .kg он может быть высоким и с валютной надбавкой KGS+НДС). Портфель без монетизации медленно «сгорает». Держите его компактным и привязанным к конкретным проектным гипотезам.</li>
+<li><strong>Технические/эксплуатационные требования</strong> (особенно .kz-хостинг) добавляют стоимость к сценарию «строю сам» — закладывайте её.</li>
+<li><strong>Информационные пробелы.</strong> Данные по .uz-реестру наименее верифицированы; часть .kz-туристических кандидатов обрезана в исходнике; цены реестров даны по агрегаторам. Всё критичное — перепроверить на первоисточниках (cctld.kg, nic.kz, cctld.uz).</li>
+</ol>
+<hr />
+<h2 id="10-30">10. План действий на 30 дней</h2>
+<p><strong>Неделя 1 — Верификация и шорт-лист.</strong>
+- Прогнать Топ-25 (раздел 7) через живой WHOIS/RDAP по инструкции раздела 8, плюс проверку живого сайта/соцсетей.
+- Отметить: реально свободные / занятые / спорные. Вычеркнуть подтверждённо занятые.
+- Уточнить у 1–2 регистраторов по каждому TLD: точные цены (рег/продление/трансфер) и требования резидентства/хостинга (особенно .uz и .kz).</p>
+<p><strong>Неделя 2 — Регистрация «ядра».</strong>
+- Из подтверждённо свободных зарегистрировать <strong>5–10 доменов ядра</strong>, приоритезируя те, что подходят под конкретную проектную гипотезу (финтех/доставка/туризм), а не «на всякий случай».
+- Настроить авто-продление и календарь <code>expires</code>.
+- Для .kz-целей — подготовить казахстанский хостинг/DNS.</p>
+<p><strong>Неделя 3 — Проектная гипотеза и оценка.</strong>
+- По 1–2 доменам ядра набросать MVP-гипотезу продукта (лендинг + оффер), чтобы проверить операционную ценность (реальный источник дохода в этом рынке).
+- Для LIKELY_TAKEN-целей, которые всё ещё нужны, — составить список текущих владельцев и подготовить прямые офферы о выкупе; поставить мониторинг дропов/бэкордеры.</p>
+<p><strong>Неделя 4 — Монетизация и ревизия.</strong>
+- Запустить тест: либо мини-проект на домене, либо аккуратный аутрич 3–5 локальным бизнесам по перепродаже одного-двух имён (реалистичная цена — сотни $, не потолок из таблицы).
+- Ревизия портфеля: что оставить под проект, что выставить на продажу, что не продлевать.
+- Зафиксировать выводы и решить, масштабировать ли следующую волну регистраций.</p>
+<p><strong>Метрика успеха 30 дней:</strong> не «сколько доменов куплено», а «сколько верифицированных свободных keyword-доменов ядра закреплено под конкретные проектные/продажные гипотезы при контролируемых издержках владения».</p>
+<hr />
+<h1 id="a-278">Приложение A. Полный каталог кандидатов (278 доменов)</h1>
+<p>Полный сырой вывод исследования по всем 7 категориям × 3 странам. В основном отчёте (раздел 6) показана кураторская выборка; здесь — всё.</p>
+<p><strong>Легенда сигнала занятости</strong> (проверялись только домены тиров ULTRA/HIGH из шорт-листа топ-48):
+- 🔴 <strong>вероятно занят</strong> — найдены косвенные признаки действующего сайта/бренда;
+- 🟢 <strong>возможно свободен</strong> — есть позитивный признак незанятости;
+- 🟡 <strong>требует проверки (нет сигнала)</strong> — поиск не нашёл активного сайта, но это НЕ доказывает доступность;
+- <strong>требует проверки</strong> — сигнал не собирался (тир MID или вне шорт-листа).</p>
+<blockquote>
+<p>⚠️ Ни один статус не заменяет живую WHOIS-проверку (см. раздел 8 основного отчёта). Колонка «Оценка $» — оценочный потолок keyword-ценности, не ожидаемая цена продажи.</p>
+</blockquote>
+<h2 id="a1">A.1. Короткие / премиум</h2>
+<details class="cat"><summary>.kg — Кыргызстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">pay.kg</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$2,500-6,000</span></td>
+<td>Трёхбуквенный глобальный keyword платежей — ликвиден для любого финтех-проекта в Кыргызстане.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">akcha.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,200-3,000</span></td>
+<td>«Акча» — деньги по-кыргызски, идеальный корень для финтеха, платёжных и кредитных сервисов.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">app.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>Ёмкий технокорень для мобильных приложений и IT-стартапов.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">box.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1,400</span></td>
+<td>Трёхбуквенный keyword для доставки, логистики, хранения и e-commerce.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">car.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2,200</span></td>
+<td>Авторынок активен, короткий keyword для продажи машин, автосервисов и объявлений.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">job.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>Ключевое слово рынка труда, готовый бренд для job-борды и HR-платформы.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (medium)</span></td>
+</tr>
+<tr>
+<td><code class="dom">top.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>Универсальный премиум-keyword для рейтингов, каталогов и медиапроектов.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">biz.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-900</span></td>
+<td>Короткий деловой keyword для бизнес-каталогов и B2B-сервисов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">eco.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1,000</span></td>
+<td>Эко-тематика растёт; корень для туризма, органики и зелёных проектов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">luxe.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-650</span></td>
+<td>Международный маркер люкса для fashion, недвижимости и премиум-товаров.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nova.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>Звучное четырёхбуквенное бренд-слово, легко произносится и подходит любой отрасли.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">vip.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$350-800</span></td>
+<td>Премиальный трёхбуквенник для luxury-услуг, клубов и консьерж-сервисов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zeta.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>Короткое нейтральное бренд-имя из греческого алфавита, удобно для tech и финтеха.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.kz — Казахстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">aqsha.kz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$2,000-5,000</span></td>
+<td>«Ақша» — деньги по-казахски, топовый корень для финтеха и платёжных сервисов на госязыке.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">pay.kz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$4,000-9,000</span></td>
+<td>Трёхбуквенный платёжный keyword в крупнейшей и самой платёжеспособной экономике региона.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">app.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,000-2,500</span></td>
+<td>Технокорень для мобильной разработки и IT-экосистемы страны.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">car.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,500-3,500</span></td>
+<td>Крупный авторынок делает короткий keyword очень ликвидным для площадок объявлений.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">cash.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,200-3,000</span></td>
+<td>Прямой финансовый keyword для микрозаймов, кошельков и обменных сервисов.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">gold.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,200-3,000</span></td>
+<td>Ценное словарное слово для ювелирки, инвестиций в металлы и премиум-брендинга.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">job.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,500-3,500</span></td>
+<td>Ключевое слово рекрутинга для развитого казахстанского рынка труда.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">taxi.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,200-3,000</span></td>
+<td>Массовый спрос на такси-сервисы делает keyword высоколиквидным.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">top.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,000-2,500</span></td>
+<td>Универсальный премиум-keyword для рейтингов, медиа и каталогов.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">tour.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,000-2,500</span></td>
+<td>Туризм в Казахстане растёт; keyword идеален для турагентств и travel-платформ.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">eco.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$500-1,200</span></td>
+<td>Зелёная повестка усиливается; корень для эко-товаров и устойчивых проектов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nova.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-900</span></td>
+<td>Звучное бренд-слово, универсально для стартапов любой отрасли.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">vip.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$500-1,200</span></td>
+<td>Премиальный трёхбуквенник для luxury-услуг и закрытых клубов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.uz — Узбекистан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">pay.uz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$2,000-5,000</span></td>
+<td>Трёхбуквенный платёжный keyword на фоне бума финтеха и денежных переводов в стране.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">pul.uz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$1,500-4,000</span></td>
+<td>«Пул» — деньги по-узбекски, короткий и мощный корень для финтеха и платежей.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">app.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>Технокорень для мобильных приложений в быстрорастущей IT-сфере Узбекистана.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">avto.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2,200</span></td>
+<td>«Авто» в местной транслитерации — keyword для растущего авторынка и объявлений.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">bozor.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,000-2,500</span></td>
+<td>«Бозор» — базар/рынок, интуитивный бренд для маркетплейса и e-commerce.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">ish.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2,200</span></td>
+<td>«Иш» — работа по-узбекски, короткий keyword для job-платформ.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">savdo.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>«Савдо» — торговля, естественный корень для e-commerce и B2B-площадок.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">taksi.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>Локальное написание «такси» — keyword для сервисов поездок с массовым спросом.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">top.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>Универсальный премиум-keyword для рейтингов, каталогов и медиа.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">tur.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>Короткий корень «тур» для быстрорастущего внутреннего и въездного туризма.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">eco.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-900</span></td>
+<td>Эко-корень для органики, туризма и устойчивых проектов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nova.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$350-800</span></td>
+<td>Звучное четырёхбуквенное бренд-слово, универсально для стартапов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">vip.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-950</span></td>
+<td>Премиальный трёхбуквенник для luxury-услуг и клубных сервисов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<h2 id="a2">A.2. Финтех / крипто</h2>
+<details class="cat"><summary>.kg — Кыргызстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">kripto.kg</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$2000-6000</span></td>
+<td>Локальная транслитерация слова 'крипто' — точное ключевое слово на растущем рынке криптообмена в Кыргызстане.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">akchapay.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-2000</span></td>
+<td>Кыргызское 'акча' (деньги) + 'pay' — локально-релевантный и запоминающийся платёжный бренд.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">birja.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-2000</span></td>
+<td>'Биржа' — прямой ключевик для крипто- и валютной биржи, короткое понятное слово.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">koshelek.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1800</span></td>
+<td>'Кошелёк' на русском — базовое слово для e-wallet, понятное всей аудитории Кыргызстана.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">neobank.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1800</span></td>
+<td>'Необанк' — трендовый термин цифрового банкинга, актуален для финтех-стартапов Кыргызстана.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">obmenka.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2500</span></td>
+<td>'Обменка' — повседневное название пунктов обмена валют по всей Центральной Азии, готовый трафиковый бренд.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">sompay.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2500</span></td>
+<td>Связка национальной валюты 'сом' и 'pay' — сильный брендируемый нейм для платёжной системы.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">tolom.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-2000</span></td>
+<td>Кыргызское 'төлөм' (платёж) в ASCII-написании — точный отраслевой термин для платёжного сервиса.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">valuta.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1600</span></td>
+<td>'Валюта' — короткий словарный ключ для обменных и курсовых сервисов.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">zaim.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2200</span></td>
+<td>'Займ' — высококонверсионный ключевик в сегменте микрокредитования и онлайн-займов.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">mikrozaim.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-700</span></td>
+<td>'Микрозайм' — нишевый, но стабильно востребованный запрос в сегменте МФО.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">monety.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-600</span></td>
+<td>'Монеты' — двусмысленный ключ для криптомонет и нумизматики, широкий охват.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.kz — Казахстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">aksha.kz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$2500-8000</span></td>
+<td>Казахское 'ақша' (деньги) в латинице — фундаментальное финансовое слово с максимальной локальной ценностью.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">birja.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2400</span></td>
+<td>'Биржа' — прямой ключевик для крипто- и фондовой биржи, короткое слово.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">cryptopay.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2200</span></td>
+<td>'Cryptopay' — англоязычный брендируемый нейм для криптоплатежей, понятный международной аудитории.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">koshelek.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-2000</span></td>
+<td>'Кошелёк' — понятный всем русскоязычным пользователям базовый термин для e-wallet.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kripto.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-3000</span></td>
+<td>'Крипто' в локальном написании — ключевое слово крупнейшего в регионе крипторынка.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">neobank.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2500</span></td>
+<td>'Необанк' — трендовый термин цифрового банкинга в развитом финтех-рынке Казахстана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">obmen.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2200</span></td>
+<td>'Обмен' — короткий высокочастотный ключ для валютных и криптообменников.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">qarjy.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2500</span></td>
+<td>Казахское 'қаржы' (финансы) — государственно-релевантный термин на фоне казахизации брендов.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">tengepay.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2800</span></td>
+<td>Национальная валюта 'тенге' + 'pay' — сильный брендируемый платёжный нейм.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tolem.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-3000</span></td>
+<td>Казахское 'төлем' (платёж) — точный отраслевой ключевик для платёжных решений в РК.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (high)</span></td>
+</tr>
+<tr>
+<td><code class="dom">valuta.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1800</span></td>
+<td>'Валюта' — словарный ключ для курсовых и обменных сервисов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zaim.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2200</span></td>
+<td>'Займ' — высококонверсионный запрос в сегменте онлайн-кредитования и МФО.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">mikrokredit.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-700</span></td>
+<td>'Микрокредит' — устойчивый нишевый ключ для рынка быстрых займов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.uz — Узбекистан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">pulpay.uz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$2000-6000</span></td>
+<td>Узбекское 'pul' (деньги) + 'pay' — предельно релевантный и короткий бренд для платёжной системы Узбекистана.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">birja.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-2000</span></td>
+<td>'Биржа' — ключевик для крипто- и валютной биржи, короткое узнаваемое слово.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">fintech.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2500</span></td>
+<td>'Fintech' — обобщающий отраслевой ключ, ценный для медиа, сообществ и инкубаторов сектора.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">hamyon.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2500</span></td>
+<td>Узбекское 'hamyon' (кошелёк) — родное слово для e-wallet, сильная локальная привязка.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kredit.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2200</span></td>
+<td>'Кредит' — прямой высококонверсионный ключ для кредитных и займовых продуктов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kripto.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2500</span></td>
+<td>'Крипто' в локальном написании — ключевик развивающегося регулируемого крипторынка Узбекистана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">neobank.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2500</span></td>
+<td>'Необанк' — трендовый термин на фоне бума цифрового банкинга в Узбекистане.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">obmen.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1800</span></td>
+<td>'Обмен' — высокочастотный ключ для валютных и криптообменных сервисов среди русскоязычной аудитории.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sompay.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2200</span></td>
+<td>Национальная валюта 'сум/сом' + 'pay' — брендируемый нейм для платёжного сервиса.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tolov.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-3000</span></td>
+<td>Узбекское 'to‘lov' (платёж) в ASCII — точный отраслевой ключ на быстрорастущем платёжном рынке.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">valyuta.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1600</span></td>
+<td>'Валюта' в узбекском написании — словарный ключ для курсовых и обменных сервисов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">hamyonpay.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-900</span></td>
+<td>'Hamyon' (кошелёк) + 'pay' — брендируемая связка для мобильного платёжного кошелька.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">qarz.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-800</span></td>
+<td>Узбекское 'qarz' (долг/займ) — короткое родное слово для P2P-кредитования и займов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<h2 id="a3-e-commerce">A.3. E-commerce / маркетплейсы</h2>
+<details class="cat"><summary>.kg — Кыргызстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">dostavim.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-900</span></td>
+<td>«Доставим» — брендируемый глагол для курьерских и логистических сервисов, растущий рынок доставки.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kupi.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1,200</span></td>
+<td>«Купи» — короткий призыв к действию, идеален для маркетплейса или магазина.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optom.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1,500</span></td>
+<td>Слово «оптом» — ключевой запрос для оптовой торговли, крайне востребовано у поставщиков и рынков Бишкека.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optommarket.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$350-800</span></td>
+<td>Комбинация «оптом» и «маркет» точно описывает оптовую торговую площадку.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">skidki.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1,000</span></td>
+<td>«Скидки» — магнит трафика для агрегаторов акций и купонных площадок.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sklad.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1,000</span></td>
+<td>«Склад» — точный запрос для логистики, хранения и оптовых площадок, короткое и запоминающееся.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">torg.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1,000</span></td>
+<td>Короткое «торг» ассоциируется с торговлей и торгами, сильный брендовый потенциал.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zakaz.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1,200</span></td>
+<td>«Заказ» универсально для интернет-магазинов и служб доставки, высокая коммерческая ценность.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">bazary.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>Вариация «базары» отсылает к рынкам, брендируема для маркетплейса и менее вероятно занята.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optovik.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-500</span></td>
+<td>«Оптовик» нацелен на B2B-сегмент оптовых закупщиков, стабильный спрос.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">prodam.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>«Продам» — ключевое слово для досок объявлений и C2C-классифайдов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">rynok.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-700</span></td>
+<td>«Рынок» — понятный термин для онлайн-маркетплейса или классифайда.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tovar.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>«Товар» — базовый торговый термин, подходит для каталога или маркетплейса товаров.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.kz — Казахстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">optom.kz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$2,000-5,000</span></td>
+<td>Оптовая торговля — огромный сегмент в Казахстане, «оптом» топовый коммерческий запрос.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">dostavim.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1,400</span></td>
+<td>«Доставим» брендируемо для курьерских сервисов на быстрорастущем рынке доставки.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">duken.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>«Дүкен» (магазин по-казахски) в ASCII — брендируемо и близко местной аудитории.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kupi.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>«Купи» — короткий призыв к покупке, отличная база для маркетплейса.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optomarket.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1,200</span></td>
+<td>Связка «опто» и «маркет» точно позиционирует оптовую B2B-площадку.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sauda.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>«Сауда» (торговля по-казахски) — локально сильное ключевое слово для торговой площадки.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">skidka.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1,500</span></td>
+<td>«Скидка» — трафиковое слово для купонных и акционных агрегаторов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sklad.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1,500</span></td>
+<td>«Склад» — ключевой запрос для логистики и фулфилмента растущего e-commerce Казахстана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zakaz.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>«Заказ» — универсальный коммерческий термин для магазинов и служб доставки.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optovik.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>«Оптовик» ориентирован на B2B-сегмент оптовых закупок, стабильный спрос.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">prodam.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>«Продам» — ключевое слово для досок объявлений и C2C-торговли.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">saudamarket.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>«Сауда-маркет» сочетает казахское «торговля» с «маркет» для локальной площадки.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tauar.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>«Тауар» (товар по-казахски) подходит для каталога или маркетплейса с локальным акцентом.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tovar.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$350-800</span></td>
+<td>«Товар» — базовое торговое слово для каталога товаров и маркетплейса.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.uz — Узбекистан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">arzon.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>«Арзон» (дешёвый) — сильный триггер для дискаунтеров и акционных площадок.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">chegirma.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1,200</span></td>
+<td>«Чегирма» (скидка) — трафиковое слово для купонных и акционных сервисов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">dokon.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,600</span></td>
+<td>«Дўкон» (магазин по-узбекски) — локально понятно и брендируемо для интернет-магазина.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">dostavka.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1,500</span></td>
+<td>«Доставка» — русскоязычный ключ, актуальный для логистики в двуязычном Узбекистане.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optom.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>Оптовая торговля активно растёт в Узбекистане, «оптом» — топовый запрос поставщиков.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">optombozor.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1,200</span></td>
+<td>«Оптом-бозор» точно описывает оптовый рынок, сильно резонирует с местными закупщиками.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">xarid.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1,400</span></td>
+<td>«Харид» (покупка) — ключевой коммерческий термин для маркетплейса.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">bozorcha.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>«Бозорча» (базарчик) — тёплое брендируемое имя для нишевого маркетплейса или классифайда.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">mahsulot.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>«Махсулот» (продукт/товар) подходит для каталога товаров с локальным акцентом.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">ombor.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$350-800</span></td>
+<td>«Омбор» (склад) — точный запрос для логистики и фулфилмента.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">savdogar.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>«Савдогар» (торговец) брендируемо для B2B-платформы продавцов и поставщиков.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">yetkazib.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>«Етказиб» (доставка) — ключ для курьерских сервисов растущего рынка доставки.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<h2 id="a4">A.4. Туризм / услуги</h2>
+<details class="cat"><summary>.kg — Кыргызстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">issykkul.kg</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$2000-6000</span></td>
+<td>Иссык-Куль — главная туристическая жемчужина Кыргызстана, гео-домен для отелей, туров и пляжного отдыха.</td>
+<td class="sigcell"><span class="chip taken">🔴 вероятно занят (medium)</span></td>
+</tr>
+<tr>
+<td><code class="dom">avia.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-2000</span></td>
+<td>Короткий узнаваемый ключевик для авиабилетов и онлайн-турагентства.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">hostel.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1500</span></td>
+<td>Растущий рынок бэкпекеров и хостелов в Бишкеке и Караколе.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">karakol.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1800</span></td>
+<td>Каракол — база горнолыжного и трекингового туризма на восточном Иссык-Куле, сильный гео-домен.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nomad.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2200</span></td>
+<td>Номадический туризм и юрточные лагеря — визитная карточка страны и World Nomad Games.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sayakat.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1500</span></td>
+<td>«Саякат» — путешествие по-кыргызски, естественный ключевик для тревел-бренда на местном языке.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">ski.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2000</span></td>
+<td>Короткий домен для горнолыжных курортов (Каракол, Чункурчак, ЗиЛ) и растущего зимнего туризма.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">trekking.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2500</span></td>
+<td>Кыргызстан — мировое направление горного треккинга, точный англоязычный ключевик для приёма иностранных туристов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">bishkektaxi.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-800</span></td>
+<td>Комбинация гео и услуги такси в столице — прямой коммерческий трафик.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">gid.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-900</span></td>
+<td>«Гид» — услуги экскурсоводов и локальных гидов, короткий запоминающийся домен.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">otel.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1100</span></td>
+<td>«Отель» в тюркском написании — универсальный ключевик размещения для локального рынка.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">transfer.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-900</span></td>
+<td>Трансферы из аэропорта Манас и по регионам — стабильный туристический спрос.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">viza.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>Визовая поддержка и оформление для въездного и выездного туризма.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">yurta.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>Юрточные кемпинги — популярный формат аутентичного размещения для въездных туристов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.kz — Казахстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">alakol.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1800</span></td>
+<td>Алаколь — быстрорастущий пляжный курорт, гео-домен под отели и туроператоров.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">charyn.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1800</span></td>
+<td>Чарынский каньон — топовая природная достопримечательность и цель туров из Алматы.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">hostel.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1500</span></td>
+<td>Хостелы для бюджетных и молодёжных туристов в Алматы и Астане.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kurort.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2000</span></td>
+<td>«Курорт» — санатории и курорты Казахстана (Боровое, Алаколь), сильный внутренний спрос.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">turizm.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2800</span></td>
+<td>Прямой ключевик «туризм» на крупнейшем и платёжеспособном рынке Центральной Азии.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">viza.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1800</span></td>
+<td>Визовые центры и оформление виз — большой выездной турпоток из Казахстана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">almatytaxi.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-900</span></td>
+<td>Гео плюс такси в крупнейшем городе страны — прямой коммерческий трафик.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">aviatur.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>Комбо «авиа+тур» — узнаваемый бренд-паттерн для агентства авиабилетов и туров.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">gid.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-900</span></td>
+<td>«Гид» — услуги экскурсоводов, короткий и брендируемый домен.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">puteshestvie.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-800</span></td>
+<td>«Путешествие» — контентный и тревел-медиа бренд для русскоязычной аудитории.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sanatorii.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>Санаторно-курортное лечение — сильный и стабильный сегмент внутреннего туризма.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">transfer.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1100</span></td>
+<td>Аэропортовые и корпоративные трансферы в мегаполисах — устойчивый спрос.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">turpaket.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>«Турпакет» — готовые пакетные туры, коммерческий ключевик для турагентств.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.uz — Узбекистан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">bukharatour.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1800</span></td>
+<td>Бухара — второй по значимости туристический город, прямой домен для туроператоров.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">hostel.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1500</span></td>
+<td>Бум бэкпекерского туризма в Самарканде, Бухаре и Хиве создаёт спрос на хостелы.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">ipakyuli.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1500</span></td>
+<td>«Ипак йўли» — Шёлковый путь на узбекском, мощный национальный туристический бренд.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">mehmonxona.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1800</span></td>
+<td>«Мехмонхона» — гостиница по-узбекски, точный ключевик сегмента размещения.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">samarkandtour.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2000</span></td>
+<td>Самарканд — центр въездного туризма Шёлкового пути, гео плюс tour под турпакеты.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sayohat.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2000</span></td>
+<td>«Саёхат» — путешествие на узбекском, ключевой тревел-термин для местного рынка.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">viza.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1800</span></td>
+<td>Визовая поддержка для быстрорастущего въездного турпотока и выездных туристов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">gid.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-900</span></td>
+<td>Гиды и экскурсоводы по историческим городам Шёлкового пути.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">karvon.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>«Карвон» (караван) — колоритный образ Шёлкового пути для тревел- или отельного бренда.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">khivatour.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>Хива — город-музей и третий магнит Шёлкового пути, гео плюс tour.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">otel.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1100</span></td>
+<td>«Отель» — универсальный ключевик размещения, короткий и легко запоминаемый домен.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">transfer.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-900</span></td>
+<td>Межгородские трансферы по маршруту Ташкент-Самарканд-Бухара-Хива — растущий спрос.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">turpaket.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-800</span></td>
+<td>«Турпакет» — пакетные туры для внутреннего и въездного рынка.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<h2 id="a5-generic">A.5. Гео / локальные generic</h2>
+<details class="cat"><summary>.kg — Кыргызстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">arenda-bishkek.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1000</span></td>
+<td>«Аренда + Бишкек» — прямой коммерческий запрос по съёму квартир и коммерческих помещений в столице.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">avtobishkek.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1200</span></td>
+<td>Авторынок столицы — высокочастотный запрос, идеален для площадки объявлений о продаже машин.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">avtorynok.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1200</span></td>
+<td>Общий брендируемый ключ «авторынок» без привязки к городу — сильное имя для национальной автоплощадки.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">bishkeknedvizhimost.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1500</span></td>
+<td>Связка столицы и слова «недвижимость» — ядро самого денежного вертикала (аренда и продажа жилья) в Бишкеке.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kvartirabishkek.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-900</span></td>
+<td>«Квартира» плюс город — прямой лид на покупку и аренду жилья, высокая конверсия.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">afishaosh.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$150-350</span></td>
+<td>Афиша событий Оша — ниша культурного гида для второго города страны.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">arendaosh.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$180-400</span></td>
+<td>Аренда жилья в Оше — прямой коммерческий запрос для регионального сайта объявлений.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">dombishkek.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-450</span></td>
+<td>Короткое «дом + столица» — брендируемо для портала по жилью и стройке.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">novostiosh.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$150-350</span></td>
+<td>Городские новости Оша — база для медиапроекта с постоянным поисковым трафиком.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">oshavto.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-450</span></td>
+<td>Авторынок Оша — самостоятельный региональный сегмент с растущим спросом на объявления.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">oshnedvizhimost.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-450</span></td>
+<td>Ош — второй по величине город страны, недвижимость там растёт, а нишевых порталов почти нет.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">pogodabishkek.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$150-350</span></td>
+<td>«Погода + Бишкек» — стабильно высокочастотный информационный запрос с рекламной монетизацией.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">rabotaosh.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$180-400</span></td>
+<td>«Работа + Ош» — локальный рекрутинговый запрос без сильных местных конкурентов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.kz — Казахстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">afishaastana.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1400</span></td>
+<td>Афиша событий столицы — сильный ключ для гида по концертам, кино и мероприятиям.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">almatyarenda.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2000</span></td>
+<td>Аренда в Алматы — крупнейший рынок съёма жилья Казахстана с ежедневным спросом.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">arendaalmaty.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2200</span></td>
+<td>«Аренда + Алматы» — один из самых частотных коммерческих запросов по съёму жилья в стране.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">astananedvizhimost.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1200-3000</span></td>
+<td>Столичная недвижимость Астаны — премиальный сегмент с высоким чеком сделок и рекламы.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">avtoastana.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2000</span></td>
+<td>Авторынок столицы — высокочастотный запрос, идеальное имя для площадки объявлений о машинах.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">avtoshymkent.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1800</span></td>
+<td>Шымкент — третий мегаполис страны, авторынок там крупный, а профильных доменов мало.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kvartiryastana.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1800</span></td>
+<td>«Квартиры + Астана» — прямой запрос на покупку жилья в быстрорастущей столице.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nedvizhimost-almaty.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1500-4000</span></td>
+<td>Алматы — крупнейший рынок недвижимости Казахстана, а ключ «недвижимость» — самый маржинальный вертикал.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">rabotaastana.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1400</span></td>
+<td>«Работа + Астана» — высокочастотный рекрутинговый запрос столичного рынка труда.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">shymkentavto.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1300</span></td>
+<td>Региональный авторынок Шымкента — растущий спрос при слабой конкуренции нишевых порталов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">arendashymkent.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>Аренда жилья в Шымкенте — прямой коммерческий запрос третьего города страны.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">domalmaty.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>Короткое «дом + Алматы» — брендируемо для портала о жилье, ремонте и стройке.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">novostishymkent.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>Городские новости Шымкента — основа регионального медиа с постоянной аудиторией.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">pogodashymkent.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-500</span></td>
+<td>«Погода + Шымкент» — стабильный информационный трафик крупного южного города.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.uz — Узбекистан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">arendatashkent.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1500</span></td>
+<td>«Аренда + Ташкент» — прямой запрос на съём жилья в самом населённом городе Узбекистана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">avtosamarkand.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1000</span></td>
+<td>Самарканд — второй мегаполис страны, авторынок растёт при малом числе профильных сайтов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">avtotashkent.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1500</span></td>
+<td>Столичный авторынок — высокочастотный запрос для площадки объявлений о продаже машин.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kvartiratashkent.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1300</span></td>
+<td>«Квартира + Ташкент» — прямой лид на покупку и аренду жилья с высокой конверсией.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">rabotatashkent.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1300</span></td>
+<td>«Работа + Ташкент» — ядро столичного рынка труда, идеально для рекрутингового портала.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tashkentarenda.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1000</span></td>
+<td>Альтернативный порядок «Ташкент + аренда» усиливает охват запросов по съёму недвижимости.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tashkentnedvizhimost.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1800</span></td>
+<td>Ташкент — крупнейший рынок недвижимости страны, а «недвижимость» — самый денежный вертикал.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">afishasamarkand.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$180-450</span></td>
+<td>Афиша событий Самарканда — культурный гид для туристического города с потоком гостей.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">arendabukhara.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$180-450</span></td>
+<td>Аренда в Бухаре — сочетание туристического и жилого спроса даёт коммерческую ценность.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">domtashkent.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>Короткое «дом + Ташкент» — брендируемо для портала о жилье, ремонте и строительстве.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">novostibukhara.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$180-450</span></td>
+<td>Городские новости Бухары — база для регионального медиапроекта с поисковым трафиком.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">pogodatashkent.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-500</span></td>
+<td>«Погода + Ташкент» — стабильно высокочастотный информационный запрос столицы.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">rabotasamarkand.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$180-450</span></td>
+<td>«Работа + Самарканд» — локальный рекрутинговый запрос второго города страны.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">samarkandavto.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>Обратный порядок «Самарканд + авто» расширяет охват запросов по местному авторынку.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">samarkandnedvizhimost.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>Недвижимость Самарканда — туристический и жилой спрос делают вертикал перспективным.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<h2 id="a6-ai-emerging">A.6. Технологии / AI / emerging</h2>
+<details class="cat"><summary>.kg — Кыргызстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">aihub.kg</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$1500-4000</span></td>
+<td>Короткий и запоминающийся хаб для ИИ-стартапов и IT-сообщества Бишкека, где растёт спрос на AI-бренды.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">aiagent.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1500</span></td>
+<td>Тема ИИ-агентов на пике тренда, домен подходит под SaaS и автоматизацию.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">aicloud.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1500</span></td>
+<td>Связка 'AI + облако' актуальна для провайдеров облачных и вычислительных услуг в Кыргызстане.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">datalab.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>Готовый бренд для лабораторий данных, аналитики и дата-инжиниринга, которых почти нет в регионе.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">deeptech.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1100</span></td>
+<td>Собирательный бренд для глубоких технологий и венчурных проектов Кыргызстана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">devhub.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>Идеально для сообществ разработчиков и IT-коворкингов растущей бишкекской tech-сцены.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">edgeai.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1000</span></td>
+<td>Перспективный термин edge-вычислений и IoT, который будет дорожать по мере цифровизации.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">gpucloud.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$400-1200</span></td>
+<td>GPU-облака для обучения моделей — растущая ниша, а точный keyword-домен усиливает бренд.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">neuro.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2000</span></td>
+<td>Универсальный корень 'нейро' для ИИ-, медтех- и образовательных проектов на местном рынке.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">botlab.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-500</span></td>
+<td>Ниша чат-ботов и автоматизации для локального e-commerce и поддержки.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">codebase.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>Брандируемое имя для дев-инструментов, аутсорс-студий и репозиториев кода.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">cybersec.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>Кибербезопасность востребована банками и госсектором, короткое sec-имя ценно.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">dataflow.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-550</span></td>
+<td>Технический термин для интеграции и потоков данных, удобен для B2B-бренда.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">smartcloud.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-500</span></td>
+<td>Понятный бренд для облачных и SaaS-сервисов малого бизнеса Кыргызстана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.kz — Казахстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">aihub.kz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$3000-8000</span></td>
+<td>Казахстан активно инвестирует в ИИ (Alem.AI, министерство ИИ), премиальный AI-хаб-домен крайне ценен.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">aiagent.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2000</span></td>
+<td>ИИ-агенты — главный тренд SaaS, keyword-домен на крупном рынке дорогой.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">aicloud.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1000-3000</span></td>
+<td>Облачно-ИИ связка востребована на крупнейшем IT-рынке Центральной Азии.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">cybersec.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1800</span></td>
+<td>Кибербезопасность приоритет для банков и госсектора Казахстана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">datacenter.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1200-3500</span></td>
+<td>Казахстан строит майнинг- и дата-центры, точный keyword-домен высоко ликвиден.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">datalab.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1600</span></td>
+<td>Аналитика и big data востребованы банками и нефтегазом Казахстана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">deeptech.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1600</span></td>
+<td>Собирательный бренд для венчура и глубоких технологий крупнейшей экономики региона.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">devops.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1800</span></td>
+<td>DevOps-услуги массово нужны банкам и корпоратам, точное имя усиливает агентство.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">edgeai.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1400</span></td>
+<td>Edge-вычисления и IoT — перспективная ниша для промышленности и телекома.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">fintech.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1500-4000</span></td>
+<td>Финтех-сектор Казахстана (Kaspi, финансовый хаб МФЦА) делает этот keyword высокоценным.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">gpucloud.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2200</span></td>
+<td>Спрос на GPU-мощности для обучения ИИ растёт вместе с гос-инициативами.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">neuro.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1000-2800</span></td>
+<td>Короткий корень 'нейро' под ИИ-, финтех- и медтех-бренды крупного рынка.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">quantum.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2200</span></td>
+<td>Форвард-луккинг keyword для науки и вычислений, редкий и брандируемый.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">smartcity.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2500</span></td>
+<td>Государственные программы 'умных городов' (Астана, Алматы) делают домен стратегическим.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">streaming.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1000</span></td>
+<td>Растущий рынок онлайн-видео и медиа в Казахстане повышает ценность прямого keyword.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.uz — Узбекистан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">aihub.uz</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$1500-5000</span></td>
+<td>IT Park Uzbekistan и госкурс на цифру делают AI-хаб-домен крайне перспективным.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">aiagent.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1500</span></td>
+<td>ИИ-агенты на пике тренда, точный keyword усиливает будущий SaaS-бренд.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">aicloud.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-2000</span></td>
+<td>Облачно-ИИ бренд для быстрорастущего IT-сектора Ташкента.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">cybersec.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1400</span></td>
+<td>Кибербезопасность нужна банкам и госцифровизации Узбекистана.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">datalab.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1400</span></td>
+<td>Дата-аналитика — дефицитная ниша при активной цифровизации госуслуг.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">devhub.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1400</span></td>
+<td>IT Park растит тысячи разработчиков — бренд для сообществ и аутсорса востребован.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">gpucloud.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$450-1300</span></td>
+<td>GPU-мощности для ИИ-обучения — растущая инфраструктурная ниша региона.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">neuro.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1700</span></td>
+<td>Короткий корень 'нейро' под ИИ- и медтех-стартапы на молодом рынке.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">smartcity.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1700</span></td>
+<td>Государственные проекты 'умного Ташкента' делают домен стратегическим.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">codebase.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-650</span></td>
+<td>Брандируемое имя для дев-студий и аутсорс-команд растущего рынка.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">deeptech.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$350-900</span></td>
+<td>Собирательный бренд для стартап-экосистемы и венчура IT Park.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">edgeai.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-800</span></td>
+<td>Edge-вычисления и IoT перспективны для промышленности и агротеха страны.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">streamly.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-550</span></td>
+<td>Брандируемое имя для стриминга и медиа при быстром росте онлайн-аудитории.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<h2 id="a7">A.7. Локальный лексикон (родные слова)</h2>
+<details class="cat"><summary>.kg — Кыргызстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">baa.kg</code></td>
+<td><span class="tier ultra">ULTRA</span></td>
+<td><span class="num">$2,000-5,000</span></td>
+<td>Короткое трёхбуквенное кыргызское слово 'баа' (цена) — редкий премиальный домен для сервиса сравнения цен и маркетплейса.</td>
+<td class="sigcell"><span class="chip check">🟡 требует проверки (нет сигнала)</span></td>
+</tr>
+<tr>
+<td><code class="dom">altyn.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,600</span></td>
+<td>'Алтын' — золото, ценно для ювелирного, финансового и ломбардного бизнеса.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">arzan.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1,500</span></td>
+<td>'Арзан' значит 'дёшево' — сильный ключ для сайта скидок, акций и распродаж.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">jumush.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>'Жумуш' — прямое кыргызское слово 'работа', идеальный точный домен для сайта поиска вакансий.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nan.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>'Нан' — хлеб, короткий трёхбуквенный домен для пекарен и продуктового ритейла.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">salamat.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$500-1,200</span></td>
+<td>'Саламат' связано со здоровьем — ценно для медицинских, аптечных и wellness-сервисов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">sooda.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$600-1,500</span></td>
+<td>'Соода' означает торговлю — ценный домен для маркетплейса или e-commerce платформы.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">tamak.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>'Тамак' — еда по-кыргызски, точное совпадение для сервисов доставки еды и ресторанов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">unaa.kg</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>'Унаа' — кыргызское слово для транспорта и авто, точный ключ для авторынка и объявлений.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kiyim.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>'Кийим' — одежда, точный ключевой домен для интернет-магазина одежды.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">konok.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-500</span></td>
+<td>'Конок' значит 'гость' — брендируемо для отельного и туристического бизнеса.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kymbat.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$200-500</span></td>
+<td>'Кымбат' значит 'дорого/премиум' — подойдёт для люксовых товаров и услуг.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nark.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>'Нарк' — цена/стоимость, полезно для финансовых и торговых сервисов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">okuu.kg</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$300-700</span></td>
+<td>'Окуу' означает учёбу и образование — хороший домен для онлайн-курсов и школ.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.kz — Казахстан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">altyn.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-1,800</span></td>
+<td>'Алтын' — золото, ценно для ювелирного и финансового бизнеса.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">arzan.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,800</span></td>
+<td>'Арзан' значит 'дёшево' — сильный домен для скидок, купонов и акций.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">baspana.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2,200</span></td>
+<td>'Баспана' означает жильё — сильный ключевой домен для рынка недвижимости.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kolik.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>'Көлік' — транспорт/авто, ценный точный домен для авторынка.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">naryk.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>'Нарық' значит 'рынок' — отличный домен для маркетплейса и торговой площадки.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">satu.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$1,000-2,500</span></td>
+<td>'Сату' — продажа по-казахски, точный домен для e-commerce и досок объявлений.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zher.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2,200</span></td>
+<td>'Жер' означает 'земля' — короткий домен для недвижимости и агросектора.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">zhumys.kz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2,200</span></td>
+<td>'Жұмыс' — работа, точный ключ для сайта вакансий и рекрутинга.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">azyq.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-900</span></td>
+<td>'Азық' — еда/продукты, хорош для продуктовой доставки и фудтеха.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">densaulyk.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-900</span></td>
+<td>'Денсаулық' — здоровье, тематический домен для медицины и wellness.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kiim.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$350-800</span></td>
+<td>'Киім' — одежда, точный ключ для fashion-ритейла.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">mal.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1,000</span></td>
+<td>'Мал' означает 'скот' — трёхбуквенный домен для агросектора и животноводства.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">nan.kz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-1,000</span></td>
+<td>'Нан' — хлеб, короткий домен для пекарен и продуктового сектора.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="cat"><summary>.uz — Узбекистан</summary><div class="twrap"><table>
+<thead>
+<tr>
+<th>Домен</th>
+<th>Тир</th>
+<th>Оценка $</th>
+<th>Почему ценен</th>
+<th>Сигнал занятости</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="dom">narx.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-2,000</span></td>
+<td>'Нарх' — цена, ценный домен для сервиса сравнения цен и агрегатора.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">oltin.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-1,800</span></td>
+<td>'Олтин' — золото, ценно для ювелирного и финансового бизнеса.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">salomatlik.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$700-1,600</span></td>
+<td>'Саломатлик' — здоровье, ценно для медицинских и аптечных сервисов.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">suv.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2,200</span></td>
+<td>'Сув' — вода, короткий трёхбуквенный домен для доставки воды и напитков.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">talim.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$800-1,800</span></td>
+<td>'Таълим' означает образование — сильный домен для EdTech и онлайн-школ.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">yer.uz</code></td>
+<td><span class="tier high">HIGH</span></td>
+<td><span class="num">$900-2,200</span></td>
+<td>'Ер' означает 'земля' — короткий домен для недвижимости и сельского хозяйства.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">bola.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$350-800</span></td>
+<td>'Бола' — ребёнок, брендируемо для детских товаров и услуг.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">kiyim.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-900</span></td>
+<td>'Кийим' — одежда, точный ключ для fashion-магазина.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">non.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$500-1,200</span></td>
+<td>'Нон' — хлеб, короткий домен для пекарен и продуктового ритейла.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">oziq.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$400-900</span></td>
+<td>'Озиқ' — еда/продукты, подходит для продуктовой доставки и фудтеха.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+<tr>
+<td><code class="dom">qimmat.uz</code></td>
+<td><span class="tier mid">MID</span></td>
+<td><span class="num">$250-600</span></td>
+<td>'Қиммат' значит 'дорого/премиум' — подойдёт для люксового сегмента.</td>
+<td class="sigcell"><span class="chip check">требует проверки</span></td>
+</tr>
+</tbody>
+</table></div></details>
+<hr />
+<h1 id="b">Приложение B. Источники</h1>
+<p>Собрано ресёрч-агентами (первичные реестры + агрегаторы). Всего: 60.</p>
+<ol>
+<li>https://www.cctld.kg/en/service-regulations</li>
+<li>https://www.cctld.kg/en</li>
+<li>https://www.cctld.kg/en/whois</li>
+<li>https://www.cctld.kg/en/tariffs</li>
+<li>https://www.cctld.kg/en/news</li>
+<li>https://www.cctld.kg/en/news/2</li>
+<li>https://www.cctld.kg/en/news/4</li>
+<li>https://www.cctld.kg/en/register</li>
+<li>http://www.iana.org/domains/root/db/kg.html</li>
+<li>https://en.wikipedia.org/wiki/.kg</li>
+<li>https://icannwiki.org/.kg</li>
+<li>https://tld-list.com/tld/kg</li>
+<li>https://www.domnest.com/tld/kg</li>
+<li>https://domainoffer.net/tld/kg</li>
+<li>https://www.gandi.net/en-US/domain/tld/kg</li>
+<li>https://www.bb-online.com/domainfactsheets/kg.shtml</li>
+<li>https://www.bb-online.com/domainfactsheets/gov.kg.shtml</li>
+<li>https://www.bb-online.com/countryinformation/gov.kg.shtml</li>
+<li>https://fuguesolutions.com/domains/tld/kg-domain-names/</li>
+<li>https://domaindetails.com/tlds/kg</li>
+<li>https://web-solutions.eu/kg-domain-name-registration.htm</li>
+<li>https://www.marcaria.com/ws/en/domains/kyrgyzstan-domain-registration-kg</li>
+<li>https://www.safenames.net/domain-names/domain-name-regulations/kg</li>
+<li>https://www.whois.com/whois/domain.kg</li>
+<li>https://nic.kz/</li>
+<li>https://nic.kz/lang?set=EN</li>
+<li>https://egov.kz/cms/en/articles/domain_name</li>
+<li>http://www.iana.org/domains/root/db/kz.html</li>
+<li>https://www.iana.org/domains/root/db/xn--80ao21a.html</li>
+<li>https://www.iana.org/reports/2012/kaz-report-20120109.html</li>
+<li>https://domaindetails.com/tlds/kz</li>
+<li>https://fuguesolutions.com/domains/tld/kz-domain-names/</li>
+<li>https://support.marcaria.com/hc/en-us/articles/115003322086-What-are-the-registration-requirements-for-registering-a-KZ-domain</li>
+<li>https://dns.ultraproducts.support/hc/en-us/articles/18093139014683--kz-Domain-Requirements-and-DNS-Hosting-Rules</li>
+<li>https://onehost.kz/en/news/s-1-yanvarya-2026-goda-izmenitsya-stoimost-domenov-v-zonakh-kz-i-kaz/</li>
+<li>https://tld-list.com/tld/kz</li>
+<li>https://tld-list.com/tld/com.kz</li>
+<li>https://tld-list.com/tld/org.kz</li>
+<li>https://tld-list.com/tld/%D2%9B%D0%B0%D0%B7</li>
+<li>https://hostings.info/domain-kz</li>
+<li>https://www.nic.kz/docs/poryadok_vnedreniya_kaz_en.pdf</li>
+<li>https://nic.kz/docs/registration_rules_eng.pdf</li>
+<li>https://nic.kz/docs/main-rules-eng.pdf</li>
+<li>https://medialaw.asia/document/-1008</li>
+<li>https://adilet.zan.kz/rus/docs/V1800016654</li>
+<li>https://cisarbitration.com/2019/09/18/domain-disputes-resolution-in-kazakhstan/</li>
+<li>https://bolotovip.com/publication/domain-names-regulations-in-kazakhstan/</li>
+<li>https://www.country-index.com/articles/article_152.pdf</li>
+<li>https://en.wikipedia.org/wiki/.kz</li>
+<li>https://en.wikipedia.org/wiki/.%D2%9B%D0%B0%D0%B7</li>
+<li>https://grokipedia.com/page/.kz</li>
+<li>https://www.worldtrademarkreview.com/article/kazakhstan-now-third-country-in-the-world-offer-cyrillic-domain-names</li>
+<li>https://kaznix.kz/en/about</li>
+<li>https://kaznix.kz/en/reglament</li>
+<li>https://webatla.com/tld/kz/</li>
+<li>https://domains-index.com/downloads/kz-kazakhstan-current-domains-list-download-kz-zone-file/</li>
+<li>https://netapi.com/kz-domains/</li>
+<li>https://whois.marcaria.com/en/asia/kz-domain-search</li>
+<li>https://www.ip2whois.com/domain/nic.kz</li>
+<li>https://intername.uk/domains/asia/kazakhstan/kz/whois/</li>
+</ol>
+<hr />
+<h1 id="c">Приложение C. Методология исследования</h1>
+<p>Отчёт подготовлен многоагентным deep-research пайплайном (24 агента):</p>
+<ol>
+<li><strong>Реестры и рынок</strong> (8 тем) — правила/цены .kg/.kz/.uz, экономика региона, фреймворк оценки, лексикон ключевых слов, методология проверки доступности (веб-поиск + фетч источников).</li>
+<li><strong>Генерация кандидатов</strong> (7 категорий × 3 страны) — 278 уникальных доменов с тиром, оценкой и обоснованием.</li>
+<li><strong>Сигналы занятости</strong> — веб-проверка шорт-листа топ-48 (48 доменов): поиск действующих сайтов/брендов.</li>
+<li><strong>Синтез</strong> — сборка отчёта.</li>
+</ol>
+<p><strong>Ограничение окружения:</strong> прямой WHOIS/RDAP/curl к реестрам был заблокирован egress-политикой песочницы, поэтому доступность каждого домена НЕ верифицирована вживую. Сигналы занятости — косвенные (наличие активного сайта в поиске), а не WHOIS-факт. Все кандидаты — цели для проверки, а не подтверждённо свободные имена.</p></main></div>
+<script>
+(function(){
+  var root=document.documentElement;
+  var btn=document.getElementById('tt');
+  function cur(){return root.getAttribute('data-theme')|| (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  function set(t){root.setAttribute('data-theme',t);btn.textContent=(t==='dark'?'☀':'☾');}
+  set(cur());
+  btn.addEventListener('click',function(){set(cur()==='dark'?'light':'dark');});
+})();
+</script>
