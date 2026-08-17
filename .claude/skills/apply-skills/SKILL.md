@@ -59,6 +59,7 @@ description: >-
 | Платная реклама, таргет, объявления Meta/TikTok | ads, ad-creative, image, visual, copywriting, competitors |
 | Контент, посты, SMM, «что постить» | garaj-content-week, content-strategy, social, video, copywriting, image, visual, ai-seo |
 | Сгенерировать картинку, видео, музыку, озвучку | visual, image, video |
+| 3D, WebGL, Three.js, шейдеры, частицы | threejs-animation, shader-glsl, particle-system, frontend-design, vercel-react-best-practices |
 | Совет маркетологов, «как продвигать» | marketing-council, marketing-ideas, marketing-plan, customer-research |
 | Вебхуки (банк, платежи, интеграции) | webhook-handler-patterns, kv-data-patterns, differential-review |
 | ИИ-фичи продукта (Anthropic API) | claude-api |
